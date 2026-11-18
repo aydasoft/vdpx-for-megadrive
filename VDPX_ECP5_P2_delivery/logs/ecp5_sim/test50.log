@@ -1,0 +1,228 @@
+$ make test50
+scenes/audio_md.scn: 50 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 30000 amostras de áudio (0 erradas), 31249243 ciclos -> OK
+RENDER_BUDGET: 8334 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 236 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_musica.scn: 13403 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 198745 amostras de áudio (0 erradas), 207025291 ciclos -> OK
+RENDER_BUDGET: 55217 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 261 ciclos (quadro de 1041)
+SDRAM_RMW: 10532 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand0.scn: 6722 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9074 amostras de áudio (0 erradas), 9451355 ciclos -> OK
+RENDER_BUDGET: 2523 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 298 ciclos (quadro de 1041)
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand1.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9887 amostras de áudio (0 erradas), 10298215 ciclos -> OK
+RENDER_BUDGET: 2749 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 291 ciclos (quadro de 1041)
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand2.scn: 6855 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 13644 amostras de áudio (0 erradas), 14211757 ciclos -> OK
+RENDER_BUDGET: 3808 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 306 ciclos (quadro de 1041)
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand3.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 12245 amostras de áudio (0 erradas), 12754472 ciclos -> OK
+RENDER_BUDGET: 3401 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 312 ciclos (quadro de 1041)
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_smem.scn: 317 escritas, 301 leituras verificadas, 0 frames (0 com limite de sprites), 60 amostras de áudio (0 erradas), 61743 ciclos -> OK
+RENDER_BUDGET: 12 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 300 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/demo.scn: 11712 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3172 amostras de áudio (0 erradas), 3304066 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1856 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+    DMA: 50 aceitos, 0 rejeitados (fila cheia 0), 50 concluídos, 0 cancelados (0 da fila), 9789 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    DMA: 50 aceitos, 0 rejeitados (fila cheia 0), 50 concluídos, 0 cancelados (0 da fila), 9789 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 2; escritas DMA com o renderizador ocupado 4394, durante quadros capturados 9789
+scenes/dma_basic.scn: 6465 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3172 amostras de áudio (0 erradas), 3304066 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 5453 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+bench repouso op=1 words=128
+DMA_LOG op=1 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=3 words=128
+DMA_LOG op=3 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=2 words=128
+DMA_LOG op=2 len=128 words=128 cycles=646 stalls=64 ciclos/palavra=5.047 MB/s=19.81
+bench repouso op=1 words=512
+DMA_LOG op=1 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=3 words=512
+DMA_LOG op=3 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=2 words=512
+DMA_LOG op=2 len=512 words=512 cycles=2579 stalls=256 ciclos/palavra=5.037 MB/s=19.85
+bench repouso op=1 words=2048
+DMA_LOG op=1 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=3 words=2048
+DMA_LOG op=3 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=2 words=2048
+DMA_LOG op=2 len=2048 words=2048 cycles=10324 stalls=1024 ciclos/palavra=5.041 MB/s=19.84
+bench repouso op=1 words=8192
+DMA_LOG op=1 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=3 words=8192
+DMA_LOG op=3 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=2 words=8192
+DMA_LOG op=2 len=8192 words=8192 cycles=41314 stalls=4096 ciclos/palavra=5.043 MB/s=19.83
+bench repouso op=1 words=16384
+DMA_LOG op=1 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=3 words=16384
+DMA_LOG op=3 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=2 words=16384
+DMA_LOG op=2 len=16384 words=16384 cycles=82630 stalls=8192 ciclos/palavra=5.043 MB/s=19.83
+bench repouso op=1 words=32768
+DMA_LOG op=1 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=3 words=32768
+DMA_LOG op=3 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench repouso op=2 words=32768
+DMA_LOG op=2 len=32768 words=32768 cycles=165257 stalls=16384 ciclos/palavra=5.043 MB/s=19.83
+bench render op=1 words=128
+DMA_LOG op=1 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=3 words=128
+DMA_LOG op=3 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=2 words=128
+DMA_LOG op=2 len=128 words=128 cycles=646 stalls=64 ciclos/palavra=5.047 MB/s=19.81
+bench render op=1 words=512
+DMA_LOG op=1 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=3 words=512
+DMA_LOG op=3 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=2 words=512
+DMA_LOG op=2 len=512 words=512 cycles=2578 stalls=256 ciclos/palavra=5.035 MB/s=19.86
+bench render op=1 words=2048
+DMA_LOG op=1 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=3 words=2048
+DMA_LOG op=3 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=2 words=2048
+DMA_LOG op=2 len=2048 words=2048 cycles=10330 stalls=1024 ciclos/palavra=5.044 MB/s=19.83
+bench render op=1 words=8192
+DMA_LOG op=1 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=3 words=8192
+DMA_LOG op=3 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=2 words=8192
+DMA_LOG op=2 len=8192 words=8192 cycles=41314 stalls=4096 ciclos/palavra=5.043 MB/s=19.83
+bench render op=1 words=16384
+DMA_LOG op=1 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=3 words=16384
+DMA_LOG op=3 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=2 words=16384
+DMA_LOG op=2 len=16384 words=16384 cycles=82629 stalls=8192 ciclos/palavra=5.043 MB/s=19.83
+bench render op=1 words=32768
+DMA_LOG op=1 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=3 words=32768
+DMA_LOG op=3 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench render op=2 words=32768
+DMA_LOG op=2 len=32768 words=32768 cycles=165257 stalls=16384 ciclos/palavra=5.043 MB/s=19.83
+bench pcm op=1 words=128
+DMA_LOG op=1 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=3 words=128
+DMA_LOG op=3 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=2 words=128
+DMA_LOG op=2 len=128 words=128 cycles=696 stalls=104 ciclos/palavra=5.438 MB/s=18.39
+bench pcm op=1 words=512
+DMA_LOG op=1 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=3 words=512
+DMA_LOG op=3 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=2 words=512
+DMA_LOG op=2 len=512 words=512 cycles=2700 stalls=353 ciclos/palavra=5.273 MB/s=18.96
+bench pcm op=1 words=2048
+DMA_LOG op=1 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=3 words=2048
+DMA_LOG op=3 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=2 words=2048
+DMA_LOG op=2 len=2048 words=2048 cycles=10823 stalls=1425 ciclos/palavra=5.285 MB/s=18.92
+bench pcm op=1 words=8192
+DMA_LOG op=1 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=3 words=8192
+DMA_LOG op=3 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=2 words=8192
+DMA_LOG op=2 len=8192 words=8192 cycles=43384 stalls=5814 ciclos/palavra=5.296 MB/s=18.88
+bench pcm op=1 words=16384
+DMA_LOG op=1 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=3 words=16384
+DMA_LOG op=3 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=2 words=16384
+DMA_LOG op=2 len=16384 words=16384 cycles=86735 stalls=11583 ciclos/palavra=5.294 MB/s=18.89
+bench pcm op=1 words=32768
+DMA_LOG op=1 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=3 words=32768
+DMA_LOG op=3 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.00
+bench pcm op=2 words=32768
+DMA_LOG op=2 len=32768 words=32768 cycles=173515 stalls=23200 ciclos/palavra=5.295 MB/s=18.88
+    DMA: 54 aceitos, 0 rejeitados (fila cheia 0), 54 concluídos, 0 cancelados (0 da fila), 540288 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: 54 aceitos, 0 rejeitados (fila cheia 0), 54 concluídos, 0 cancelados (0 da fila), 540288 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 1; escritas DMA com o renderizador ocupado 283226, durante quadros capturados 42939
+scenes/dma_bench.scn: 47315 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 1987 amostras de áudio (0 erradas), 2069492 ciclos -> OK
+RENDER_BUDGET: 563 linhas, maior tempo de renderizacao 2352 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 323 ciclos (quadro de 1041)
+SDRAM_RMW: 32768 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+    DMA: 2 aceitos, 0 rejeitados (fila cheia 0), 2 concluídos, 0 cancelados (0 da fila), 8192 palavras DMA conferidas, 2548 escritas CPU conferidas na porta, 0 erros
+    DMA: 2 aceitos, 0 rejeitados (fila cheia 0), 2 concluídos, 0 cancelados (0 da fila), 8192 palavras DMA conferidas, 2548 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 1; escritas DMA com o renderizador ocupado 4131, durante quadros capturados 8192
+scenes/dma_cpu.scn: 6982 escritas, 0 leituras verificadas, 1 frames (0 com limite de sprites), 1559 amostras de áudio (0 erradas), 1624066 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 4096 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+    DMA: 13 aceitos, 17 rejeitados (fila cheia 2), 9 concluídos, 4 cancelados (2 da fila), 25649 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: 13 aceitos, 17 rejeitados (fila cheia 2), 9 concluídos, 4 cancelados (2 da fila), 25649 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 4; escritas DMA com o renderizador ocupado 2985, durante quadros capturados 25649
+scenes/dma_errors.scn: 5804 escritas, 0 leituras verificadas, 1 frames (0 com limite de sprites), 1559 amostras de áudio (0 erradas), 1624066 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 4096 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+    DMA: 40 aceitos, 0 rejeitados (fila cheia 0), 40 concluídos, 0 cancelados (0 da fila), 71680 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: 40 aceitos, 0 rejeitados (fila cheia 0), 40 concluídos, 0 cancelados (0 da fila), 71680 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 3; escritas DMA com o renderizador ocupado 27390, durante quadros capturados 4588
+scenes/dma_pcm.scn: 23537 escritas, 0 leituras verificadas, 1 frames (0 com limite de sprites), 17687 amostras de áudio (0 erradas), 18424066 ciclos -> OK
+RENDER_BUDGET: 4928 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 387 ciclos (quadro de 1041)
+SDRAM_RMW: 21120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+    DMA: 20 aceitos, 0 rejeitados (fila cheia 0), 20 concluídos, 0 cancelados (0 da fila), 81904 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: 20 aceitos, 0 rejeitados (fila cheia 0), 20 concluídos, 0 cancelados (0 da fila), 81904 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 4; escritas DMA com o renderizador ocupado 55459, durante quadros capturados 81904
+scenes/dma_render.scn: 18010 escritas, 0 leituras verificadas, 5 frames (5 com limite de sprites), 8011 amostras de áudio (0 erradas), 8344066 ciclos -> OK
+RENDER_BUDGET: 2240 linhas, maior tempo de renderizacao 2319 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 4096 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+    DMA: 3 aceitos, 0 rejeitados (fila cheia 0), 3 concluídos, 0 cancelados (0 da fila), 1536 palavras DMA conferidas, 8704 escritas CPU conferidas na porta, 0 erros
+    DMA: 3 aceitos, 0 rejeitados (fila cheia 0), 3 concluídos, 0 cancelados (0 da fila), 1536 palavras DMA conferidas, 8704 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 1; escritas DMA com o renderizador ocupado 0, durante quadros capturados 0
+scenes/dma_vsync.scn: 11128 escritas, 0 leituras verificadas, 3 frames (0 com limite de sprites), 4785 amostras de áudio (0 erradas), 4984066 ciclos -> OK
+RENDER_BUDGET: 1344 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 2048 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/fx.scn: 9080 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3172 amostras de áudio (0 erradas), 3304066 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1539 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/limites.scn: 586 escritas, 0 leituras verificadas, 1 frames (1 com limite de sprites), 1559 amostras de áudio (0 erradas), 1624066 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 2138 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand0.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 1924 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand1.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2343 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand2.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2344 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand3.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 1960 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand4.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2190 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand5.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2349 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/readback.scn: 994 escritas, 963 leituras verificadas, 0 frames (0 com limite de sprites), 21 amostras de áudio (0 erradas), 21486 ciclos -> OK
+RENDER_BUDGET: 0 linhas, maior tempo de renderizacao 0 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1041)
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+== TODOS OS TESTES OK (50 MHz) ==
+exit 0 (74 s)

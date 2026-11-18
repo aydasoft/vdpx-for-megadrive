@@ -1,0 +1,108 @@
+$ make ecp5_lint
+verilator --lint-only -Wall -Wno-fatal -Wno-UNUSEDSIGNAL -Wno-UNUSEDPARAM -Wno-PINCONNECTEMPTY -Wno-DECLFILENAME \
+  --top-module vdpx_ecp5_core rtl/vdpx_top.v rtl/vdpx_timing.v rtl/vdpx_render.v rtl/vdpx_sdpram.v rtl/vdpx_apu.v rtl/vdpx_i2s.v rtl/md_fdc_adapter.v rtl/hdmi/tmds_enc.v rtl/hdmi/hdmi_tx.v rtl/board/async_fifo.v rtl/board/sdram_ctrl.v rtl/board/vdpx_selftest.v rtl/board/vdpx_board.v rtl/board/cn2_probe.v rtl/board/vdpx_overlay.v rtl/ecp5/ecp5_tmds_ser.v rtl/ecp5/vdpx_ecp5_core.v sim/ecp5/ecp5_prims_sim.v
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:22: Operator ADD expects 4 bits on the LHS, but LHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                      ^
+                      ... For warning description see https://verilator.org/warn/WIDTHEXPAND?v=5.020
+                      ... Use "/* verilator lint_off WIDTHEXPAND */" and lint_on around source to disable this message.
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:22: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                      ^
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:29: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                             ^
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:36: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                                    ^
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:43: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                                           ^
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:50: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                                                  ^
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:57: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                                                         ^
+%Warning-WIDTHEXPAND: rtl/hdmi/tmds_enc.v:17:64: Operator ADD expects 4 bits on the RHS, but RHS's SEL generates 1 bits.
+                                               : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi.u_e2'
+   17 |         ones8 = v[0] + v[1] + v[2] + v[3] + v[4] + v[5] + v[6] + v[7];
+      |                                                                ^
+%Warning-WIDTHEXPAND: rtl/hdmi/hdmi_tx.v:86:29: Operator ADD expects 9 bits on the RHS, but RHS's VARREF 'k' generates 3 bits.
+                                              : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi'
+   86 |         fr_add = ({1'b0, f} + k >= 9'd192) ? f + k - 8'd192 : f + k;
+      |                             ^
+%Warning-WIDTHEXPAND: rtl/hdmi/hdmi_tx.v:86:48: Operator ADD expects 8 bits on the RHS, but RHS's VARREF 'k' generates 3 bits.
+                                              : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi'
+   86 |         fr_add = ({1'b0, f} + k >= 9'd192) ? f + k - 8'd192 : f + k;
+      |                                                ^
+%Warning-WIDTHEXPAND: rtl/hdmi/hdmi_tx.v:86:65: Operator ADD expects 8 bits on the RHS, but RHS's VARREF 'k' generates 3 bits.
+                                              : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi'
+   86 |         fr_add = ({1'b0, f} + k >= 9'd192) ? f + k - 8'd192 : f + k;
+      |                                                                 ^
+%Warning-WIDTHTRUNC: rtl/hdmi/hdmi_tx.v:168:46: Bit extraction of var[7:0] requires 3 bit index, not 5 bits.
+                                              : ... note: In instance 'vdpx_ecp5_core.u_board.u_hdmi'
+  168 |     wire hb = (pix < 5'd24) ? p_hdr[pix] : eh[pix - 5'd24];
+      |                                              ^
+%Warning-WIDTHTRUNC: rtl/board/vdpx_overlay.v:866:21: Operator ASSIGNW expects 4 bits on the Assign RHS, but Assign RHS's SUB generates 5 bits.
+                                                    : ... note: In instance 'vdpx_ecp5_core.u_board.u_ovl'
+  866 |     wire [3:0] trel = trow - TOP;
+      |                     ^
+%Warning-BLKSEQ: rtl/board/vdpx_overlay.v:57:15: Blocking assignment '=' in sequential logic process
+                                               : ... Suggest using delayed assignment '<='
+   57 |             w = {12'd0, n};
+      |               ^
+%Warning-BLKSEQ: rtl/board/vdpx_overlay.v:59:48: Blocking assignment '=' in sequential logic process
+                                               : ... Suggest using delayed assignment '<='
+   59 |                 if (w[11:8]  >= 4'd5) w[11:8]  = w[11:8]  + 4'd3;
+      |                                                ^
+%Warning-BLKSEQ: rtl/board/vdpx_overlay.v:60:48: Blocking assignment '=' in sequential logic process
+                                               : ... Suggest using delayed assignment '<='
+   60 |                 if (w[15:12] >= 4'd5) w[15:12] = w[15:12] + 4'd3;
+      |                                                ^
+%Warning-BLKSEQ: rtl/board/vdpx_overlay.v:61:48: Blocking assignment '=' in sequential logic process
+                                               : ... Suggest using delayed assignment '<='
+   61 |                 if (w[19:16] >= 4'd5) w[19:16] = w[19:16] + 4'd3;
+      |                                                ^
+%Warning-BLKSEQ: rtl/board/vdpx_overlay.v:62:19: Blocking assignment '=' in sequential logic process
+                                               : ... Suggest using delayed assignment '<='
+   62 |                 w = w << 1;
+      |                   ^
+%Warning-BLKSEQ: rtl/hdmi/hdmi_tx.v:98:17: Blocking assignment '=' in sequential logic process
+                                         : ... Suggest using delayed assignment '<='
+   98 |             l24 = {smp[31:16], 8'd0};
+      |                 ^
+%Warning-BLKSEQ: rtl/hdmi/hdmi_tx.v:99:17: Blocking assignment '=' in sequential logic process
+                                         : ... Suggest using delayed assignment '<='
+   99 |             r24 = {smp[15:0], 8'd0};
+      |                 ^
+%Warning-BLKSEQ: rtl/hdmi/hdmi_tx.v:100:16: Blocking assignment '=' in sequential logic process
+                                          : ... Suggest using delayed assignment '<='
+  100 |             cl = cs_bit(fr, 1'b0); cr = cs_bit(fr, 1'b1);
+      |                ^
+%Warning-BLKSEQ: rtl/hdmi/hdmi_tx.v:100:39: Blocking assignment '=' in sequential logic process
+                                          : ... Suggest using delayed assignment '<='
+  100 |             cl = cs_bit(fr, 1'b0); cr = cs_bit(fr, 1'b1);
+      |                                       ^
+%Warning-BLKSEQ: rtl/hdmi/hdmi_tx.v:101:16: Blocking assignment '=' in sequential logic process
+                                          : ... Suggest using delayed assignment '<='
+  101 |             pl = ^{l24, cl};        
+      |                ^
+%Warning-BLKSEQ: rtl/hdmi/hdmi_tx.v:102:16: Blocking assignment '=' in sequential logic process
+                                          : ... Suggest using delayed assignment '<='
+  102 |             pr = ^{r24, cr};
+      |                ^
+%Warning-UNOPTFLAT: rtl/hdmi/tmds_enc.v:21:16: Signal unoptimizable: Circular combinational logic: 'vdpx_ecp5_core.u_board.u_hdmi.u_e0.qm'
+   21 |     wire [8:0] qm;
+      |                ^~
+                    rtl/hdmi/tmds_enc.v:21:16:      Example path: vdpx_ecp5_core.u_board.u_hdmi.u_e0.qm
+                    rtl/hdmi/tmds_enc.v:22:21:      Example path: ASSIGNW
+                    rtl/hdmi/tmds_enc.v:21:16:      Example path: vdpx_ecp5_core.u_board.u_hdmi.u_e0.qm
+exit 0 (1 s)

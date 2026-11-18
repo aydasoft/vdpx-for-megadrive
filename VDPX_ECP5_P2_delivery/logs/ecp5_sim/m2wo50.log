@@ -1,0 +1,20 @@
+$ make m2wo50
+make -C m68k/diag all sim
+make[1]: Entering directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k/diag'
+make[1]: Nothing to be done for 'all'.
+make[1]: Nothing to be done for 'sim'.
+make[1]: Leaving directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k/diag'
+cp ext/fx68k/microrom.mem ext/fx68k/nanorom.mem build_m2wo50/
+cp m68k/diag/diag_sim.hex build_m2wo50/rom.hex
+cd build_m2wo50 && ./Vmd_sim_top ../out/clk50
+[68k] progresso 1 (ciclo 20545, frame ~0.0)
+  frame  1 capturado: igual ao modelo
+  frame  2 capturado: igual ao modelo
+[68k] fim do programa
+    áudio: 30877 amostras conferidas com o modelo, 0 erradas (gravado em m2wo_audio.wav)
+M2WO (PREFETCH=0): 19707 escritas e 64 leituras na VDPX pelos pinos do 68000, 19707 escritas no núcleo
+    FIFO: nível máximo 1 de 16, 0 perdidas; menor intervalo entre escritas 26 ciclos (520 ns)
+    2/2 frames iguais ao modelo
+    /AS baixo: VDPX 326 ns em média, ROM/RAM sem wait state 326 ns -> ~-0.00 wait states por acesso
+    32163296 ciclos simulados (38.29 frames) -> OK
+exit 0 (19 s)

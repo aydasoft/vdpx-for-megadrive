@@ -1,0 +1,591 @@
+Info: constraining clock net 'clk25' to 25.00 MHz
+
+Info: Logic utilisation before packing:
+Info:     Total LUT4s:      6757/43848    15%
+Info:         logic LUTs:   3927/43848     8%
+Info:         carry LUTs:   1864/43848     4%
+Info:           RAM LUTs:    644/ 5481    11%
+Info:          RAMW LUTs:    322/10962     2%
+
+Info:      Total DFFs:      3055/43848     6%
+
+Info: Packing IOs..
+Info: $sdram_dq[31]$iobuf_i: sdram_dq_$_TBUF__Y.Y
+Info: pin 'sdram_dq[31]$tr_io' constrained to Bel 'X53/Y0/PIOA'.
+Info: $sdram_dq[30]$iobuf_i: sdram_dq_$_TBUF__Y_31.Y
+Info: pin 'sdram_dq[30]$tr_io' constrained to Bel 'X58/Y0/PIOA'.
+Info: $sdram_dq[29]$iobuf_i: sdram_dq_$_TBUF__Y_30.Y
+Info: pin 'sdram_dq[29]$tr_io' constrained to Bel 'X78/Y0/PIOA'.
+Info: $sdram_dq[28]$iobuf_i: sdram_dq_$_TBUF__Y_29.Y
+Info: pin 'sdram_dq[28]$tr_io' constrained to Bel 'X47/Y0/PIOB'.
+Info: $sdram_dq[27]$iobuf_i: sdram_dq_$_TBUF__Y_28.Y
+Info: pin 'sdram_dq[27]$tr_io' constrained to Bel 'X71/Y0/PIOA'.
+Info: $sdram_dq[26]$iobuf_i: sdram_dq_$_TBUF__Y_27.Y
+Info: pin 'sdram_dq[26]$tr_io' constrained to Bel 'X53/Y0/PIOB'.
+Info: $sdram_dq[25]$iobuf_i: sdram_dq_$_TBUF__Y_26.Y
+Info: pin 'sdram_dq[25]$tr_io' constrained to Bel 'X69/Y0/PIOB'.
+Info: $sdram_dq[24]$iobuf_i: sdram_dq_$_TBUF__Y_25.Y
+Info: pin 'sdram_dq[24]$tr_io' constrained to Bel 'X58/Y0/PIOB'.
+Info: $sdram_dq[23]$iobuf_i: sdram_dq_$_TBUF__Y_24.Y
+Info: pin 'sdram_dq[23]$tr_io' constrained to Bel 'X44/Y0/PIOB'.
+Info: $sdram_dq[22]$iobuf_i: sdram_dq_$_TBUF__Y_23.Y
+Info: pin 'sdram_dq[22]$tr_io' constrained to Bel 'X20/Y0/PIOB'.
+Info: $sdram_dq[21]$iobuf_i: sdram_dq_$_TBUF__Y_22.Y
+Info: pin 'sdram_dq[21]$tr_io' constrained to Bel 'X47/Y0/PIOA'.
+Info: $sdram_dq[20]$iobuf_i: sdram_dq_$_TBUF__Y_21.Y
+Info: pin 'sdram_dq[20]$tr_io' constrained to Bel 'X38/Y0/PIOB'.
+Info: $sdram_dq[19]$iobuf_i: sdram_dq_$_TBUF__Y_20.Y
+Info: pin 'sdram_dq[19]$tr_io' constrained to Bel 'X42/Y0/PIOA'.
+Info: $sdram_dq[18]$iobuf_i: sdram_dq_$_TBUF__Y_19.Y
+Info: pin 'sdram_dq[18]$tr_io' constrained to Bel 'X42/Y0/PIOB'.
+Info: $sdram_dq[17]$iobuf_i: sdram_dq_$_TBUF__Y_18.Y
+Info: pin 'sdram_dq[17]$tr_io' constrained to Bel 'X20/Y0/PIOA'.
+Info: $sdram_dq[16]$iobuf_i: sdram_dq_$_TBUF__Y_17.Y
+Info: pin 'sdram_dq[16]$tr_io' constrained to Bel 'X31/Y0/PIOB'.
+Info: $sdram_dq[15]$iobuf_i: sdram_dq_$_TBUF__Y_16.Y
+Info: pin 'sdram_dq[15]$tr_io' constrained to Bel 'X0/Y11/PIOD'.
+Info: $sdram_dq[14]$iobuf_i: sdram_dq_$_TBUF__Y_15.Y
+Info: pin 'sdram_dq[14]$tr_io' constrained to Bel 'X9/Y0/PIOA'.
+Info: $sdram_dq[13]$iobuf_i: sdram_dq_$_TBUF__Y_14.Y
+Info: pin 'sdram_dq[13]$tr_io' constrained to Bel 'X0/Y17/PIOB'.
+Info: $sdram_dq[12]$iobuf_i: sdram_dq_$_TBUF__Y_13.Y
+Info: pin 'sdram_dq[12]$tr_io' constrained to Bel 'X11/Y0/PIOA'.
+Info: $sdram_dq[11]$iobuf_i: sdram_dq_$_TBUF__Y_12.Y
+Info: pin 'sdram_dq[11]$tr_io' constrained to Bel 'X6/Y0/PIOB'.
+Info: $sdram_dq[10]$iobuf_i: sdram_dq_$_TBUF__Y_11.Y
+Info: pin 'sdram_dq[10]$tr_io' constrained to Bel 'X13/Y0/PIOA'.
+Info: $sdram_dq[9]$iobuf_i: sdram_dq_$_TBUF__Y_10.Y
+Info: pin 'sdram_dq[9]$tr_io' constrained to Bel 'X9/Y0/PIOB'.
+Info: $sdram_dq[8]$iobuf_i: sdram_dq_$_TBUF__Y_9.Y
+Info: pin 'sdram_dq[8]$tr_io' constrained to Bel 'X13/Y0/PIOB'.
+Info: $sdram_dq[7]$iobuf_i: sdram_dq_$_TBUF__Y_8.Y
+Info: pin 'sdram_dq[7]$tr_io' constrained to Bel 'X18/Y0/PIOB'.
+Info: $sdram_dq[6]$iobuf_i: sdram_dq_$_TBUF__Y_7.Y
+Info: pin 'sdram_dq[6]$tr_io' constrained to Bel 'X0/Y11/PIOC'.
+Info: $sdram_dq[5]$iobuf_i: sdram_dq_$_TBUF__Y_6.Y
+Info: pin 'sdram_dq[5]$tr_io' constrained to Bel 'X15/Y0/PIOB'.
+Info: $sdram_dq[4]$iobuf_i: sdram_dq_$_TBUF__Y_5.Y
+Info: pin 'sdram_dq[4]$tr_io' constrained to Bel 'X11/Y0/PIOB'.
+Info: $sdram_dq[3]$iobuf_i: sdram_dq_$_TBUF__Y_4.Y
+Info: pin 'sdram_dq[3]$tr_io' constrained to Bel 'X18/Y0/PIOA'.
+Info: $sdram_dq[2]$iobuf_i: sdram_dq_$_TBUF__Y_3.Y
+Info: pin 'sdram_dq[2]$tr_io' constrained to Bel 'X4/Y0/PIOA'.
+Info: $sdram_dq[1]$iobuf_i: sdram_dq_$_TBUF__Y_2.Y
+Info: pin 'sdram_dq[1]$tr_io' constrained to Bel 'X0/Y11/PIOB'.
+Info: $sdram_dq[0]$iobuf_i: sdram_dq_$_TBUF__Y_1.Y
+Info: pin 'sdram_dq[0]$tr_io' constrained to Bel 'X4/Y0/PIOB'.
+Info: pin 'sdram_we_n$tr_io' constrained to Bel 'X36/Y0/PIOA'.
+Info: pin 'sdram_ras_n$tr_io' constrained to Bel 'X33/Y0/PIOB'.
+Info: pin 'sdram_clk$tr_io' constrained to Bel 'X31/Y0/PIOA'.
+Info: pin 'sdram_cas_n$tr_io' constrained to Bel 'X33/Y0/PIOA'.
+Info: pin 'sdram_ba[1]$tr_io' constrained to Bel 'X15/Y0/PIOA'.
+Info: pin 'sdram_ba[0]$tr_io' constrained to Bel 'X38/Y0/PIOA'.
+Info: pin 'sdram_a[10]$tr_io' constrained to Bel 'X44/Y0/PIOA'.
+Info: pin 'sdram_a[9]$tr_io' constrained to Bel 'X36/Y0/PIOB'.
+Info: pin 'sdram_a[8]$tr_io' constrained to Bel 'X49/Y0/PIOA'.
+Info: pin 'sdram_a[7]$tr_io' constrained to Bel 'X49/Y0/PIOB'.
+Info: pin 'sdram_a[6]$tr_io' constrained to Bel 'X56/Y0/PIOA'.
+Info: pin 'sdram_a[5]$tr_io' constrained to Bel 'X69/Y0/PIOA'.
+Info: pin 'sdram_a[4]$tr_io' constrained to Bel 'X74/Y0/PIOB'.
+Info: pin 'sdram_a[3]$tr_io' constrained to Bel 'X80/Y0/PIOA'.
+Info: pin 'sdram_a[2]$tr_io' constrained to Bel 'X74/Y0/PIOA'.
+Info: pin 'sdram_a[1]$tr_io' constrained to Bel 'X56/Y0/PIOB'.
+Info: pin 'sdram_a[0]$tr_io' constrained to Bel 'X51/Y0/PIOA'.
+Info: pin 'md_fres$tr_io' constrained to Bel 'X0/Y17/PIOA'.
+Info: pin 'md_fdwr_n$tr_io' constrained to Bel 'X0/Y29/PIOD'.
+Info: pin 'md_fdc_n$tr_io' constrained to Bel 'X0/Y32/PIOC'.
+Info: pin 'md_d[15]$tr_io' constrained to Bel 'X0/Y14/PIOC'.
+Info: pin 'md_d[14]$tr_io' constrained to Bel 'X0/Y23/PIOB'.
+Info: pin 'md_d[13]$tr_io' constrained to Bel 'X0/Y26/PIOC'.
+Info: pin 'md_d[12]$tr_io' constrained to Bel 'X0/Y32/PIOD'.
+Info: pin 'md_d[11]$tr_io' constrained to Bel 'X0/Y20/PIOB'.
+Info: pin 'md_d[10]$tr_io' constrained to Bel 'X0/Y23/PIOD'.
+Info: pin 'md_d[9]$tr_io' constrained to Bel 'X0/Y26/PIOA'.
+Info: pin 'md_d[8]$tr_io' constrained to Bel 'X0/Y26/PIOB'.
+Info: pin 'md_d[7]$tr_io' constrained to Bel 'X90/Y23/PIOC'.
+Info: pin 'md_d[6]$tr_io' constrained to Bel 'X83/Y0/PIOB'.
+Info: pin 'md_d[5]$tr_io' constrained to Bel 'X85/Y0/PIOA'.
+Info: pin 'md_d[4]$tr_io' constrained to Bel 'X83/Y0/PIOA'.
+Info: pin 'md_d[3]$tr_io' constrained to Bel 'X90/Y26/PIOC'.
+Info: pin 'md_d[2]$tr_io' constrained to Bel 'X85/Y0/PIOB'.
+Info: pin 'md_d[1]$tr_io' constrained to Bel 'X80/Y0/PIOB'.
+Info: pin 'md_d[0]$tr_io' constrained to Bel 'X78/Y0/PIOB'.
+Info: pin 'md_cas0_n$tr_io' constrained to Bel 'X0/Y32/PIOB'.
+Info: pin 'md_a[3]$tr_io' constrained to Bel 'X0/Y35/PIOB'.
+Info: pin 'md_a[2]$tr_io' constrained to Bel 'X0/Y32/PIOA'.
+Info: pin 'md_a[1]$tr_io' constrained to Bel 'X0/Y29/PIOA'.
+Info: pin 'led_n$tr_io' constrained to Bel 'X0/Y62/PIOD'.
+Info: pin 'i2s_ws$tr_io' constrained to Bel 'X0/Y29/PIOB'.
+Info: pin 'i2s_dout$tr_io' constrained to Bel 'X0/Y20/PIOD'.
+Info: pin 'i2s_bck$tr_io' constrained to Bel 'X90/Y14/PIOA'.
+Info: pin 'gpdi_dp[3]$tr_io' constrained to Bel 'X90/Y32/PIOA'.
+Info: pin 'gpdi_dp[2]$tr_io' constrained to Bel 'X90/Y23/PIOA'.
+Info: pin 'gpdi_dp[1]$tr_io' constrained to Bel 'X90/Y26/PIOA'.
+Info: pin 'gpdi_dp[0]$tr_io' constrained to Bel 'X90/Y29/PIOA'.
+Info: pin 'clk25$tr_io' constrained to Bel 'X0/Y68/PIOC'.
+Info: pin 'adc_mclk$tr_io' constrained to Bel 'X0/Y20/PIOC'.
+Info: pin 'adc_dout$tr_io' constrained to Bel 'X90/Y11/PIOB'.
+Info: IOLOGIC component u_core.u_sdclk connected to PIO Bel X31/Y0/PIOA
+Info: IOLOGIC component u_core.u_ser.u_ck connected to PIO Bel X90/Y32/PIOA
+Info: IOLOGIC component u_core.u_ser.u_d1 connected to PIO Bel X90/Y26/PIOA
+Info: IOLOGIC component u_core.u_ser.u_d0 connected to PIO Bel X90/Y29/PIOA
+Info: IOLOGIC component u_core.u_ser.u_d2 connected to PIO Bel X90/Y23/PIOA
+Info: placed PLL 'u_pll' at bel 'X2/Y70/EHXPLL_LL'
+Info: Packing constants..
+Info: Packing carries...
+Info: Packing LUTs...
+Info: Packing LUT5-7s...
+Info: Packing FFs...
+Info:     1470 FFs paired with LUTs.
+Info: Generating derived timing constraints...
+Info:     Input frequency of PLL 'u_pll' is constrained to 25.0 MHz
+Info:     Derived frequency constraint of 125.0 MHz for net clk_x5
+Info:     Derived frequency constraint of 50.0 MHz for net clk_sys
+Info:     Derived frequency constraint of 25.0 MHz for net clk_pix
+Info:     Derived frequency constraint of 50.0 MHz for net clk_sd
+Info: Promoting globals...
+Info:     promoting clock net clk_sys to global network
+Info:     promoting clock net clk_pix to global network
+Info:     promoting clock net clk_x5 to global network
+Info:     promoting clock net clk_sd to global network
+Info: Checksum: 0xd71565a9
+
+Info: Device utilisation:
+Info: 	          TRELLIS_IO:      83/    245    33%
+Info: 	                DCCA:       4/     56     7%
+Info: 	              DP16KD:      44/    108    40%
+Info: 	          MULT18X18D:       2/     72     2%
+Info: 	              ALU54B:       0/     36     0%
+Info: 	             EHXPLLL:       1/      4    25%
+Info: 	             EXTREFB:       0/      2     0%
+Info: 	                DCUA:       0/      2     0%
+Info: 	           PCSCLKDIV:       0/      2     0%
+Info: 	             IOLOGIC:       4/    160     2%
+Info: 	            SIOLOGIC:       1/     85     1%
+Info: 	                 GSR:       0/      1     0%
+Info: 	               JTAGG:       0/      1     0%
+Info: 	                OSCG:       0/      1     0%
+Info: 	               SEDGA:       0/      1     0%
+Info: 	                 DTR:       0/      1     0%
+Info: 	             USRMCLK:       0/      1     0%
+Info: 	             CLKDIVF:       0/      4     0%
+Info: 	           ECLKSYNCB:       0/     10     0%
+Info: 	             DLLDELD:       0/      8     0%
+Info: 	              DDRDLL:       0/      4     0%
+Info: 	             DQSBUFM:       0/     10     0%
+Info: 	     TRELLIS_ECLKBUF:       0/      8     0%
+Info: 	        ECLKBRIDGECS:       0/      2     0%
+Info: 	                DCSC:       0/      2     0%
+Info: 	          TRELLIS_FF:    3055/  43848     6%
+Info: 	        TRELLIS_COMB:    7655/  43848    17%
+Info: 	        TRELLIS_RAMW:     161/   5481     2%
+
+Info: Placed 89 cells based on constraints.
+Info: Creating initial analytic placement for 5414 cells, random placement wirelen = 506922.
+Info:     at initial placer iter 0, wirelen = 9130
+Info:     at initial placer iter 1, wirelen = 7812
+Info:     at initial placer iter 2, wirelen = 7603
+Info:     at initial placer iter 3, wirelen = 7230
+Info: Running main analytical placer, max placement attempts per cell = 15152512.
+Info:     at iteration #1, type ALL: wirelen solved = 7358, spread = 93646, legal = 98780; time = 0.68s
+Info:     at iteration #2, type ALL: wirelen solved = 12152, spread = 71861, legal = 74588; time = 0.61s
+Info:     at iteration #3, type ALL: wirelen solved = 14716, spread = 57377, legal = 62155; time = 0.60s
+Info:     at iteration #4, type ALL: wirelen solved = 16231, spread = 52898, legal = 57457; time = 0.60s
+Info:     at iteration #5, type ALL: wirelen solved = 18044, spread = 48730, legal = 52980; time = 0.54s
+Info:     at iteration #6, type ALL: wirelen solved = 18615, spread = 49577, legal = 53466; time = 0.60s
+Info:     at iteration #7, type ALL: wirelen solved = 20191, spread = 50407, legal = 53377; time = 0.50s
+Info:     at iteration #8, type ALL: wirelen solved = 21582, spread = 49688, legal = 52736; time = 0.50s
+Info:     at iteration #9, type ALL: wirelen solved = 22167, spread = 49650, legal = 52724; time = 0.52s
+Info:     at iteration #10, type ALL: wirelen solved = 22588, spread = 45970, legal = 51262; time = 0.51s
+Info:     at iteration #11, type ALL: wirelen solved = 23970, spread = 45257, legal = 48650; time = 0.48s
+Info:     at iteration #12, type ALL: wirelen solved = 24209, spread = 51601, legal = 53597; time = 0.49s
+Info:     at iteration #13, type ALL: wirelen solved = 27321, spread = 49883, legal = 53263; time = 0.52s
+Info:     at iteration #14, type ALL: wirelen solved = 28277, spread = 49480, legal = 53299; time = 0.63s
+Info:     at iteration #15, type ALL: wirelen solved = 28870, spread = 49625, legal = 52961; time = 0.48s
+Info:     at iteration #16, type ALL: wirelen solved = 29292, spread = 49852, legal = 52503; time = 0.56s
+Info: HeAP Placer Time: 12.92s
+Info:   of which solving equations: 9.53s
+Info:   of which spreading cells: 0.63s
+Info:   of which strict legalisation: 0.74s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 2371, wirelen = 48650
+Info:   at iteration #5: temp = 0.000000, timing cost = 2063, wirelen = 41936
+Info:   at iteration #10: temp = 0.000000, timing cost = 2258, wirelen = 40369
+Info:   at iteration #15: temp = 0.000000, timing cost = 2228, wirelen = 39510
+Info:   at iteration #20: temp = 0.000000, timing cost = 2606, wirelen = 39234
+Info:   at iteration #25: temp = 0.000000, timing cost = 2537, wirelen = 39135
+Info:   at iteration #27: temp = 0.000000, timing cost = 2659, wirelen = 39129 
+Info: SA placement time 31.44s
+
+Info: Max frequency for clock  '$glbnet$clk_x5': 205.55 MHz (PASS at 125.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_pix': 68.35 MHz (PASS at 25.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_sys': 65.33 MHz (PASS at 50.00 MHz)
+
+Info: Clock '$glbnet$clk_sd' has no interior paths
+
+Info: Max delay <async>                 -> posedge $glbnet$clk_sys: 9.92 ns
+Info: Max delay posedge $glbnet$clk_pix -> <async>                : 11.56 ns
+Info: Max delay posedge $glbnet$clk_pix -> posedge $glbnet$clk_sys: 2.05 ns
+Info: Max delay posedge $glbnet$clk_pix -> posedge $glbnet$clk_x5 : 1.56 ns
+Info: Max delay posedge $glbnet$clk_sys -> <async>                : 11.64 ns
+Info: Max delay posedge $glbnet$clk_sys -> posedge $glbnet$clk_pix: 1.16 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 42 endpoint(s)
+Info:          + represents [1,42) endpoint(s)
+Info: [  3135,   4941) |*+
+Info: [  4941,   6747) |*+
+Info: [  6747,   8553) |**********+
+Info: [  8553,  10359) |************************************************************ 
+Info: [ 10359,  12165) |*************************************+
+Info: [ 12165,  13971) |********************+
+Info: [ 13971,  15777) |********************+
+Info: [ 15777,  17583) |*****************************************+
+Info: [ 17583,  19389) |*********************************************+
+Info: [ 19389,  21195) | 
+Info: [ 21195,  23001) | 
+Info: [ 23001,  24807) | 
+Info: [ 24807,  26613) |+
+Info: [ 26613,  28419) |*+
+Info: [ 28419,  30225) |******+
+Info: [ 30225,  32031) |*****+
+Info: [ 32031,  33837) |**+
+Info: [ 33837,  35643) |**+
+Info: [ 35643,  37449) |************+
+Info: [ 37449,  39255) |*******+
+Info: Checksum: 0x422b8aed
+Info: Routing globals...
+Info:     routing clock net $glbnet$clk_sd using global 0
+Info:     routing clock net $glbnet$clk_x5 using global 1
+Info:     routing clock net $glbnet$clk_pix using global 2
+Info:     routing clock net $glbnet$clk_sys using global 3
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 31686 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |      100        899 |  100   899 |     30819|       0.91       0.91|
+Info:       2000 |      196       1803 |   96   904 |     30031|       0.39       1.30|
+Info:       3000 |      324       2675 |  128   872 |     29240|       0.38       1.68|
+Info:       4000 |      471       3528 |  147   853 |     28469|       0.37       2.05|
+Info:       5000 |      632       4367 |  161   839 |     27717|       0.43       2.48|
+Info:       6000 |      825       5174 |  193   807 |     27035|       0.46       2.93|
+Info:       7000 |     1042       5957 |  217   783 |     26354|       0.41       3.35|
+Info:       8000 |     1284       6715 |  242   758 |     25870|       0.43       3.78|
+Info:       9000 |     1516       7483 |  232   768 |     25225|       0.38       4.17|
+Info:      10000 |     1810       8189 |  294   706 |     24575|       0.38       4.55|
+Info:      11000 |     2132       8867 |  322   678 |     24022|       0.38       4.93|
+Info:      12000 |     2424       9575 |  292   708 |     23410|       0.38       5.31|
+Info:      13000 |     2715      10284 |  291   709 |     22825|       0.43       5.74|
+Info:      14000 |     2980      11019 |  265   735 |     22170|       0.36       6.10|
+Info:      15000 |     3334      11665 |  354   646 |     21645|       0.51       6.62|
+Info:      16000 |     3833      12166 |  499   501 |     21314|       0.42       7.03|
+Info:      17000 |     4257      12742 |  424   576 |     20893|       0.39       7.42|
+Info:      18000 |     4561      13438 |  304   696 |     20414|       0.42       7.85|
+Info:      19000 |     4929      14070 |  368   632 |     19958|       0.46       8.31|
+Info:      20000 |     5238      14761 |  309   691 |     19378|       0.47       8.78|
+Info:      21000 |     5514      15485 |  276   724 |     18768|       0.44       9.22|
+Info:      22000 |     5848      16093 |  334   608 |     18163|       0.40       9.62|
+Info:      23000 |     6223      16632 |  375   539 |     17613|       0.36       9.98|
+Info:      24000 |     6590      17201 |  367   569 |     17065|       0.38      10.36|
+Info:      25000 |     6994      17747 |  404   546 |     16566|       0.40      10.76|
+Info:      26000 |     7370      18320 |  376   573 |     16031|       0.41      11.17|
+Info:      27000 |     7720      18903 |  350   583 |     15445|       0.42      11.60|
+Info:      28000 |     8020      19518 |  300   615 |     14807|       0.40      12.00|
+Info:      29000 |     8272      20178 |  252   660 |     14079|       0.33      12.33|
+Info:      30000 |     8397      20983 |  125   805 |     13219|       0.23      12.56|
+Info:      31000 |     8558      21787 |  161   804 |     12445|       0.40      12.96|
+Info:      32000 |     8730      22585 |  172   798 |     11626|       0.34      13.30|
+Info:      33000 |     8890      23372 |  160   787 |     10804|       0.36      13.66|
+Info:      34000 |     9053      24141 |  163   769 |      9979|       0.34      14.00|
+Info:      35000 |     9200      24935 |  147   794 |      9130|       0.36      14.36|
+Info:      36000 |     9344      25729 |  144   794 |      8292|       0.38      14.73|
+Info:      37000 |     9503      26532 |  159   803 |      7474|       0.41      15.14|
+Info:      38000 |     9643      27337 |  140   805 |      6652|       0.38      15.52|
+Info:      39000 |     9713      28176 |   70   839 |      5753|       0.35      15.87|
+Info:      40000 |     9775      29015 |   62   839 |      4841|       0.30      16.17|
+Info:      41000 |     9831      29919 |   56   904 |      3919|       0.25      16.42|
+Info:      42000 |     9920      30823 |   89   904 |      3025|       0.29      16.72|
+Info:      43000 |    10012      31688 |   92   865 |      2133|       0.40      17.12|
+Info:      44000 |    10013      32424 |    1   736 |      1134|       0.27      17.39|
+Info:      45000 |    10021      33169 |    8   745 |       156|       0.26      17.66|
+Info:      45155 |    10021      33295 |    0   126 |         0|       0.14      17.79|
+Info: Routing complete.
+Info: Router1 time 17.79s
+Info: Checksum: 0x5d0c24a1
+
+Info: Critical path report for clock '$glbnet$clk_x5' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_ser.ts_TRELLIS_FF_Q.Q
+Info:    routing  0.88  1.40 Net u_core.u_ser.ts[1] (57,29) -> (56,29)
+Info:                          Sink u_core.u_ser.ts_LUT4_D.D
+Info:                          Defined in:
+Info:                               ../rtl/ecp5/ecp5_tmds_ser.v:34.15-34.17
+Info:      logic  0.24  1.64 Source u_core.u_ser.ts_LUT4_D.F
+Info:    routing  1.03  2.66 Net locked_LUT4_D_Z_TRELLIS_FF_LSR_1_Q_TRELLIS_FF_DI_Q[1] (56,29) -> (46,29)
+Info:                          Sink u_core.u_ser.s1_TRELLIS_FF_Q_1_LSR_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  2.90 Source u_core.u_ser.s1_TRELLIS_FF_Q_1_LSR_LUT4_Z.F
+Info:    routing  0.65  3.55 Net u_core.u_ser.s1_TRELLIS_FF_Q_1_LSR (46,29) -> (46,28)
+Info:                          Sink u_core.u_ser.s2_TRELLIS_FF_Q_9.LSR
+Info:      setup  0.42  3.98 Source u_core.u_ser.s2_TRELLIS_FF_Q_9.LSR
+Info: 1.42 ns logic, 2.56 ns routing
+
+Info: Critical path report for clock '$glbnet$clk_pix' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_board.u_vfifo.rbin_TRELLIS_FF_Q_4.Q
+Info:    routing  1.18  1.71 Net u_core.u_board.u_vfifo.rbin[3] (44,27) -> (46,28)
+Info:                          Sink u_core.u_board.u_vfifo.mem.0.1$DPRAM_COMB2.A
+Info:                          Defined in:
+Info:                               ../rtl/board/async_fifo.v:19.29-19.33
+Info:      logic  0.24  1.94 Source u_core.u_board.u_vfifo.mem.0.1$DPRAM_COMB2.F
+Info:    routing  0.87  2.81 Net u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D_PFUMX_C0_Z_L6MUX21_D1_Z[0] (46,28) -> (46,28)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D_LUT4_Z.A
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  3.04 Source u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D_LUT4_Z.F
+Info:    routing  0.66  3.71 Net u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D[4] (46,28) -> (48,28)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D_PFUMX_C0_Z_L6MUX21_D1_Z_L6MUX21_Z_1_D1_PFUMX_Z_ALUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  3.96 Source u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D_PFUMX_C0_Z_L6MUX21_D1_Z_L6MUX21_Z_1_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  1.13  5.09 Net u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_Z_D_PFUMX_C0_Z_L6MUX21_D1_Z[4] (48,28) -> (47,30)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  5.33 Source u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.F
+Info:    routing  0.00  5.33 Net u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT (47,30) -> (47,30)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.F1
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:141.30-141.32
+Info:      logic  0.17  5.49 Source u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.00  5.49 Net u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1 (47,30) -> (47,30)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.FXB
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:141.38-141.40
+Info:      logic  0.24  5.74 Source u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D_L6MUX21_Z_D1_PFUMX_Z_ALUT_LUT4_Z.OFX
+Info:    routing  0.68  6.42 Net u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z_D[3] (47,30) -> (46,31)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  6.65 Source u_core.u_board.u_hdmi.u_e0.q_TRELLIS_FF_Q_6_DI_LUT4_Z_B_LUT4_D_Z_PFUMX_Z_ALUT_LUT4_Z_B_LUT4_C_Z_LUT4_Z.F
+Info:    routing  0.91  7.56 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_S0_L6MUX21_Z_D0_L6MUX21_Z_D0_PFUMX_Z_BLUT_LUT4_Z_A[3] (46,31) -> (48,31)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_A0_LUT4_Z_D_LUT4_D_Z_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  7.80 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_A0_LUT4_Z_D_LUT4_D_Z_LUT4_Z.F
+Info:    routing  0.65  8.45 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_A0_LUT4_Z_D_LUT4_D_Z[1] (48,31) -> (48,31)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_A0_LUT4_Z_D_LUT4_D_Z_LUT4_Z_1.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.68 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_A0_LUT4_Z_D_LUT4_D_Z_LUT4_Z_1.F
+Info:    routing  1.13  9.81 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_COUT_CCU2C_CIN_A0_LUT4_Z_D_LUT4_D_Z[3] (48,31) -> (46,33)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_S1_CCU2C_S1_CIN_CCU2C_COUT$CCU2_COMB1.A
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.45  10.26 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_S1_CCU2C_S1_CIN_CCU2C_COUT$CCU2_COMB1.FCO
+Info:    routing  0.00  10.26 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_S1_CCU2C_S1_CIN (46,33) -> (46,33)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_S1_CCU2C_S1$CCU2_COMB0.FCI
+Info:                          Defined in:
+Info:                               /share/lattice/arith_map_ccu2c.v:74.7-80.4
+Info:                               /share/lattice/ccu2c_sim.vh:9.9-9.13
+Info:      logic  0.44  10.70 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_S1_CCU2C_S1$CCU2_COMB0.F
+Info:    routing  0.66  11.36 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_CCU2C_S0_S1_CCU2C_S1_S0[2] (46,33) -> (47,33)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_LUT4_Z.C
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  11.60 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0_LUT4_Z.F
+Info:    routing  0.72  12.31 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_C0[4] (47,33) -> (47,32)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_BLUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  12.57 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.90  13.47 Net u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4_DI (47,32) -> (47,33)
+Info:                          Sink u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4.M
+Info:      setup  0.00  13.47 Source u_core.u_board.u_hdmi.u_e0.cnt_TRELLIS_FF_Q_4.M
+Info: 3.99 ns logic, 9.48 ns routing
+
+Info: Critical path report for clock '$glbnet$clk_sys' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_board.u_vdpx.u_apu.st_TRELLIS_FF_Q_9.Q
+Info:    routing  1.12  1.64 Net u_core.u_board.u_vdpx.u_apu.st[9] (15,11) -> (14,12)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1_D_LUT4_Z.B
+Info:      logic  0.24  1.88 Source u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1_D_LUT4_Z.F
+Info:    routing  0.42  2.30 Net u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1_D[2] (14,12) -> (14,12)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  2.54 Source u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z_D_LUT4_Z_1.F
+Info:    routing  0.64  3.18 Net u_core.u_board.u_vdpx.cm_req_LUT4_B_1_Z_PFUMX_BLUT_Z[1] (14,12) -> (15,12)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  3.41 Source u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_Z.F
+Info:    routing  1.63  5.04 Net u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D[1] (15,12) -> (26,7)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_D.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  5.28 Source u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_D.F
+Info:    routing  1.55  6.82 Net u_core.u_board.u_vdpx.u_apu.areg.0.48_DO_LUT4_Z_D_LUT4_D_Z (26,7) -> (28,3)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.22$DPRAM_COMB2.A
+Info:      logic  0.24  7.06 Source u_core.u_board.u_vdpx.u_apu.areg.0.22$DPRAM_COMB2.F
+Info:    routing  0.95  8.01 Net u_core.u_board.u_vdpx.u_apu.areg.0.18_DO_2[2] (28,3) -> (27,5)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.26_DO_2_LUT4_D_Z_LUT4_Z.C
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  8.24 Source u_core.u_board.u_vdpx.u_apu.areg.0.26_DO_2_LUT4_D_Z_LUT4_Z.F
+Info:    routing  0.79  9.03 Net u_core.u_board.u_vdpx.u_apu.areg.0.26_DO_2_LUT4_D_Z[1] (27,5) -> (28,2)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.areg.0.2_DO_2_LUT4_D_Z_LUT4_D_Z_LUT4_Z.C
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  9.26 Source u_core.u_board.u_vdpx.u_apu.areg.0.2_DO_2_LUT4_D_Z_LUT4_D_Z_LUT4_Z.F
+Info:    routing  0.42  9.68 Net u_core.u_board.u_vdpx.u_apu.areg.0.2_DO_2_LUT4_D_Z_LUT4_D_Z[1] (28,2) -> (28,2)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3_LUT4_C_Z_LUT4_Z_3_D_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  9.92 Source u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3_LUT4_C_Z_LUT4_Z_3_D_LUT4_Z.F
+Info:    routing  1.10  11.01 Net u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3_LUT4_C_Z_LUT4_Z_3_D[2] (28,2) -> (21,5)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3_LUT4_C_Z_LUT4_Z_3.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  11.25 Source u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3_LUT4_C_Z_LUT4_Z_3.F
+Info:    routing  1.06  12.31 Net u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3_LUT4_C_Z[3] (21,5) -> (19,9)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.t_wave_LUT4_B_Z_PFUMX_Z_BLUT_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.40  12.72 Source u_core.u_board.u_vdpx.u_apu.t_wave_LUT4_B_Z_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.62  13.33 Net u_core.u_board.u_vdpx.u_apu.t_wave_LUT4_B_Z[4] (19,9) -> (18,9)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.s_TRELLIS_FF_Q_DI_PFUMX_Z_BLUT_LUT4_Z.M
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.26  13.59 Source u_core.u_board.u_vdpx.u_apu.s_TRELLIS_FF_Q_DI_PFUMX_Z_BLUT_LUT4_Z.OFX
+Info:    routing  0.46  14.05 Net u_core.u_board.u_vdpx.u_apu.s_TRELLIS_FF_Q_DI (18,9) -> (18,9)
+Info:                          Sink u_core.u_board.u_vdpx.u_apu.s_TRELLIS_FF_Q.M
+Info:      setup  0.00  14.05 Source u_core.u_board.u_vdpx.u_apu.s_TRELLIS_FF_Q.M
+Info: 3.31 ns logic, 10.74 ns routing
+
+Info: Critical path report for cross-domain path '<async>' -> 'posedge $glbnet$clk_sys':
+Info:       type curr  total name
+Info:     source  0.00  0.00 Source md_d[3]$tr_io.O
+Info:    routing  6.41  6.41 Net md_d[3]$TRELLIS_IO_IN (90,26) -> (8,6)
+Info:                          Sink u_core.u_board.u_adp.wf.0.0$RAMW_SLICE.B1
+Info:                          Defined in:
+Info:                               ../rtl/board/cn2_probe.v:16.23-16.24
+Info:      logic  0.00  6.41 Source u_core.u_board.u_adp.wf.0.0$RAMW_SLICE.WDO3
+Info:    routing  0.08  6.49 Net u_core.u_board.u_adp.wf.0.0$RAMW_SLICE$conn$WDO3 (8,6) -> (8,6)
+Info:                          Sink u_core.u_board.u_adp.wf.0.0$DPRAM_COMB3.WD
+Info:      setup  0.00  6.49 Source u_core.u_board.u_adp.wf.0.0$DPRAM_COMB3.WD
+Info: 0.00 ns logic, 6.49 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk_pix' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_board.u_hdmi.locked_TRELLIS_FF_Q.Q
+Info:    routing  3.30  3.83 Net u_core.u_board.hdmi_locked (44,24) -> (5,15)
+Info:                          Sink u_core.u_board.vf_err_LUT4_D_Z_LUT4_Z.A
+Info:                          Defined in:
+Info:                               ../rtl/hdmi/hdmi_tx.v:24.22-24.28
+Info:      logic  0.24  4.06 Source u_core.u_board.vf_err_LUT4_D_Z_LUT4_Z.F
+Info:    routing  0.42  4.48 Net u_core.u_board.vf_err_LUT4_D_Z[1] (5,15) -> (5,15)
+Info:                          Sink led_n_LUT4_Z.C
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  4.72 Source led_n_LUT4_Z.F
+Info:    routing  3.74  8.47 Net led_n$TRELLIS_IO_OUT (5,15) -> (0,62)
+Info:                          Sink led_n$tr_io.I
+Info:                          Defined in:
+Info:                               ../rtl/ecp5/colorlight_i9_top.v:32.19-32.24
+Info: 1.00 ns logic, 7.47 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk_pix' -> 'posedge $glbnet$clk_sys':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_board.u_vfifo.rgray_TRELLIS_FF_Q_1.Q
+Info:    routing  1.08  1.60 Net u_core.u_board.u_vfifo.rgray[0] (44,25) -> (44,19)
+Info:                          Sink u_core.u_board.u_vfifo.rq1_TRELLIS_FF_Q_1.M
+Info:                          Defined in:
+Info:                               ../rtl/board/async_fifo.v:19.35-19.40
+Info:      setup  0.00  1.60 Source u_core.u_board.u_vfifo.rq1_TRELLIS_FF_Q_1.M
+Info: 0.52 ns logic, 1.08 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk_pix' -> 'posedge $glbnet$clk_x5':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_ser.h0_TRELLIS_FF_Q_6.Q
+Info:    routing  0.91  1.44 Net u_core.u_ser.h0[4] (47,32) -> (47,31)
+Info:                          Sink u_core.u_ser.s0_TRELLIS_FF_Q_6_DI_LUT4_Z.B
+Info:                          Defined in:
+Info:                               ../rtl/ecp5/ecp5_tmds_ser.v:26.15-26.17
+Info:      logic  0.24  1.67 Source u_core.u_ser.s0_TRELLIS_FF_Q_6_DI_LUT4_Z.F
+Info:    routing  0.13  1.80 Net u_core.u_ser.s0_TRELLIS_FF_Q_6_DI (47,31) -> (47,31)
+Info:                          Sink u_core.u_ser.s0_TRELLIS_FF_Q_6.DI
+Info:      setup  0.00  1.80 Source u_core.u_ser.s0_TRELLIS_FF_Q_6.DI
+Info: 0.76 ns logic, 1.04 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk_sys' -> '<async>':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_board.u_sdram.ready_TRELLIS_FF_Q.Q
+Info:    routing  2.11  2.63 Net u_core.u_board.leds[2] (30,2) -> (23,15)
+Info:                          Sink u_core.u_board.vf_err_LUT4_D.B
+Info:                          Defined in:
+Info:                               ../rtl/board/sdram_ctrl.v:43.23-43.28
+Info:      logic  0.24  2.87 Source u_core.u_board.vf_err_LUT4_D.F
+Info:    routing  1.81  4.67 Net u_core.u_board.vf_err_LUT4_D_Z[2] (23,15) -> (5,15)
+Info:                          Sink led_n_LUT4_Z.D
+Info:                          Defined in:
+Info:                               /share/lattice/cells_map_trellis.v:108.23-108.24
+Info:      logic  0.24  4.91 Source led_n_LUT4_Z.F
+Info:    routing  3.74  8.65 Net led_n$TRELLIS_IO_OUT (5,15) -> (0,62)
+Info:                          Sink led_n$tr_io.I
+Info:                          Defined in:
+Info:                               ../rtl/ecp5/colorlight_i9_top.v:32.19-32.24
+Info: 1.00 ns logic, 7.66 ns routing
+
+Info: Critical path report for cross-domain path 'posedge $glbnet$clk_sys' -> 'posedge $glbnet$clk_pix':
+Info:       type curr  total name
+Info:   clk-to-q  0.52  0.52 Source u_core.u_board.a_hold_TRELLIS_FF_Q_25.Q
+Info:    routing  0.94  1.47 Net u_core.u_board.a_hold[24] (28,32) -> (28,31)
+Info:                          Sink u_core.u_board.u_hdmi.aud_l_TRELLIS_FF_Q_10.M
+Info:                          Defined in:
+Info:                               ../rtl/board/vdpx_board.v:245.16-245.22
+Info:      setup  0.00  1.47 Source u_core.u_board.u_hdmi.aud_l_TRELLIS_FF_Q_10.M
+Info: 0.52 ns logic, 0.94 ns routing
+
+Info: Max frequency for clock  '$glbnet$clk_x5': 251.45 MHz (PASS at 125.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_pix': 74.26 MHz (PASS at 25.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_sys': 71.19 MHz (PASS at 50.00 MHz)
+
+Info: Clock '$glbnet$clk_sd' has no interior paths
+
+Info: Max delay <async>                 -> posedge $glbnet$clk_sys: 6.49 ns
+Info: Max delay posedge $glbnet$clk_pix -> <async>                : 8.47 ns
+Info: Max delay posedge $glbnet$clk_pix -> posedge $glbnet$clk_sys: 1.60 ns
+Info: Max delay posedge $glbnet$clk_pix -> posedge $glbnet$clk_x5 : 1.80 ns
+Info: Max delay posedge $glbnet$clk_sys -> <async>                : 8.65 ns
+Info: Max delay posedge $glbnet$clk_sys -> posedge $glbnet$clk_pix: 1.47 ns
+
+Info: Slack histogram:
+Info:  legend: * represents 43 endpoint(s)
+Info:          + represents [1,43) endpoint(s)
+Info: [  4022,   5774) |+
+Info: [  5774,   7526) |*+
+Info: [  7526,   9278) |******+
+Info: [  9278,  11030) |****************+
+Info: [ 11030,  12782) |************************************************************ 
+Info: [ 12782,  14534) |******************************+
+Info: [ 14534,  16286) |****************************+
+Info: [ 16286,  18038) |************************************************+
+Info: [ 18038,  19790) |***********************************+
+Info: [ 19790,  21542) | 
+Info: [ 21542,  23294) | 
+Info: [ 23294,  25046) | 
+Info: [ 25046,  26798) |+
+Info: [ 26798,  28550) |+
+Info: [ 28550,  30302) |+
+Info: [ 30302,  32054) |*****+
+Info: [ 32054,  33806) |********+
+Info: [ 33806,  35558) |+
+Info: [ 35558,  37310) |*****+
+Info: [ 37310,  39062) |**************+
+
+Info: Program finished normally.

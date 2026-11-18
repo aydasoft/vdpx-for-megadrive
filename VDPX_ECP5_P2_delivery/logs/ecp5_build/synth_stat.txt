@@ -1,0 +1,27 @@
+
+21. Printing statistics.
+
+=== colorlight_i9_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     9652 wires
+    19372 wire bits
+     9652 public wires
+    19372 public wire bits
+       21 ports
+       83 port bits
+    10409 cells
+       32   $_TBUF_
+       26   $scopeinfo
+     1129   CCU2C
+       48   DP16KD
+        1   EHXPLLL
+       73   L6MUX21
+     4619   LUT4
+        4   MULT18X18D
+        5   ODDRX1F
+      574   PFUMX
+      183   TRELLIS_DPR16X4
+     3715   TRELLIS_FF
+

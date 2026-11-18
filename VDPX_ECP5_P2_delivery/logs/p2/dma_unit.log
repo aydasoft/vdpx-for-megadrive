@@ -1,0 +1,23 @@
+$ make dma_unit
+iverilog -g2012 -s tb_dma_unit -o build_p2/dma_unit rtl/vdpx_dma.v sim/p2/tb_dma_unit.sv
+vvp -n build_p2/dma_unit
+dirigidos: 32 comandos (19 aceitos, 13 rejeitados), 1422 palavras
+DMA unit (seed 0da00001): 2657 comandos aceitos, 1375 rejeitados, 2411 concluídos, 226 cancelados/descartados, 393722 palavras escritas, 691821 escritas de CPU concorrentes
+   rejeições por código: ZERO 508 DST 522 SRC 18 FILA 209 INCOMPLETO 3 OP 115
+PASS DMA unit
+sim/p2/tb_dma_unit.sv:324: $finish called at 30809510000 (1ps)
+== mutações (devem FALHAR): PATTERN sempre VALUE0; fonte do par avança 1; sem checagem de fim da VRAM ==
+sed "s/((c_op == 2'd3 \&\& c_ph) ? c_v1 : c_v0)/c_v0/" rtl/vdpx_dma.v > build_p2/mut1.v
+iverilog -g2012 -s tb_dma_unit -Ptb_dma_unit.NRAND=200 -o build_p2/mut1 build_p2/mut1.v sim/p2/tb_dma_unit.sv
+python3 scripts/expect_fail.py "DMA com PATTERN quebrado" vvp -n build_p2/mut1
+PASS negativo: DMA com PATTERN quebrado -> falhou como esperado (exit 1, 0 falhas listadas)
+sed "s/c_src <= c_src + {{(SW-2){1'b0}}, sm_pair, !sm_pair};/c_src <= c_src + 1'b1;/" rtl/vdpx_dma.v > build_p2/mut2.v
+iverilog -g2012 -s tb_dma_unit -Ptb_dma_unit.NRAND=200 -o build_p2/mut2 build_p2/mut2.v sim/p2/tb_dma_unit.sv
+python3 scripts/expect_fail.py "DMA com avanço errado da fonte" vvp -n build_p2/mut2
+PASS negativo: DMA com avanço errado da fonte -> falhou como esperado (exit 1, 0 falhas listadas)
+sed "s/else if (s_dst\[15\] || dst_end > 17'd32768)/else if (s_dst[15])/" rtl/vdpx_dma.v > build_p2/mut3.v
+! cmp -s rtl/vdpx_dma.v build_p2/mut3.v
+iverilog -g2012 -s tb_dma_unit -Ptb_dma_unit.NRAND=200 -o build_p2/mut3 build_p2/mut3.v sim/p2/tb_dma_unit.sv
+python3 scripts/expect_fail.py "DMA sem checagem de fim da VRAM (daria a volta)" vvp -n build_p2/mut3
+PASS negativo: DMA sem checagem de fim da VRAM (daria a volta) -> falhou como esperado (exit 1, 0 falhas listadas)
+exit 0 (21 s)

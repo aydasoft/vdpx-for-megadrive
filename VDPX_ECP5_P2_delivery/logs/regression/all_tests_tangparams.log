@@ -1,0 +1,758 @@
+$ make all_tests
+iverilog -g2012 -s tb_adapter -o build_m42/adapter rtl/md_fdc_adapter.v sim/m42/tb_adapter.sv
+vvp build_m42/adapter
+VCD info: dumpfile build_m42/adapter.vcd opened for output.
+PASS M42 adapter: delivered=491 rejected=20 phase_width_bins=441 pointer_wraps>=14 read_after_write=8 reset_active=1 empty_ack=1 simultaneous_full_pop_push=1 walking_data_patterns=32
+sim/m42/tb_adapter.sv:103: $finish called at 165025914 (1ps)
+iverilog -g2012 -s tb_lvc245 -o build_m42/lvc245 sim/m42/lvc245.sv sim/m42/tb_lvc245.sv
+vvp build_m42/lvc245
+PASS LVC245: directions=2 OE=1 powered_off=1 intentional_contentions_detected=1; physical_reads=DISABLED
+sim/m42/tb_lvc245.sv:24: $finish called at 270000 (1ps)
+python3 scripts/m42_audit.py
+PASS static pins/input-only; MCLK 5120 transitions/10500 cycles, half-periods 2/3 clocks; ADC physical BLOCKED
+scenes/audio_md.scn: 50 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 30000 amostras de áudio (0 erradas), 31499234 ciclos -> OK
+RENDER_BUDGET: 8412 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 236 ciclos (quadro de 1050)
+scenes/audio_musica.scn: 13403 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 198791 amostras de áudio (0 erradas), 208729794 ciclos -> OK
+RENDER_BUDGET: 55673 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 264 ciclos (quadro de 1050)
+scenes/audio_rand0.scn: 6722 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9097 amostras de áudio (0 erradas), 9551114 ciclos -> OK
+RENDER_BUDGET: 2554 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 316 ciclos (quadro de 1050)
+scenes/audio_rand1.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9910 amostras de áudio (0 erradas), 10404754 ciclos -> OK
+RENDER_BUDGET: 2783 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 306 ciclos (quadro de 1050)
+scenes/audio_rand2.scn: 6855 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 13667 amostras de áudio (0 erradas), 14349604 ciclos -> OK
+RENDER_BUDGET: 3823 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 326 ciclos (quadro de 1050)
+scenes/audio_rand3.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 12268 amostras de áudio (0 erradas), 12880664 ciclos -> OK
+RENDER_BUDGET: 3441 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 336 ciclos (quadro de 1050)
+scenes/audio_smem.scn: 317 escritas, 301 leituras verificadas, 0 frames (0 com limite de sprites), 62 amostras de áudio (0 erradas), 64334 ciclos -> OK
+RENDER_BUDGET: 13 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/demo.scn: 11712 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3147 amostras de áudio (0 erradas), 3304066 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1856 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+    DMA: 50 aceitos, 0 rejeitados (fila cheia 0), 50 concluídos, 0 cancelados (0 da fila), 9789 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    DMA: 50 aceitos, 0 rejeitados (fila cheia 0), 50 concluídos, 0 cancelados (0 da fila), 9789 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 2; escritas DMA com o renderizador ocupado 4181, durante quadros capturados 9789
+scenes/dma_basic.scn: 6465 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3147 amostras de áudio (0 erradas), 3304066 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+bench repouso op=1 words=128
+DMA_LOG op=1 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=3 words=128
+DMA_LOG op=3 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=2 words=128
+DMA_LOG op=2 len=128 words=128 cycles=832 stalls=64 ciclos/palavra=6.500 MB/s=15.51
+bench repouso op=1 words=512
+DMA_LOG op=1 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=3 words=512
+DMA_LOG op=3 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=2 words=512
+DMA_LOG op=2 len=512 words=512 cycles=3328 stalls=256 ciclos/palavra=6.500 MB/s=15.51
+bench repouso op=1 words=2048
+DMA_LOG op=1 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=3 words=2048
+DMA_LOG op=3 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=2 words=2048
+DMA_LOG op=2 len=2048 words=2048 cycles=13312 stalls=1024 ciclos/palavra=6.500 MB/s=15.51
+bench repouso op=1 words=8192
+DMA_LOG op=1 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=3 words=8192
+DMA_LOG op=3 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=2 words=8192
+DMA_LOG op=2 len=8192 words=8192 cycles=53248 stalls=4096 ciclos/palavra=6.500 MB/s=15.51
+bench repouso op=1 words=16384
+DMA_LOG op=1 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=3 words=16384
+DMA_LOG op=3 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=2 words=16384
+DMA_LOG op=2 len=16384 words=16384 cycles=106496 stalls=8192 ciclos/palavra=6.500 MB/s=15.51
+bench repouso op=1 words=32768
+DMA_LOG op=1 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=3 words=32768
+DMA_LOG op=3 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench repouso op=2 words=32768
+DMA_LOG op=2 len=32768 words=32768 cycles=212992 stalls=16384 ciclos/palavra=6.500 MB/s=15.51
+bench render op=1 words=128
+DMA_LOG op=1 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=3 words=128
+DMA_LOG op=3 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=2 words=128
+DMA_LOG op=2 len=128 words=128 cycles=832 stalls=64 ciclos/palavra=6.500 MB/s=15.51
+bench render op=1 words=512
+DMA_LOG op=1 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=3 words=512
+DMA_LOG op=3 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=2 words=512
+DMA_LOG op=2 len=512 words=512 cycles=3328 stalls=256 ciclos/palavra=6.500 MB/s=15.51
+bench render op=1 words=2048
+DMA_LOG op=1 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=3 words=2048
+DMA_LOG op=3 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=2 words=2048
+DMA_LOG op=2 len=2048 words=2048 cycles=13312 stalls=1024 ciclos/palavra=6.500 MB/s=15.51
+bench render op=1 words=8192
+DMA_LOG op=1 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=3 words=8192
+DMA_LOG op=3 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=2 words=8192
+DMA_LOG op=2 len=8192 words=8192 cycles=53248 stalls=4096 ciclos/palavra=6.500 MB/s=15.51
+bench render op=1 words=16384
+DMA_LOG op=1 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=3 words=16384
+DMA_LOG op=3 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=2 words=16384
+DMA_LOG op=2 len=16384 words=16384 cycles=106496 stalls=8192 ciclos/palavra=6.500 MB/s=15.51
+bench render op=1 words=32768
+DMA_LOG op=1 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=3 words=32768
+DMA_LOG op=3 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench render op=2 words=32768
+DMA_LOG op=2 len=32768 words=32768 cycles=212992 stalls=16384 ciclos/palavra=6.500 MB/s=15.51
+bench pcm op=1 words=128
+DMA_LOG op=1 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=3 words=128
+DMA_LOG op=3 len=128 words=128 cycles=128 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=2 words=128
+DMA_LOG op=2 len=128 words=128 cycles=888 stalls=120 ciclos/palavra=6.938 MB/s=14.53
+bench pcm op=1 words=512
+DMA_LOG op=1 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=3 words=512
+DMA_LOG op=3 len=512 words=512 cycles=512 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=2 words=512
+DMA_LOG op=2 len=512 words=512 cycles=3496 stalls=424 ciclos/palavra=6.828 MB/s=14.76
+bench pcm op=1 words=2048
+DMA_LOG op=1 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=3 words=2048
+DMA_LOG op=3 len=2048 words=2048 cycles=2048 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=2 words=2048
+DMA_LOG op=2 len=2048 words=2048 cycles=14080 stalls=1792 ciclos/palavra=6.875 MB/s=14.66
+bench pcm op=1 words=8192
+DMA_LOG op=1 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=3 words=8192
+DMA_LOG op=3 len=8192 words=8192 cycles=8192 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=2 words=8192
+DMA_LOG op=2 len=8192 words=8192 cycles=56238 stalls=7086 ciclos/palavra=6.865 MB/s=14.68
+bench pcm op=1 words=16384
+DMA_LOG op=1 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=3 words=16384
+DMA_LOG op=3 len=16384 words=16384 cycles=16384 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=2 words=16384
+DMA_LOG op=2 len=16384 words=16384 cycles=112542 stalls=14238 ciclos/palavra=6.869 MB/s=14.67
+bench pcm op=1 words=32768
+DMA_LOG op=1 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=3 words=32768
+DMA_LOG op=3 len=32768 words=32768 cycles=32768 stalls=0 ciclos/palavra=1.000 MB/s=100.80
+bench pcm op=2 words=32768
+DMA_LOG op=2 len=32768 words=32768 cycles=225125 stalls=28517 ciclos/palavra=6.870 MB/s=14.67
+    DMA: 54 aceitos, 0 rejeitados (fila cheia 0), 54 concluídos, 0 cancelados (0 da fila), 540288 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: 54 aceitos, 0 rejeitados (fila cheia 0), 54 concluídos, 0 cancelados (0 da fila), 540288 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 1; escritas DMA com o renderizador ocupado 293969, durante quadros capturados 0
+scenes/dma_bench.scn: 47315 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 2377 amostras de áudio (0 erradas), 2495223 ciclos -> OK
+RENDER_BUDGET: 672 linhas, maior tempo de renderizacao 2352 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 369 ciclos (quadro de 1050)
+    DMA: 2 aceitos, 0 rejeitados (fila cheia 0), 2 concluídos, 0 cancelados (0 da fila), 8192 palavras DMA conferidas, 2548 escritas CPU conferidas na porta, 0 erros
+    DMA: 2 aceitos, 0 rejeitados (fila cheia 0), 2 concluídos, 0 cancelados (0 da fila), 8192 palavras DMA conferidas, 2548 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 1; escritas DMA com o renderizador ocupado 4479, durante quadros capturados 8192
+scenes/dma_cpu.scn: 6982 escritas, 0 leituras verificadas, 1 frames (0 com limite de sprites), 1547 amostras de áudio (0 erradas), 1624066 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+    DMA: 13 aceitos, 17 rejeitados (fila cheia 2), 9 concluídos, 4 cancelados (2 da fila), 25575 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: 13 aceitos, 17 rejeitados (fila cheia 2), 9 concluídos, 4 cancelados (2 da fila), 25575 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 4; escritas DMA com o renderizador ocupado 3299, durante quadros capturados 25575
+scenes/dma_errors.scn: 5804 escritas, 0 leituras verificadas, 1 frames (0 com limite de sprites), 1547 amostras de áudio (0 erradas), 1624066 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+    DMA: 40 aceitos, 0 rejeitados (fila cheia 0), 40 concluídos, 0 cancelados (0 da fila), 71680 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: 40 aceitos, 0 rejeitados (fila cheia 0), 40 concluídos, 0 cancelados (0 da fila), 71680 palavras DMA conferidas, 1024 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 3; escritas DMA com o renderizador ocupado 27476, durante quadros capturados 0
+scenes/dma_pcm.scn: 23537 escritas, 0 leituras verificadas, 1 frames (0 com limite de sprites), 17547 amostras de áudio (0 erradas), 18424066 ciclos -> OK
+RENDER_BUDGET: 4928 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 430 ciclos (quadro de 1050)
+    DMA: 20 aceitos, 0 rejeitados (fila cheia 0), 20 concluídos, 0 cancelados (0 da fila), 81904 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: 20 aceitos, 0 rejeitados (fila cheia 0), 20 concluídos, 0 cancelados (0 da fila), 81904 palavras DMA conferidas, 12736 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 4; escritas DMA com o renderizador ocupado 55117, durante quadros capturados 81904
+scenes/dma_render.scn: 18010 escritas, 0 leituras verificadas, 5 frames (5 com limite de sprites), 7947 amostras de áudio (0 erradas), 8344066 ciclos -> OK
+RENDER_BUDGET: 2240 linhas, maior tempo de renderizacao 2319 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+    DMA: 3 aceitos, 0 rejeitados (fila cheia 0), 3 concluídos, 0 cancelados (0 da fila), 1536 palavras DMA conferidas, 8704 escritas CPU conferidas na porta, 0 erros
+    DMA: 3 aceitos, 0 rejeitados (fila cheia 0), 3 concluídos, 0 cancelados (0 da fila), 1536 palavras DMA conferidas, 8704 escritas CPU conferidas na porta, 0 erros
+    DMA: ocupação máxima da fila 1; escritas DMA com o renderizador ocupado 0, durante quadros capturados 0
+scenes/dma_vsync.scn: 11128 escritas, 0 leituras verificadas, 3 frames (0 com limite de sprites), 4747 amostras de áudio (0 erradas), 4984066 ciclos -> OK
+RENDER_BUDGET: 1344 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/fx.scn: 9080 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3147 amostras de áudio (0 erradas), 3304066 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1539 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/limites.scn: 586 escritas, 0 leituras verificadas, 1 frames (1 com limite de sprites), 1547 amostras de áudio (0 erradas), 1624066 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 2138 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/rand0.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 1924 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/rand1.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2343 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/rand2.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2344 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/rand3.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 1960 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/rand4.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2190 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/rand5.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664066 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2349 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+scenes/readback.scn: 994 escritas, 963 leituras verificadas, 0 frames (0 com limite de sprites), 21 amostras de áudio (0 erradas), 21486 ciclos -> OK
+RENDER_BUDGET: 0 linhas, maior tempo de renderizacao 0 ciclos de 3200
+APU_DEADLINE: maior tempo tick->amostra 224 ciclos (quadro de 1050)
+== TODOS OS TESTES OK ==
+make -C m68k
+make[1]: Entering directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k'
+cd ../scripts && python3 gen_m2_assets.py ../m68k/assets.h
+../m68k/assets.h 1632 words de tiles
+m68k-linux-gnu-gcc -m68000 -O2 -ffreestanding -fno-pic -fno-builtin -nostdlib -Wall -Wextra -fomit-frame-pointer -m68000 -nostdlib -static -T link.ld -Wl,--build-id=none -Wl,-z,noexecstack -o rom.elf crt0.s main.c
+m68k-linux-gnu-objcopy -O binary rom.elf rom.bin
+python3 ../scripts/bin2hex16.py rom.bin rom.hex
+make[1]: Leaving directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k'
+verilator  --cc --exe --build -O3 -Wno-fatal -Wno-lint -Wno-style -Wno-BLKANDNBLK \
+  --top-module md_sim_top -Mdir build_m2 -CFLAGS "-O2 -std=c++17" \
+  -o Vmd_sim_top rtl/vdpx_top.v rtl/vdpx_timing.v rtl/vdpx_render.v rtl/vdpx_sdpram.v rtl/vdpx_apu.v rtl/vdpx_i2s.v rtl/vdpx_dma.v sim/m2/legacy_read_adapter.v sim/vdpx_sim_smem.v sim/m2/md_sim_top.sv ext/fx68k/fx68k.sv ext/fx68k/fx68kAlu.sv ext/fx68k/uaddrPla.sv sim/m2/tb_m2.cpp
+%Warning-TIMESCALEMOD: rtl/vdpx_top.v:7:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    7 | module vdpx_top #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+                       ... For warning description see https://verilator.org/warn/TIMESCALEMOD?v=5.020
+                       ... Use "/* verilator lint_off TIMESCALEMOD */" and lint_on around source to disable this message.
+%Warning-TIMESCALEMOD: rtl/vdpx_timing.v:3:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    3 | module vdpx_timing (
+      |        ^~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_render.v:12:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   12 | module vdpx_render (
+      |        ^~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_sdpram.v:3:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    3 | module vdpx_sdpram #(
+      |        ^~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_apu.v:13:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   13 | module vdpx_apu #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_i2s.v:16:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   16 | module vdpx_i2s #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_dma.v:26:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   26 | module vdpx_dma #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: sim/m2/legacy_read_adapter.v:5:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    5 | module legacy_read_adapter #(
+      |        ^~~~~~~~~~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: sim/vdpx_sim_smem.v:3:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    3 | module vdpx_sim_smem #(
+      |        ^~~~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: sim/m2/md_sim_top.sv:11:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   11 | module md_sim_top (
+      |        ^~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:967:6: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:967:6: 
+  967 |      Irdecod.rxIsAreg = (| ird[8:6]);
+      |      ^~~~~~~
+                      ext/fx68k/fx68k.sv:954:9: ... Location of other write
+  954 |  assign Irdecod.ry = ird[ 2:0];
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:986:3: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:986:3: 
+  986 |   Irdecod.rxIsMovem = lineOnehot[4] & ~ird[8] & ~Irdecod.implicitSp;
+      |   ^~~~~~~
+                      ext/fx68k/fx68k.sv:980:5: ... Location of other write
+  980 |     Irdecod.rxIsAreg = Irdecod.implicitSp;
+      |     ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:988:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:988:9: 
+  988 |  assign Irdecod.movemPreDecr = Irdecod.rxIsMovem & isPreDecr;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:986:3: ... Location of always_comb write
+  986 |   Irdecod.rxIsMovem = lineOnehot[4] & ~ird[8] & ~Irdecod.implicitSp;
+      |   ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:994:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:994:9: 
+  994 |  assign Irdecod.rxIsDt = lineOnehot[5] | (lineOnehot[0] & ~ird[8]);
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:988:9: ... Location of always_comb write
+  988 |  assign Irdecod.movemPreDecr = Irdecod.rxIsMovem & isPreDecr;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:997:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:997:9: 
+  997 |  assign Irdecod.rxIsUsp = lineOnehot[4] & (ird[ 11:4] == 8'he6);
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:994:9: ... Location of always_comb write
+  994 |  assign Irdecod.rxIsDt = lineOnehot[5] | (lineOnehot[0] & ~ird[8]);
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1003:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1003:9: 
+ 1003 |  assign Irdecod.ryIsDt = eaImmOrAbs & ~isRegShift;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:997:9: ... Location of always_comb write
+  997 |  assign Irdecod.rxIsUsp = lineOnehot[4] & (ird[ 11:4] == 8'he6);
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1018:7: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1018:7: 
+ 1018 |       Irdecod.ryIsAreg = eaIsAreg & (ird[7:3] != 5'b11001);
+      |       ^~~~~~~
+                      ext/fx68k/fx68k.sv:1003:9: ... Location of other write
+ 1003 |  assign Irdecod.ryIsDt = eaImmOrAbs & ~isRegShift;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1038:5: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1038:5: 
+ 1038 |     Irdecod.isByte = 
+      |     ^~~~~~~
+                      ext/fx68k/fx68k.sv:1015:13: ... Location of other write
+ 1015 |   default:  Irdecod.ryIsAreg = eaIsAreg;
+      |             ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1062:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1062:9: 
+ 1062 |  assign Irdecod.isMovep = lineOnehot[0] & ird[8] & eaAreg;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1057:15: ... Location of always_comb write
+ 1057 |   default:    Irdecod.isByte = 1'b0;
+      |               ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1072:19: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                                : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1072:19: 
+ 1072 |   lineOnehot[6]:  Irdecod.implicitSp = (ird[11:8] == 4'b0001);   
+      |                   ^~~~~~~
+                      ext/fx68k/fx68k.sv:1062:9: ... Location of other write
+ 1062 |  assign Irdecod.isMovep = lineOnehot[0] & ird[8] & eaAreg;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1083:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1083:9: 
+ 1083 |  assign Irdecod.toCcr = ( lineOnehot[4] & ((ird[11:0] == 12'he77) | (ird[11:6] == 6'b010011)) ) |
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1076:14: ... Location of always_comb write
+ 1076 |   default:   Irdecod.implicitSp = 1'b0;
+      |              ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1109:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1109:9: 
+ 1109 |  assign Irdecod.ftuConst = ftuConst;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1083:9: ... Location of always_comb write
+ 1083 |  assign Irdecod.toCcr = ( lineOnehot[4] & ((ird[11:0] == 12'he77) | (ird[11:6] == 6'b010011)) ) |
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1118:17: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                                : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1118:17: 
+ 1118 |    2'b00,2'b01: Irdecod.macroTvn = 6;      
+      |                 ^~~~~~~
+                      ext/fx68k/fx68k.sv:1109:9: ... Location of other write
+ 1109 |  assign Irdecod.ftuConst = ftuConst;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1134:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1134:9: 
+ 1134 |  assign Irdecod.inhibitCcr =
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1124:8: ... Location of always_comb write
+ 1124 |        Irdecod.macroTvn = 5;      
+      |        ^~~~~~~
+%Warning-INITIALDLY: ext/fx68k/fx68k.sv:1189:11: Non-blocking assignment '<=' in initial/final block
+                                               : ... This will be executed as a blocking assignment '='!
+ 1189 |    regs68L[i] <= '0;
+      |           ^
+%Warning-INITIALDLY: ext/fx68k/fx68k.sv:1190:11: Non-blocking assignment '<=' in initial/final block
+                                               : ... This will be executed as a blocking assignment '='!
+ 1190 |    regs68H[i] <= '0;
+      |           ^
+%Warning-UNOPTFLAT: ext/fx68k/fx68k.sv:295:12: Signal unoptimizable: Circular combinational logic: 'md_sim_top.u_cpu.Irdecod'
+  295 |  s_irdecod Irdecod;
+      |            ^~~~~~~
+                    ext/fx68k/fx68k.sv:295:12:      Example path: md_sim_top.u_cpu.Irdecod
+                    ext/fx68k/fx68k.sv:881:15:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:881:7:      Example path: md_sim_top.u_cpu.nDecoder.isPcRel
+                    ext/fx68k/fx68k.sv:887:22:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+                    ext/fx68k/fx68k.sv:790:22:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+%Warning-UNOPTFLAT: ext/fx68k/fx68k.sv:293:10: Signal unoptimizable: Circular combinational logic: 'md_sim_top.u_cpu.Nanod'
+  293 |  s_nanod Nanod;
+      |          ^~~~~
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+                    ext/fx68k/fx68k.sv:790:22:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+%Warning-UNOPTFLAT: ext/fx68k/fx68kAlu.sv:464:7: Signal unoptimizable: Circular combinational logic: 'md_sim_top.u_cpu.excUnit.alu.aluCorf.highC'
+  464 |  wire highC = cin | (bAdd ? (gt9( htemp[7:4]) | htemp[8]) : 1'b0);
+      |       ^~~~~
+                    ext/fx68k/fx68kAlu.sv:464:7:      Example path: md_sim_top.u_cpu.excUnit.alu.aluCorf.highC
+                    ext/fx68k/fx68kAlu.sv:466:2:      Example path: ALWAYS
+                    ext/fx68k/fx68kAlu.sv:460:12:      Example path: md_sim_top.u_cpu.excUnit.alu.aluCorf.htemp
+                    ext/fx68k/fx68kAlu.sv:464:13:      Example path: ALWAYS
+                    ext/fx68k/fx68kAlu.sv:464:7:      Example path: md_sim_top.u_cpu.excUnit.alu.aluCorf.highC
+make[1]: Entering directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/build_m2'
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -Os -c -o tb_m2.o ../sim/m2/tb_m2.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -c -o verilated.o /usr/share/verilator/include/verilated.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -c -o verilated_threads.o /usr/share/verilator/include/verilated_threads.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -x c++-header Vmd_sim_top__pch.h -o Vmd_sim_top__pch.h.fast.gch
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top.o Vmd_sim_top.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024root__DepSet_hf418c06f__0.o Vmd_sim_top___024root__DepSet_hf418c06f__0.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__0.o Vmd_sim_top___024root__DepSet_he2d12b6a__0.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__1.o Vmd_sim_top___024root__DepSet_he2d12b6a__1.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024unit__DepSet_h418c9ad0__0.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -x c++-header Vmd_sim_top__pch.h -o Vmd_sim_top__pch.h.slow.gch
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top__ConstPool_0.o Vmd_sim_top__ConstPool_0.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__Slow.o Vmd_sim_top___024root__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__DepSet_hf418c06f__0__Slow.o Vmd_sim_top___024root__DepSet_hf418c06f__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__0__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__1__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__1__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024unit__Slow.o Vmd_sim_top___024unit__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024unit__DepSet_h418c9ad0__0__Slow.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top__Syms.o Vmd_sim_top__Syms.cpp
+echo "" > Vmd_sim_top__ALL.verilator_deplist.tmp
+Archive ar -rcs Vmd_sim_top__ALL.a Vmd_sim_top.o Vmd_sim_top___024root__DepSet_hf418c06f__0.o Vmd_sim_top___024root__DepSet_he2d12b6a__0.o Vmd_sim_top___024root__DepSet_he2d12b6a__1.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0.o Vmd_sim_top__ConstPool_0.o Vmd_sim_top___024root__Slow.o Vmd_sim_top___024root__DepSet_hf418c06f__0__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__0__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__1__Slow.o Vmd_sim_top___024unit__Slow.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0__Slow.o Vmd_sim_top__Syms.o
+g++     tb_m2.o verilated.o verilated_threads.o Vmd_sim_top__ALL.a    -pthread -lpthread -latomic   -o Vmd_sim_top
+rm Vmd_sim_top__ALL.verilator_deplist.tmp
+make[1]: Leaving directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/build_m2'
+cp ext/fx68k/microrom.mem ext/fx68k/nanorom.mem m68k/rom.hex build_m2/
+cd build_m2 && ./Vmd_sim_top ../out
+[68k] progresso 1 (ciclo 19420, frame ~0.0)
+[68k] progresso 2 (ciclo 2766962, frame ~3.3)
+[68k] auto-teste de leitura: 0 erros
+[68k] progresso 3 (ciclo 4606385, frame ~5.5)
+  frame  1 capturado: igual ao modelo
+  frame 20 capturado: igual ao modelo
+[68k] fim do programa
+  frame 39 capturado: igual ao modelo
+    áudio: 37547 amostras conferidas com o modelo, 0 erradas (gravado em m2_audio.wav)
+M2: 26083 escritas e 117620 leituras na VDPX pelos pinos do 68000 (1890 conferidas, 0 erradas), 143703 transações no núcleo
+    3/3 frames iguais ao modelo
+    /AS baixo: VDPX 326 ns em média, ROM/RAM sem wait state 326 ns -> ~0.00 wait states por acesso
+    39424204 ciclos simulados (46.93 frames) -> OK
+make -C m68k/diag all sim
+make[1]: Entering directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k/diag'
+m68k-linux-gnu-gcc -m68000 -O2 -ffreestanding -fno-pic -fno-builtin -nostdlib -Wall -Wextra -fomit-frame-pointer -m68000 -nostdlib -static -T link.ld -Wl,--build-id=none -Wl,-z,noexecstack -o diag_md.elf crt0_md.s diag.c
+m68k-linux-gnu-objcopy -O binary diag_md.elf diag_md.bin
+python3 fixsum.py diag_md.bin
+diag_md.bin: 16890 bytes, checksum 90D3
+m68k-linux-gnu-gcc -m68000 -O2 -ffreestanding -fno-pic -fno-builtin -nostdlib -Wall -Wextra -fomit-frame-pointer -DSIM -m68000 -nostdlib -static -T link.ld -Wl,--build-id=none -Wl,-z,noexecstack -o diag_sim.elf crt0_md.s diag.c
+m68k-linux-gnu-objcopy -O binary diag_sim.elf diag_sim.bin
+python3 ../../scripts/bin2hex16.py diag_sim.bin diag_sim.hex
+make[1]: Leaving directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k/diag'
+verilator  --cc --exe --build -O3 -Wno-fatal -Wno-lint -Wno-style -Wno-BLKANDNBLK \
+  --top-module md_sim_top -Mdir build_m2wo0 -DM2WO -DM2_PREFETCH=0 -CFLAGS "-O2 -std=c++17 -DM2_PREFETCH_VAL=0" \
+  -o Vmd_sim_top rtl/vdpx_top.v rtl/vdpx_timing.v rtl/vdpx_render.v rtl/vdpx_sdpram.v rtl/vdpx_apu.v rtl/vdpx_i2s.v rtl/vdpx_dma.v rtl/md_fdc_adapter.v sim/m2/legacy_read_adapter.v sim/vdpx_sim_smem.v sim/m2/md_sim_top.sv ext/fx68k/fx68k.sv ext/fx68k/fx68kAlu.sv ext/fx68k/uaddrPla.sv sim/m2/tb_m2wo.cpp
+%Warning-TIMESCALEMOD: rtl/vdpx_top.v:7:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    7 | module vdpx_top #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+                       ... For warning description see https://verilator.org/warn/TIMESCALEMOD?v=5.020
+                       ... Use "/* verilator lint_off TIMESCALEMOD */" and lint_on around source to disable this message.
+%Warning-TIMESCALEMOD: rtl/vdpx_timing.v:3:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    3 | module vdpx_timing (
+      |        ^~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_render.v:12:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   12 | module vdpx_render (
+      |        ^~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_sdpram.v:3:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    3 | module vdpx_sdpram #(
+      |        ^~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_apu.v:13:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   13 | module vdpx_apu #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_i2s.v:16:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   16 | module vdpx_i2s #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/vdpx_dma.v:26:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   26 | module vdpx_dma #(
+      |        ^~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: rtl/md_fdc_adapter.v:5:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    5 | module md_fdc_adapter (
+      |        ^~~~~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: sim/m2/legacy_read_adapter.v:5:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    5 | module legacy_read_adapter #(
+      |        ^~~~~~~~~~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: sim/vdpx_sim_smem.v:3:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+    3 | module vdpx_sim_smem #(
+      |        ^~~~~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-TIMESCALEMOD: sim/m2/md_sim_top.sv:11:8: Timescale missing on this module as other modules have it (IEEE 1800-2017 3.14.2.3)
+   11 | module md_sim_top (
+      |        ^~~~~~~~~~
+                       ext/fx68k/fx68k.sv:136:8: ... Location of module with timescale
+  136 | module fx68k(
+      |        ^~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:967:6: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:967:6: 
+  967 |      Irdecod.rxIsAreg = (| ird[8:6]);
+      |      ^~~~~~~
+                      ext/fx68k/fx68k.sv:954:9: ... Location of other write
+  954 |  assign Irdecod.ry = ird[ 2:0];
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:986:3: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:986:3: 
+  986 |   Irdecod.rxIsMovem = lineOnehot[4] & ~ird[8] & ~Irdecod.implicitSp;
+      |   ^~~~~~~
+                      ext/fx68k/fx68k.sv:980:5: ... Location of other write
+  980 |     Irdecod.rxIsAreg = Irdecod.implicitSp;
+      |     ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:988:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:988:9: 
+  988 |  assign Irdecod.movemPreDecr = Irdecod.rxIsMovem & isPreDecr;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:986:3: ... Location of always_comb write
+  986 |   Irdecod.rxIsMovem = lineOnehot[4] & ~ird[8] & ~Irdecod.implicitSp;
+      |   ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:994:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:994:9: 
+  994 |  assign Irdecod.rxIsDt = lineOnehot[5] | (lineOnehot[0] & ~ird[8]);
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:988:9: ... Location of always_comb write
+  988 |  assign Irdecod.movemPreDecr = Irdecod.rxIsMovem & isPreDecr;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:997:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                              : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:997:9: 
+  997 |  assign Irdecod.rxIsUsp = lineOnehot[4] & (ird[ 11:4] == 8'he6);
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:994:9: ... Location of always_comb write
+  994 |  assign Irdecod.rxIsDt = lineOnehot[5] | (lineOnehot[0] & ~ird[8]);
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1003:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1003:9: 
+ 1003 |  assign Irdecod.ryIsDt = eaImmOrAbs & ~isRegShift;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:997:9: ... Location of always_comb write
+  997 |  assign Irdecod.rxIsUsp = lineOnehot[4] & (ird[ 11:4] == 8'he6);
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1018:7: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1018:7: 
+ 1018 |       Irdecod.ryIsAreg = eaIsAreg & (ird[7:3] != 5'b11001);
+      |       ^~~~~~~
+                      ext/fx68k/fx68k.sv:1003:9: ... Location of other write
+ 1003 |  assign Irdecod.ryIsDt = eaImmOrAbs & ~isRegShift;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1038:5: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1038:5: 
+ 1038 |     Irdecod.isByte = 
+      |     ^~~~~~~
+                      ext/fx68k/fx68k.sv:1015:13: ... Location of other write
+ 1015 |   default:  Irdecod.ryIsAreg = eaIsAreg;
+      |             ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1062:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1062:9: 
+ 1062 |  assign Irdecod.isMovep = lineOnehot[0] & ird[8] & eaAreg;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1057:15: ... Location of always_comb write
+ 1057 |   default:    Irdecod.isByte = 1'b0;
+      |               ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1072:19: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                                : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1072:19: 
+ 1072 |   lineOnehot[6]:  Irdecod.implicitSp = (ird[11:8] == 4'b0001);   
+      |                   ^~~~~~~
+                      ext/fx68k/fx68k.sv:1062:9: ... Location of other write
+ 1062 |  assign Irdecod.isMovep = lineOnehot[0] & ird[8] & eaAreg;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1083:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1083:9: 
+ 1083 |  assign Irdecod.toCcr = ( lineOnehot[4] & ((ird[11:0] == 12'he77) | (ird[11:6] == 6'b010011)) ) |
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1076:14: ... Location of always_comb write
+ 1076 |   default:   Irdecod.implicitSp = 1'b0;
+      |              ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1109:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1109:9: 
+ 1109 |  assign Irdecod.ftuConst = ftuConst;
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1083:9: ... Location of always_comb write
+ 1083 |  assign Irdecod.toCcr = ( lineOnehot[4] & ((ird[11:0] == 12'he77) | (ird[11:6] == 6'b010011)) ) |
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1118:17: Variable written to in always_comb also written by other process (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                                : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1118:17: 
+ 1118 |    2'b00,2'b01: Irdecod.macroTvn = 6;      
+      |                 ^~~~~~~
+                      ext/fx68k/fx68k.sv:1109:9: ... Location of other write
+ 1109 |  assign Irdecod.ftuConst = ftuConst;
+      |         ^~~~~~~
+%Warning-MULTIDRIVEN: ext/fx68k/fx68k.sv:1134:9: Variable also written to in always_comb (IEEE 1800-2017 9.2.2.2): 'Irdecod'
+                                               : ... note: In instance 'md_sim_top.u_cpu.irdDecode'
+                      ext/fx68k/fx68k.sv:1134:9: 
+ 1134 |  assign Irdecod.inhibitCcr =
+      |         ^~~~~~~
+                      ext/fx68k/fx68k.sv:1124:8: ... Location of always_comb write
+ 1124 |        Irdecod.macroTvn = 5;      
+      |        ^~~~~~~
+%Warning-INITIALDLY: ext/fx68k/fx68k.sv:1189:11: Non-blocking assignment '<=' in initial/final block
+                                               : ... This will be executed as a blocking assignment '='!
+ 1189 |    regs68L[i] <= '0;
+      |           ^
+%Warning-INITIALDLY: ext/fx68k/fx68k.sv:1190:11: Non-blocking assignment '<=' in initial/final block
+                                               : ... This will be executed as a blocking assignment '='!
+ 1190 |    regs68H[i] <= '0;
+      |           ^
+%Warning-UNOPTFLAT: ext/fx68k/fx68k.sv:295:12: Signal unoptimizable: Circular combinational logic: 'md_sim_top.u_cpu.Irdecod'
+  295 |  s_irdecod Irdecod;
+      |            ^~~~~~~
+                    ext/fx68k/fx68k.sv:295:12:      Example path: md_sim_top.u_cpu.Irdecod
+                    ext/fx68k/fx68k.sv:881:15:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:881:7:      Example path: md_sim_top.u_cpu.nDecoder.isPcRel
+                    ext/fx68k/fx68k.sv:887:22:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+                    ext/fx68k/fx68k.sv:790:22:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+%Warning-UNOPTFLAT: ext/fx68k/fx68k.sv:293:10: Signal unoptimizable: Circular combinational logic: 'md_sim_top.u_cpu.Nanod'
+  293 |  s_nanod Nanod;
+      |          ^~~~~
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+                    ext/fx68k/fx68k.sv:790:22:      Example path: ASSIGNW
+                    ext/fx68k/fx68k.sv:293:10:      Example path: md_sim_top.u_cpu.Nanod
+%Warning-UNOPTFLAT: ext/fx68k/fx68kAlu.sv:464:7: Signal unoptimizable: Circular combinational logic: 'md_sim_top.u_cpu.excUnit.alu.aluCorf.highC'
+  464 |  wire highC = cin | (bAdd ? (gt9( htemp[7:4]) | htemp[8]) : 1'b0);
+      |       ^~~~~
+                    ext/fx68k/fx68kAlu.sv:464:7:      Example path: md_sim_top.u_cpu.excUnit.alu.aluCorf.highC
+                    ext/fx68k/fx68kAlu.sv:466:2:      Example path: ALWAYS
+                    ext/fx68k/fx68kAlu.sv:460:12:      Example path: md_sim_top.u_cpu.excUnit.alu.aluCorf.htemp
+                    ext/fx68k/fx68kAlu.sv:464:13:      Example path: ALWAYS
+                    ext/fx68k/fx68kAlu.sv:464:7:      Example path: md_sim_top.u_cpu.excUnit.alu.aluCorf.highC
+make[1]: Entering directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/build_m2wo0'
+g++  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -Os -c -o tb_m2wo.o ../sim/m2/tb_m2wo.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -c -o verilated.o /usr/share/verilator/include/verilated.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -c -o verilated_threads.o /usr/share/verilator/include/verilated_threads.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -x c++-header Vmd_sim_top__pch.h -o Vmd_sim_top__pch.h.fast.gch
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top.o Vmd_sim_top.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024root__DepSet_hf418c06f__0.o Vmd_sim_top___024root__DepSet_hf418c06f__0.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__0.o Vmd_sim_top___024root__DepSet_he2d12b6a__0.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__1.o Vmd_sim_top___024root__DepSet_he2d12b6a__1.cpp
+g++ -Os  -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.fast -c -o Vmd_sim_top___024unit__DepSet_h418c9ad0__0.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -x c++-header Vmd_sim_top__pch.h -o Vmd_sim_top__pch.h.slow.gch
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top__ConstPool_0.o Vmd_sim_top__ConstPool_0.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__Slow.o Vmd_sim_top___024root__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__DepSet_hf418c06f__0__Slow.o Vmd_sim_top___024root__DepSet_hf418c06f__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__0__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024root__DepSet_he2d12b6a__1__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__1__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024unit__Slow.o Vmd_sim_top___024unit__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top___024unit__DepSet_h418c9ad0__0__Slow.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0__Slow.cpp
+g++   -I.  -MMD -I/usr/share/verilator/include -I/usr/share/verilator/include/vltstd -DVM_COVERAGE=0 -DVM_SC=0 -DVM_TRACE=0 -DVM_TRACE_FST=0 -DVM_TRACE_VCD=0 -faligned-new -fcf-protection=none -Wno-bool-operation -Wno-overloaded-virtual -Wno-shadow -Wno-sign-compare -Wno-uninitialized -Wno-unused-but-set-parameter -Wno-unused-but-set-variable -Wno-unused-parameter -Wno-unused-variable     -O2 -std=c++17 -DM2_PREFETCH_VAL=0   -include Vmd_sim_top__pch.h.slow -c -o Vmd_sim_top__Syms.o Vmd_sim_top__Syms.cpp
+echo "" > Vmd_sim_top__ALL.verilator_deplist.tmp
+Archive ar -rcs Vmd_sim_top__ALL.a Vmd_sim_top.o Vmd_sim_top___024root__DepSet_hf418c06f__0.o Vmd_sim_top___024root__DepSet_he2d12b6a__0.o Vmd_sim_top___024root__DepSet_he2d12b6a__1.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0.o Vmd_sim_top__ConstPool_0.o Vmd_sim_top___024root__Slow.o Vmd_sim_top___024root__DepSet_hf418c06f__0__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__0__Slow.o Vmd_sim_top___024root__DepSet_he2d12b6a__1__Slow.o Vmd_sim_top___024unit__Slow.o Vmd_sim_top___024unit__DepSet_h418c9ad0__0__Slow.o Vmd_sim_top__Syms.o
+g++     tb_m2wo.o verilated.o verilated_threads.o Vmd_sim_top__ALL.a    -pthread -lpthread -latomic   -o Vmd_sim_top
+rm Vmd_sim_top__ALL.verilator_deplist.tmp
+make[1]: Leaving directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/build_m2wo0'
+cp ext/fx68k/microrom.mem ext/fx68k/nanorom.mem build_m2wo0/
+cp m68k/diag/diag_sim.hex build_m2wo0/rom.hex
+cd build_m2wo0 && ./Vmd_sim_top ../out
+[68k] progresso 1 (ciclo 20707, frame ~0.0)
+  frame  1 capturado: igual ao modelo
+  frame  2 capturado: igual ao modelo
+[68k] fim do programa
+    áudio: 30877 amostras conferidas com o modelo, 0 erradas (gravado em m2wo_audio.wav)
+M2WO (PREFETCH=0): 19707 escritas e 64 leituras na VDPX pelos pinos do 68000, 19707 escritas no núcleo
+    FIFO: nível máximo 1 de 16, 0 perdidas; menor intervalo entre escritas 26 ciclos (516 ns)
+    2/2 frames iguais ao modelo
+    /AS baixo: VDPX 326 ns em média, ROM/RAM sem wait state 326 ns -> ~-0.00 wait states por acesso
+    32420600 ciclos simulados (38.60 frames) -> OK
+cd scripts && python3 gen_selftest.py ../rtl/board/selftest.hex
+../rtl/board/selftest.hex: 3914 de 4096 words
+cp rtl/board/selftest.hex build_m4/
+cd build_m4 && ./Vboard_sim ../out 40
+  frame  3 decodificado do HDMI: igual ao modelo
+  frame 11 decodificado do HDMI: igual ao modelo
+  frame 19 decodificado do HDMI: igual ao modelo
+  frame 27 decodificado do HDMI: igual ao modelo
+  frame 35 decodificado do HDMI: igual ao modelo
+  frame 40 decodificado do HDMI: igual ao modelo
+    porta de expansão: 19 escritas e 0 commits (write-only; leituras ignoradas), 0 erradas
+    HDMI| MD-VDPX M4.2 SONDA CN2  AUTOTESTE:N MD:S
+    HDMI| ESCRITAS ACEITAS 00000013  PERDIDAS 0000
+    HDMI| FIFO MAX 01   ULTIMA A12006=0007        
+    HDMI| CICLO C/ FDWR 00000013 C/ CAS0 00000000 
+    HDMI| CICLO S/ FDWR 0000000F C/ CAS0 0000000F 
+    HDMI| FDC BAIXO: ESC 018-018 SEM FDWR 018-018 
+    HDMI| FDC>FDWR 011-011  LARGURA FDWR 007-007  
+    HDMI| FDC>CAS0 000-000  FRES:N PULSOS 0000    
+    HDMI| CAS0 FORA 00000000  (UNIDADE 19.8 NS)   
+    overlay: 24/24 campos lidos do HDMI conferem com os sinais aplicados no CN2
+    painel DMA: IDLE ---- palavras 0 ciclos 0 taxa 0.0 MB/s (esperado 0.0) fila 0 erros 0 -> OK
+M4: 6/6 frames do HDMI iguais ao modelo; 33600 amostras de áudio no HDMI iguais ao mixer (33600 conferidas com o modelo da APU, 0 erradas)
+    pacotes: 44100 (áudio 22050, ACR 5501 N=6144 CTS=25200, AVI 42 VIC=1, Audio IF 43, nulos 16464), erros HDMI 0, SDRAM 0
+    LEDs: autoteste=0 MD=1 SDRAM=1 FIFO_erro=0 HDMI_travado=1 áudio_ovf=0; 35280000 ciclos -> OK
+exit 0 (162 s)

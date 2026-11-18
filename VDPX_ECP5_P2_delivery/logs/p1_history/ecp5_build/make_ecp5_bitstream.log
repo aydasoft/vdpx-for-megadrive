@@ -1,0 +1,6 @@
+$ make YOWASP=1 ecp5_bitstream
+cd build_ecp5 && yowasp-ecppack --input vdpx_ecp5_p1_s1.config --bit vdpx_ecp5_p1.bit
+cp build_ecp5/vdpx_ecp5_p1.bit artifacts/vdpx_ecp5_p1.bit
+sha256sum artifacts/vdpx_ecp5_p1.bit
+f1a25883dd82930a2bdbd602388910eb2c78264d6c21dc9a2a2ff7a7616449f3  artifacts/vdpx_ecp5_p1.bit
+exit 0 (1 s)

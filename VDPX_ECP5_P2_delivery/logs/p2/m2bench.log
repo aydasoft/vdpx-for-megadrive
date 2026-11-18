@@ -1,0 +1,79 @@
+$ make m2bench
+make -C m68k/bench
+make[1]: Entering directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k/bench'
+make[1]: Nothing to be done for 'all'.
+make[1]: Leaving directory '/home/user/vdpx-for-megadrive/VDPX_ECP5_P2_delivery/m68k/bench'
+cp ext/fx68k/microrom.mem ext/fx68k/nanorom.mem build_m2wo50/
+cp m68k/bench/bench_sim.hex build_m2wo50/rom.hex
+cd build_m2wo50 && M2_BENCH=1 ./Vmd_sim_top ../out/clk50
+[68k] progresso 1 (ciclo 2396, frame ~0.0)
+BENCH marca 0 teste 0 ciclo 3700 escritas 6
+BENCH marca 1 teste 0 ciclo 14560 escritas 134
+BENCH marca 2 teste 0 ciclo 15473 escritas 140
+BENCH marca 3 teste 0 ciclo 34821 escritas 268
+BENCH marca 4 teste 0 ciclo 35995 escritas 276
+BENCH marca 5 teste 0 ciclo 46803 escritas 404
+BENCH marca 6 teste 0 ciclo 46933 escritas 404
+BENCH marca 7 teste 0 ciclo 48889 escritas 418
+BENCH dma_fim palavras=128 ciclos_execucao=832 ciclo=49597
+BENCH marca 8 teste 0 ciclo 131184 escritas 418
+BENCH marca 0 teste 1 ciclo 132422 escritas 424
+BENCH marca 1 teste 1 ciclo 173765 escritas 936
+BENCH marca 2 teste 1 ciclo 174678 escritas 942
+BENCH marca 3 teste 1 ciclo 249423 escritas 1454
+BENCH marca 4 teste 1 ciclo 250597 escritas 1462
+BENCH marca 5 teste 1 ciclo 291888 escritas 1974
+BENCH marca 6 teste 1 ciclo 292018 escritas 1974
+BENCH marca 7 teste 1 ciclo 293974 escritas 1988
+BENCH dma_fim palavras=512 ciclos_execucao=3328 ciclo=297177
+BENCH marca 8 teste 1 ciclo 410062 escritas 1988
+BENCH marca 0 teste 2 ciclo 411301 escritas 1994
+BENCH marca 1 teste 2 ciclo 573661 escritas 4042
+BENCH marca 2 teste 2 ciclo 574573 escritas 4048
+BENCH marca 3 teste 2 ciclo 870936 escritas 6096
+BENCH marca 4 teste 2 ciclo 872109 escritas 6104
+BENCH marca 5 teste 2 ciclo 1034417 escritas 8152
+BENCH marca 6 teste 2 ciclo 1034547 escritas 8152
+BENCH marca 7 teste 2 ciclo 1036503 escritas 8166
+BENCH dma_fim palavras=2048 ciclos_execucao=13312 ciclo=1049691
+BENCH marca 8 teste 2 ciclo 1287768 escritas 8166
+BENCH marca 0 teste 3 ciclo 1289006 escritas 8172
+BENCH marca 1 teste 3 ciclo 1935434 escritas 16364
+BENCH marca 2 teste 3 ciclo 1936347 escritas 16370
+BENCH marca 3 teste 3 ciclo 3119176 escritas 24562
+BENCH marca 4 teste 3 ciclo 3120349 escritas 24570
+BENCH marca 5 teste 3 ciclo 3766725 escritas 32762
+BENCH marca 6 teste 3 ciclo 3766855 escritas 32762
+BENCH marca 7 teste 3 ciclo 3768811 escritas 32776
+BENCH dma_fim palavras=8192 ciclos_execucao=53248 ciclo=3821934
+BENCH marca 8 teste 3 ciclo 4560779 escritas 32776
+BENCH marca 0 teste 4 ciclo 4562018 escritas 32782
+BENCH marca 1 teste 4 ciclo 5853869 escritas 49166
+BENCH marca 2 teste 4 ciclo 5854782 escritas 49172
+BENCH marca 3 teste 4 ciclo 8219567 escritas 65556
+BENCH marca 4 teste 4 ciclo 8220740 escritas 65564
+BENCH marca 5 teste 4 ciclo 9512540 escritas 81948
+BENCH marca 6 teste 4 ciclo 9512670 escritas 81948
+BENCH marca 7 teste 4 ciclo 9514626 escritas 81962
+BENCH dma_fim palavras=16384 ciclos_execucao=106496 ciclo=9620997
+BENCH marca 8 teste 4 ciclo 11027533 escritas 81962
+BENCH marca 0 teste 5 ciclo 11028772 escritas 81968
+BENCH marca 1 teste 5 ciclo 13611470 escritas 114736
+BENCH marca 2 teste 5 ciclo 13612383 escritas 114742
+BENCH marca 3 teste 5 ciclo 18341079 escritas 147510
+BENCH marca 4 teste 5 ciclo 18342253 escritas 147518
+BENCH marca 5 teste 5 ciclo 20924899 escritas 180286
+BENCH marca 6 teste 5 ciclo 20925030 escritas 180286
+BENCH marca 7 teste 5 ciclo 20926985 escritas 180300
+BENCH dma_fim palavras=32768 ciclos_execucao=212992 ciclo=21139853
+BENCH marca 8 teste 5 ciclo 23881770 escritas 180300
+[68k] fim do programa
+    DMA (núcleo): 6 aceitos, 0 rejeitados (fila cheia 0), 6 concluídos, 0 cancelados (0 da fila), 60032 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    áudio: 22927 amostras conferidas com o modelo, 0 erradas (gravado em m2wo_audio.wav)
+M2WO (PREFETCH=0): 180300 escritas e 0 leituras na VDPX pelos pinos do 68000, 180300 escritas no núcleo
+    FIFO: nível máximo 1 de 16, 0 perdidas; menor intervalo entre escritas 52 ciclos (1040 ns)
+    0/0 frames iguais ao modelo
+    /AS baixo: VDPX 326 ns em média, ROM/RAM sem wait state 326 ns -> ~-0.00 wait states por acesso
+    23882109 ciclos simulados (28.43 frames) -> OK
+cp m68k/diag/diag_sim.hex build_m2wo50/rom.hex
+exit 0 (16 s)

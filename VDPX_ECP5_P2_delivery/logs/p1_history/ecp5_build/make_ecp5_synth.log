@@ -1,0 +1,13 @@
+$ make YOWASP=1 ecp5_synth
+cp rtl/board/selftest.hex build_ecp5/
+cd build_ecp5 && yowasp-yosys -l synth.log -q -p "read_verilog -D SYNTHESIS ../rtl/vdpx_top.v ../rtl/vdpx_timing.v ../rtl/vdpx_render.v ../rtl/vdpx_sdpram.v ../rtl/vdpx_apu.v ../rtl/vdpx_i2s.v ../rtl/md_fdc_adapter.v ../rtl/hdmi/tmds_enc.v ../rtl/hdmi/hdmi_tx.v ../rtl/board/async_fifo.v ../rtl/board/sdram_ctrl.v ../rtl/board/vdpx_selftest.v ../rtl/board/vdpx_board.v ../rtl/board/cn2_probe.v ../rtl/board/vdpx_overlay.v ../rtl/ecp5/ecp5_tmds_ser.v ../rtl/ecp5/vdpx_ecp5_core.v ../rtl/ecp5/colorlight_i9_top.v; synth_ecp5 -top colorlight_i9_top -json vdpx_ecp5_p1.json; tee -q -o synth_stat.txt stat"
+../rtl/ecp5/colorlight_i9_top.v:84: Warning: Yosys has only limited support for tri-state logic at the moment.
+      932   CCU2C
+       44   DP16KD
+        1   EHXPLLL
+     3927   LUT4
+        2   MULT18X18D
+        5   ODDRX1F
+      161   TRELLIS_DPR16X4
+     3055   TRELLIS_FF
+exit 0 (22 s)

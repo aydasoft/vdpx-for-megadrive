@@ -1,0 +1,29 @@
+=== M4.2 regression (Tang parameters, modified RTL)
+    exit 0  (logs/regression/all_tests_tangparams.log)
+=== ECP5 lint (Verilator -Wall)
+    exit 0  (logs/ecp5_unit/ecp5_lint.log)
+=== ECP5 unit tests (SDRAM RMW, HDMI/TMDS serial)
+    exit 0  (logs/ecp5_unit/ecp5_unit.log)
+=== 17 scenes at 50 MHz via RMW SDRAM
+    exit 0  (logs/ecp5_sim/test50.log)
+=== fx68k + write-only adapter at 50 MHz (M2WO50)
+    exit 0  (logs/ecp5_sim/m2wo50.log)
+=== ECP5 board simulation (3 runs)
+    exit 0  (logs/ecp5_sim/ecp5_boardsim.log)
+=== P2 DMA unit test + mutations (Icarus)
+    exit 0  (logs/p2/dma_unit.log)
+=== P2 benchmark 68000 x DMA (fx68k, 50 MHz)
+    exit 0  (logs/p2/m2bench.log)
+=== P2 benchmark tables
+    exit 0  (logs/p2/bench_report.log)
+=== ECP5 synthesis
+    exit 0  (logs/ecp5_build/make_ecp5_synth.log)
+=== ECP5 place & route, seeds 1 2 3
+    exit 0  (logs/ecp5_build/make_ecp5_pnr.log)
+=== ECP5 bitstream (ecppack)
+    exit 0  (logs/ecp5_build/make_ecp5_bitstream.log)
+=== ECP5 report
+    exit 0  (logs/ecp5_build/make_ecp5_report.log)
+=== ECP5 static audit (pins, banks, clocks, netlist)
+    exit 0  (logs/ecp5_build/ecp5_audit.log)
+=== done

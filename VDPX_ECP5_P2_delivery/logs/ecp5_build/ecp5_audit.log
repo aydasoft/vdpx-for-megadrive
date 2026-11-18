@@ -1,0 +1,26 @@
+$ python3 scripts/ecp5_audit.py
+PASS LPF sites unicos: 83 portas
+PASS HDMI P = esquema da Ext-Board: gpdi_dp[0]=G19, gpdi_dp[1]=E20, gpdi_dp[2]=C20, gpdi_dp[3]=J19
+PASS HDMI pares verdadeiros A/B no banco 2 (prjtrellis-db): G19(A)/H20(B) banco 2; E20(A)/F19(B) banco 2; C20(A)/D19(B) banco 2; J19(A)/K19(B) banco 2
+PASS HDMI lado N livre
+PASS HDMI IO_TYPE LVCMOS33D
+PASS nao usa pinos reservados: flash
+PASS nao usa pinos reservados: eth
+PASS nao usa pinos reservados: D16 (divergencia SDRAM)
+PASS nao usa pinos reservados: K18/J17/H18 (botao/serial)
+PASS SDRAM: 49 pinos (clk, ras, cas, we, 2 ba, 11 a, 32 dq): 49
+PASS CN2: 23 entradas (16 dados, 3 endereco, FDC FDWR CAS0 FRES), sem DRIVE: 23
+PASS todos os I/O em LVCMOS33/LVCMOS33D
+INFO bancos usados: 0: 23 portas, 1: 28 portas, 2: 8 portas, 6: 3 portas, 7: 21 portas
+PASS netlist: md_* somente input (write-only): md_a:input, md_cas0_n:input, md_d:input, md_fdc_n:input, md_fdwr_n:input, md_fres:input
+PASS PLL VCO 400..800 MHz: 500.0 MHz
+PASS PLL 125/50/25/50 MHz: CLKOP=125.0, CLKOS=50.0, CLKOS2=25.0, CLKOS3=50.0
+PASS 125/50/25 MHz com a mesma fase (bordas alinhadas): CPHASE 2/2/2
+PASS clock da SDRAM 16 ns depois de clk_sys (288 graus): 16.0 ns
+PASS video 640x480 800x525 a 25 MHz: 59.5238 Hz
+PASS quadro I2S 3125/3 ciclos = 48 kHz exatos: 48000.0 Hz
+PASS MCLK media 256 fs = 12,288 MHz: 12.288 MHz; meios periodos [2, 3] ciclos (jitter fracionario, EXPERIMENTAL)
+PASS ACR N=6144 CTS=25000 exato para 25 MHz: 25000
+PASS vdpx_board: CTS 25000 com CLK50
+ECP5 audit: PASS
+exit 0 (0 s)

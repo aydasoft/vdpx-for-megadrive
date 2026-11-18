@@ -1,0 +1,14 @@
+date: 2026-11-18T11:33:52Z
+host: Linux 6.18.44-fc-v595 x86_64
+Verilator 5.020 2024-01-01 rev (Debian 5.020-1)
+Icarus Verilog version 12.0 (stable) ()
+m68k-linux-gnu-gcc (Ubuntu 13.3.0-6ubuntu2~24.04) 13.3.0
+Python 3.13.18
+Yosys 0.71 (git sha1 b4c586fd3, Release, Clang /workspace/YoWASP/yosys/wasi-sdk-33.0-x86_64-linux/share/cmake/../..//bin/clang++ 22.1.0)
+"yowasp-nextpnr-ecp5" -- Next Generation Place and Route (Version nextpnr-0.11.1)
+Error: input file is mandatory.
+yowasp-nextpnr-ecp5             0.11.1.0.post826
+yowasp-nextpnr-himbaechel-gowin 0.11.1.0.post826
+yowasp-runtime                  1.96
+yowasp-yosys                    0.71.0.0.post1285
+fx68k: 0602ee4627b10f301298f2673d826cdd6baa9327

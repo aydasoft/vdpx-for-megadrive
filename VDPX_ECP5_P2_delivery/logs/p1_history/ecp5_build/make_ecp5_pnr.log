@@ -1,0 +1,14 @@
+$ make YOWASP=1 ecp5_pnr
+seed 1: exit 0
+Info: Max frequency for clock  '$glbnet$clk_x5': 283.53 MHz (PASS at 125.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_pix': 76.32 MHz (PASS at 25.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_sys': 69.30 MHz (PASS at 50.00 MHz)
+seed 2: exit 0
+Info: Max frequency for clock  '$glbnet$clk_x5': 251.45 MHz (PASS at 125.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_pix': 74.26 MHz (PASS at 25.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_sys': 71.19 MHz (PASS at 50.00 MHz)
+seed 3: exit 0
+Info: Max frequency for clock  '$glbnet$clk_x5': 279.49 MHz (PASS at 125.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_pix': 72.01 MHz (PASS at 25.00 MHz)
+Info: Max frequency for clock '$glbnet$clk_sys': 70.25 MHz (PASS at 50.00 MHz)
+exit 0 (203 s)

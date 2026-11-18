@@ -1,0 +1,46 @@
+
+18. Printing statistics.
+
+=== tang_top ===
+
+        +----------Local Count, excluding submodules.
+        | 
+     8257 wires
+    18007 wire bits
+     8257 public wires
+    18007 public wire bits
+       30 ports
+       96 port bits
+     9792 cells
+       23   $scopeinfo
+     2242   ALU
+        1   CLKDIV
+      467   DFF
+     1237   DFFE
+        6   DFFP
+      124   DFFR
+     1083   DFFRE
+       11   DFFS
+       72   DFFSE
+       32   DPB
+        5   DPX9B
+        1   GND
+       27   IBUF
+       32   IOBUF
+      237   LUT1
+      698   LUT2
+      970   LUT3
+     1923   LUT4
+        1   MULT18X18
+      371   MUX2_LUT5
+       13   MUX2_LUT6
+        1   MUX2_LUT7
+       37   OBUF
+        4   OSER10
+      161   RAM16SDP4
+        5   SP
+        1   SPX9
+        4   TLVDS_OBUF
+        1   VCC
+        2   rPLL
+

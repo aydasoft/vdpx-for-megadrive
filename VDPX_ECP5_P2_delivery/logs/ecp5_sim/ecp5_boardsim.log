@@ -1,0 +1,63 @@
+$ make ecp5_boardsim
+cp rtl/board/selftest_dma.hex build_ecp5_sim/
+cd build_ecp5_sim && ./Vecp5_board_sim ../out 40
+  frame  3 decodificado do TMDS serial: igual ao modelo
+  frame 11 decodificado do TMDS serial: igual ao modelo
+  frame 19 decodificado do TMDS serial: igual ao modelo
+  frame 27 decodificado do TMDS serial: igual ao modelo
+  frame 35 decodificado do TMDS serial: igual ao modelo
+  frame 40 decodificado do TMDS serial: igual ao modelo
+    mixer: 33850 amostras, taxa medida 48000.000 Hz (clock de 50 MHz, quadro I2S 3125/3 ciclos)
+    TMDS| MD-VDPX M4.2 SONDA CN2  AUTOTESTE:N MD:S
+    TMDS| ESCRITAS ACEITAS 00000013  PERDIDAS 0000
+    TMDS| FIFO MAX 01   ULTIMA A12006=0007        
+    TMDS| CICLO C/ FDWR 00000013 C/ CAS0 00000000 
+    TMDS| CICLO S/ FDWR 0000000F C/ CAS0 0000000F 
+    TMDS| FDC BAIXO: ESC 018-018 SEM FDWR 018-018 
+    TMDS| FDC>FDWR 011-011  LARGURA FDWR 007-007  
+    TMDS| FDC>CAS0 000-000  FRES:N PULSOS 0000    
+    TMDS| CAS0 FORA 00000000  (UNIDADE 20.0 NS)   
+    overlay: 26/26 campos lidos do TMDS serial conferem com os sinais aplicados no CN2
+    painel DMA: DONE COPY palavras 32 ciclos 176 taxa 18.1 MB/s (esperado 18.1) fila 0 erros 0 -> OK
+ECP5: 6/6 frames do TMDS serial iguais ao modelo; 33869 amostras de áudio no HDMI iguais ao mixer (33869 conferidas com o modelo da APU, 0 erradas); 807.8 amostras/frame (esperado 806,4)
+    TMDS serial: 17639899 símbolos, 0 desalinhados, clock lane errada 0, latência serial/paralelo 2 pixels, 0 diferenças
+    pacotes: 44100 (áudio 22050, ACR 5501 N=6144 CTS=25000, AVI 42 VIC=1, Audio IF 42, nulos 16464), erros HDMI 0
+    DMA (autoteste): 15 aceitos, 0 rejeitados (fila cheia 0), 15 concluídos, 0 cancelados (0 da fila), 672 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    SDRAM (sem DQM, RMW): 384 escritas de 32 bits no modelo, 0 erros; CN2: 19 escritas, 19 aplicadas, 15 leituras não dirigidas
+    LEDs: autoteste=0 MD=1 SDRAM=1 FIFO_erro=0 HDMI_travado=1 áudio_ovf=0; 35280000 ciclos de 50 MHz -> OK
+cd build_ecp5_sim && M42_SELFTEST_ONLY=1 ECP5_INIT_GLITCH=1 ./Vecp5_board_sim ../out 12
+  frame  3 decodificado do TMDS serial: igual ao modelo
+  frame 11 decodificado do TMDS serial: igual ao modelo
+  frame 12 decodificado do TMDS serial: igual ao modelo
+    mixer: 11271 amostras, taxa medida 48000.001 Hz (clock de 50 MHz, quadro I2S 3125/3 ciclos)
+ECP5 (autoteste): 3/3 frames do TMDS serial iguais ao modelo; 11290 amostras de áudio no HDMI iguais ao mixer (11290 conferidas com o modelo da APU, 0 erradas); 811.8 amostras/frame (esperado 806,4)
+    TMDS serial: 5879899 símbolos, 0 desalinhados, clock lane errada 0, latência serial/paralelo 2 pixels, 0 diferenças
+    pacotes: 14699 (áudio 7350, ACR 1832 N=6144 CTS=25000, AVI 14 VIC=1, Audio IF 14, nulos 5488), erros HDMI 0
+    reset durante a inicialização: lock 0 até o ciclo 40, 1, 0 nos ciclos 150..169 (SDRAM em power-up), 1 resets do núcleo, ADC em silêncio
+    DMA (autoteste): 17 aceitos, 0 rejeitados (fila cheia 0), 17 concluídos, 0 cancelados (0 da fila), 736 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    SDRAM (sem DQM, RMW): 384 escritas de 32 bits no modelo, 0 erros; CN2: 0 escritas, 0 aplicadas, 0 leituras não dirigidas
+    LEDs: autoteste=1 MD=0 SDRAM=1 FIFO_erro=0 HDMI_travado=1 áudio_ovf=0; 11760000 ciclos de 50 MHz -> OK
+cd build_ecp5_sim && ECP5_LOCKLOSS=1 ./Vecp5_board_sim ../out 16
+  frame  3 decodificado do TMDS serial: igual ao modelo
+  frame  4 decodificado do TMDS serial: igual ao modelo
+  frame  5 decodificado do TMDS serial: igual ao modelo
+  frame  6 decodificado do TMDS serial: igual ao modelo
+  frame  7 decodificado do TMDS serial: igual ao modelo
+  frame  8 decodificado do TMDS serial: igual ao modelo
+  frame  3 decodificado do TMDS serial: igual ao modelo
+  frame  4 decodificado do TMDS serial: igual ao modelo
+  frame  5 decodificado do TMDS serial: igual ao modelo
+  frame  6 decodificado do TMDS serial: igual ao modelo
+  frame  7 decodificado do TMDS serial: igual ao modelo
+  frame  8 decodificado do TMDS serial: igual ao modelo
+  frame  9 decodificado do TMDS serial: igual ao modelo
+  frame 10 decodificado do TMDS serial: igual ao modelo
+    mixer: 14497 amostras, taxa medida 47995.359 Hz (clock de 50 MHz, quadro I2S 3125/3 ciclos)
+    perda de lock após o frame 8 (6664082..6666082): 0 erros HDMI antes, receptor reiniciado; 8 frames comparados depois da recuperação
+ECP5 (perda de lock): 14/14 frames do TMDS serial iguais ao modelo; 0 amostras de áudio no HDMI iguais ao mixer (0 conferidas com o modelo da APU, 0 erradas); 824.3 amostras/frame (esperado 806,4)
+    TMDS serial: 7559849 símbolos, 0 desalinhados, clock lane errada 0, latência serial/paralelo 2 pixels, 0 diferenças
+    pacotes: 10570 (áudio 5285, ACR 1318 N=6144 CTS=25000, AVI 10 VIC=1, Audio IF 11, nulos 3946), erros HDMI 0
+    DMA (autoteste): 24 aceitos, 0 rejeitados (fila cheia 0), 24 concluídos, 0 cancelados (0 da fila), 1152 palavras DMA conferidas, 0 escritas CPU conferidas na porta, 0 erros
+    SDRAM (sem DQM, RMW): 768 escritas de 32 bits no modelo, 0 erros; CN2: 0 escritas, 0 aplicadas, 0 leituras não dirigidas
+    LEDs: autoteste=1 MD=0 SDRAM=1 FIFO_erro=0 HDMI_travado=1 áudio_ovf=0; 15122000 ciclos de 50 MHz -> OK
+exit 0 (61 s)
