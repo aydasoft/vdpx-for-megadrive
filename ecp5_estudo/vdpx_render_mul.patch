@@ -1,0 +1,14 @@
+--- rtl/vdpx_render.v	2026-11-16 05:36:13.000000000 +0000
++++ rtl/vdpx_render.v	2026-11-18 00:44:47.394196209 +0000
+@@ -139,7 +139,10 @@
+     wire  [2:0] d_cc  = d_hf ? (d_w1 - c) : c;
+     wire  [5:0] d_dyf = d_vf ? ({d_h1, 3'b111} - d_dy) : d_dy;
+     wire  [3:0] d_hh   = {1'b0, d_h1} + 4'd1;
+-    wire  [6:0] d_ccxh = {4'd0, d_cc} * {3'd0, d_hh};
++    // ECP5: produto 3x4 bits por soma/deslocamento (evita MULT18X18D no caminho critico)
++    wire  [6:0] d_ccxh = (d_cc[0] ? {3'd0, d_hh}        : 7'd0)
++                       + (d_cc[1] ? {2'd0, d_hh, 1'b0}  : 7'd0)
++                       + (d_cc[2] ? {1'd0, d_hh, 2'b0}  : 7'd0);
+     wire [13:0] d_tile = w2r[13:0] + {7'd0, d_ccxh} + {11'd0, d_dyf[5:3]};
+     wire [15:0] spat_addr = r_tbase + {d_tile[11:0], 4'd0} + {12'd0, d_dyf[2:0], 1'b0};
+     wire signed [11:0] d_x = $signed({{2{w1r[9]}}, w1r[9:0]}) + $signed({6'd0, c, 3'b000}) + $signed({9'd0, k});
