@@ -1,0 +1,895 @@
+// GERADO por scripts/gen_overlay.py -- não editar à mão.
+// Overlay de diagnóstico (M4.2): texto da sonda CN2 sobre o vídeo da VDPX.
+// Domínio do sistema; segue o fluxo de vídeo da VDPX (um pixel por vid_ce).
+module vdpx_overlay (
+    input             clk, rst, enable,
+    input       [7:0] in_r, in_g, in_b,
+    input             in_hs_n, in_vs_n, in_de, in_ce,
+    output reg  [7:0] out_r, out_g, out_b,
+    output reg        out_hs_n, out_vs_n, out_de,
+    output reg        out_ce,
+    input [0:0] f_st,
+    input [0:0] f_md,
+    input [31:0] f_n_acc,
+    input [15:0] f_n_drop,
+    input [4:0] f_fifo_hw,
+    input [2:0] f_last_off,
+    input [15:0] f_last_d,
+    input [31:0] f_n_wr,
+    input [31:0] f_n_wr_cas0,
+    input [31:0] f_n_rd,
+    input [31:0] f_n_rd_cas0,
+    input [7:0] f_fdcw_min,
+    input [7:0] f_fdcw_max,
+    input [7:0] f_fdcr_min,
+    input [7:0] f_fdcr_max,
+    input [7:0] f_f2w_min,
+    input [7:0] f_f2w_max,
+    input [7:0] f_ww_min,
+    input [7:0] f_ww_max,
+    input [7:0] f_f2c_min,
+    input [7:0] f_f2c_max,
+    input [0:0] f_fres_now,
+    input [15:0] f_n_fres,
+    input [31:0] f_n_cas_out,
+    input [4:0] f_unit_i,
+    input [3:0] f_unit_f
+);
+
+    // ---- position of the incoming pixel (HSYNC falls at x=656, VSYNC at y=490)
+    reg [9:0] hc, vc;
+    reg hs_d = 1'b1, vs_d = 1'b1;
+    wire hs_fall = hs_d & ~in_hs_n, vs_fall = vs_d & ~in_vs_n;
+    wire [9:0] x = hs_fall ? 10'd656 : hc;
+    wire [9:0] y = vs_fall ? 10'd490 : vc;
+    always @(posedge clk) if (in_ce) begin
+        hs_d <= in_hs_n; vs_d <= in_vs_n;
+        if (x == 10'd799) begin hc <= 0; vc <= (y == 10'd524) ? 10'd0 : y + 10'd1; end
+        else begin hc <= x + 10'd1; vc <= y; end
+    end
+
+    // ECP5-P1: binary -> 3 BCD digits by double dabble (shift + add-3 on 4-bit groups),
+    // registered every cycle (d_*), so no divider sits in front of the snapshot.
+    function [11:0] bcd3(input [7:0] n);
+        integer i;
+        reg [19:0] w;
+        begin
+            w = {12'd0, n};
+            for (i = 0; i < 8; i = i + 1) begin
+                if (w[11:8]  >= 4'd5) w[11:8]  = w[11:8]  + 4'd3;
+                if (w[15:12] >= 4'd5) w[15:12] = w[15:12] + 4'd3;
+                if (w[19:16] >= 4'd5) w[19:16] = w[19:16] + 4'd3;
+                w = w << 1;
+            end
+            bcd3 = w[19:8];
+        end
+    endfunction
+
+    // ---- snapshot at the start of vblank (no flicker)
+    reg s_st;
+    reg s_md;
+    reg [31:0] s_n_acc;
+    reg [15:0] s_n_drop;
+    reg [11:0] s_fifo_hw;
+    reg [3:0] s_last_off;
+    reg [15:0] s_last_d;
+    reg [31:0] s_n_wr;
+    reg [31:0] s_n_wr_cas0;
+    reg [31:0] s_n_rd;
+    reg [31:0] s_n_rd_cas0;
+    reg [11:0] s_fdcw_min;
+    reg [11:0] s_fdcw_max;
+    reg [11:0] s_fdcr_min;
+    reg [11:0] s_fdcr_max;
+    reg [11:0] s_f2w_min;
+    reg [11:0] s_f2w_max;
+    reg [11:0] s_ww_min;
+    reg [11:0] s_ww_max;
+    reg [11:0] s_f2c_min;
+    reg [11:0] s_f2c_max;
+    reg s_fres_now;
+    reg [15:0] s_n_fres;
+    reg [31:0] s_n_cas_out;
+    reg [11:0] s_unit_i;
+    reg [3:0] s_unit_f;
+    reg [11:0] d_fifo_hw;
+    reg [11:0] d_fdcw_min;
+    reg [11:0] d_fdcw_max;
+    reg [11:0] d_fdcr_min;
+    reg [11:0] d_fdcr_max;
+    reg [11:0] d_f2w_min;
+    reg [11:0] d_f2w_max;
+    reg [11:0] d_ww_min;
+    reg [11:0] d_ww_max;
+    reg [11:0] d_f2c_min;
+    reg [11:0] d_f2c_max;
+    reg [11:0] d_unit_i;
+    always @(posedge clk) begin
+        d_fifo_hw <= bcd3({3'd0, f_fifo_hw});
+        d_fdcw_min <= bcd3(f_fdcw_min);
+        d_fdcw_max <= bcd3(f_fdcw_max);
+        d_fdcr_min <= bcd3(f_fdcr_min);
+        d_fdcr_max <= bcd3(f_fdcr_max);
+        d_f2w_min <= bcd3(f_f2w_min);
+        d_f2w_max <= bcd3(f_f2w_max);
+        d_ww_min <= bcd3(f_ww_min);
+        d_ww_max <= bcd3(f_ww_max);
+        d_f2c_min <= bcd3(f_f2c_min);
+        d_f2c_max <= bcd3(f_f2c_max);
+        d_unit_i <= bcd3({3'd0, f_unit_i});
+    end
+    always @(posedge clk) if (in_ce && x == 10'd0 && y == 10'd480) begin
+        s_st <= f_st;
+        s_md <= f_md;
+        s_n_acc <= f_n_acc;
+        s_n_drop <= f_n_drop;
+        s_fifo_hw <= d_fifo_hw;
+        s_last_off <= {f_last_off, 1'b0};
+        s_last_d <= f_last_d;
+        s_n_wr <= f_n_wr;
+        s_n_wr_cas0 <= f_n_wr_cas0;
+        s_n_rd <= f_n_rd;
+        s_n_rd_cas0 <= f_n_rd_cas0;
+        s_fdcw_min <= d_fdcw_min;
+        s_fdcw_max <= d_fdcw_max;
+        s_fdcr_min <= d_fdcr_min;
+        s_fdcr_max <= d_fdcr_max;
+        s_f2w_min <= d_f2w_min;
+        s_f2w_max <= d_f2w_max;
+        s_ww_min <= d_ww_min;
+        s_ww_max <= d_ww_max;
+        s_f2c_min <= d_f2c_min;
+        s_f2c_max <= d_f2c_max;
+        s_fres_now <= f_fres_now;
+        s_n_fres <= f_n_fres;
+        s_n_cas_out <= f_n_cas_out;
+        s_unit_i <= d_unit_i;
+        s_unit_f <= f_unit_f;
+    end
+
+    // ---- template: glyph (0..63) or slot (64 + n)
+    function [7:0] tmpl(input [3:0] row, input [5:0] col);
+        case ({row, col})
+            {4'd0, 6'd0}: tmpl = 8'd23;
+            {4'd0, 6'd1}: tmpl = 8'd14;
+            {4'd0, 6'd2}: tmpl = 8'd38;
+            {4'd0, 6'd3}: tmpl = 8'd32;
+            {4'd0, 6'd4}: tmpl = 8'd14;
+            {4'd0, 6'd5}: tmpl = 8'd26;
+            {4'd0, 6'd6}: tmpl = 8'd34;
+            {4'd0, 6'd8}: tmpl = 8'd23;
+            {4'd0, 6'd9}: tmpl = 8'd5;
+            {4'd0, 6'd10}: tmpl = 8'd42;
+            {4'd0, 6'd11}: tmpl = 8'd3;
+            {4'd0, 6'd13}: tmpl = 8'd29;
+            {4'd0, 6'd14}: tmpl = 8'd25;
+            {4'd0, 6'd15}: tmpl = 8'd24;
+            {4'd0, 6'd16}: tmpl = 8'd14;
+            {4'd0, 6'd17}: tmpl = 8'd11;
+            {4'd0, 6'd19}: tmpl = 8'd13;
+            {4'd0, 6'd20}: tmpl = 8'd24;
+            {4'd0, 6'd21}: tmpl = 8'd3;
+            {4'd0, 6'd24}: tmpl = 8'd11;
+            {4'd0, 6'd25}: tmpl = 8'd31;
+            {4'd0, 6'd26}: tmpl = 8'd30;
+            {4'd0, 6'd27}: tmpl = 8'd25;
+            {4'd0, 6'd28}: tmpl = 8'd30;
+            {4'd0, 6'd29}: tmpl = 8'd15;
+            {4'd0, 6'd30}: tmpl = 8'd29;
+            {4'd0, 6'd31}: tmpl = 8'd30;
+            {4'd0, 6'd32}: tmpl = 8'd15;
+            {4'd0, 6'd33}: tmpl = 8'd37;
+            {4'd0, 6'd34}: tmpl = 8'd128;
+            {4'd0, 6'd36}: tmpl = 8'd23;
+            {4'd0, 6'd37}: tmpl = 8'd14;
+            {4'd0, 6'd38}: tmpl = 8'd37;
+            {4'd0, 6'd39}: tmpl = 8'd129;
+            {4'd1, 6'd0}: tmpl = 8'd15;
+            {4'd1, 6'd1}: tmpl = 8'd29;
+            {4'd1, 6'd2}: tmpl = 8'd13;
+            {4'd1, 6'd3}: tmpl = 8'd28;
+            {4'd1, 6'd4}: tmpl = 8'd19;
+            {4'd1, 6'd5}: tmpl = 8'd30;
+            {4'd1, 6'd6}: tmpl = 8'd11;
+            {4'd1, 6'd7}: tmpl = 8'd29;
+            {4'd1, 6'd9}: tmpl = 8'd11;
+            {4'd1, 6'd10}: tmpl = 8'd13;
+            {4'd1, 6'd11}: tmpl = 8'd15;
+            {4'd1, 6'd12}: tmpl = 8'd19;
+            {4'd1, 6'd13}: tmpl = 8'd30;
+            {4'd1, 6'd14}: tmpl = 8'd11;
+            {4'd1, 6'd15}: tmpl = 8'd29;
+            {4'd1, 6'd17}: tmpl = 8'd130;
+            {4'd1, 6'd18}: tmpl = 8'd131;
+            {4'd1, 6'd19}: tmpl = 8'd132;
+            {4'd1, 6'd20}: tmpl = 8'd133;
+            {4'd1, 6'd21}: tmpl = 8'd134;
+            {4'd1, 6'd22}: tmpl = 8'd135;
+            {4'd1, 6'd23}: tmpl = 8'd136;
+            {4'd1, 6'd24}: tmpl = 8'd137;
+            {4'd1, 6'd27}: tmpl = 8'd26;
+            {4'd1, 6'd28}: tmpl = 8'd15;
+            {4'd1, 6'd29}: tmpl = 8'd28;
+            {4'd1, 6'd30}: tmpl = 8'd14;
+            {4'd1, 6'd31}: tmpl = 8'd19;
+            {4'd1, 6'd32}: tmpl = 8'd14;
+            {4'd1, 6'd33}: tmpl = 8'd11;
+            {4'd1, 6'd34}: tmpl = 8'd29;
+            {4'd1, 6'd36}: tmpl = 8'd138;
+            {4'd1, 6'd37}: tmpl = 8'd139;
+            {4'd1, 6'd38}: tmpl = 8'd140;
+            {4'd1, 6'd39}: tmpl = 8'd141;
+            {4'd2, 6'd0}: tmpl = 8'd16;
+            {4'd2, 6'd1}: tmpl = 8'd19;
+            {4'd2, 6'd2}: tmpl = 8'd16;
+            {4'd2, 6'd3}: tmpl = 8'd25;
+            {4'd2, 6'd5}: tmpl = 8'd23;
+            {4'd2, 6'd6}: tmpl = 8'd11;
+            {4'd2, 6'd7}: tmpl = 8'd34;
+            {4'd2, 6'd9}: tmpl = 8'd142;
+            {4'd2, 6'd10}: tmpl = 8'd143;
+            {4'd2, 6'd14}: tmpl = 8'd31;
+            {4'd2, 6'd15}: tmpl = 8'd22;
+            {4'd2, 6'd16}: tmpl = 8'd30;
+            {4'd2, 6'd17}: tmpl = 8'd19;
+            {4'd2, 6'd18}: tmpl = 8'd23;
+            {4'd2, 6'd19}: tmpl = 8'd11;
+            {4'd2, 6'd21}: tmpl = 8'd11;
+            {4'd2, 6'd22}: tmpl = 8'd2;
+            {4'd2, 6'd23}: tmpl = 8'd3;
+            {4'd2, 6'd24}: tmpl = 8'd1;
+            {4'd2, 6'd25}: tmpl = 8'd1;
+            {4'd2, 6'd26}: tmpl = 8'd144;
+            {4'd2, 6'd27}: tmpl = 8'd41;
+            {4'd2, 6'd28}: tmpl = 8'd145;
+            {4'd2, 6'd29}: tmpl = 8'd146;
+            {4'd2, 6'd30}: tmpl = 8'd147;
+            {4'd2, 6'd31}: tmpl = 8'd148;
+            {4'd3, 6'd0}: tmpl = 8'd13;
+            {4'd3, 6'd1}: tmpl = 8'd19;
+            {4'd3, 6'd2}: tmpl = 8'd13;
+            {4'd3, 6'd3}: tmpl = 8'd22;
+            {4'd3, 6'd4}: tmpl = 8'd25;
+            {4'd3, 6'd6}: tmpl = 8'd13;
+            {4'd3, 6'd7}: tmpl = 8'd44;
+            {4'd3, 6'd9}: tmpl = 8'd16;
+            {4'd3, 6'd10}: tmpl = 8'd14;
+            {4'd3, 6'd11}: tmpl = 8'd33;
+            {4'd3, 6'd12}: tmpl = 8'd28;
+            {4'd3, 6'd14}: tmpl = 8'd149;
+            {4'd3, 6'd15}: tmpl = 8'd150;
+            {4'd3, 6'd16}: tmpl = 8'd151;
+            {4'd3, 6'd17}: tmpl = 8'd152;
+            {4'd3, 6'd18}: tmpl = 8'd153;
+            {4'd3, 6'd19}: tmpl = 8'd154;
+            {4'd3, 6'd20}: tmpl = 8'd155;
+            {4'd3, 6'd21}: tmpl = 8'd156;
+            {4'd3, 6'd23}: tmpl = 8'd13;
+            {4'd3, 6'd24}: tmpl = 8'd44;
+            {4'd3, 6'd26}: tmpl = 8'd13;
+            {4'd3, 6'd27}: tmpl = 8'd11;
+            {4'd3, 6'd28}: tmpl = 8'd29;
+            {4'd3, 6'd29}: tmpl = 8'd1;
+            {4'd3, 6'd31}: tmpl = 8'd157;
+            {4'd3, 6'd32}: tmpl = 8'd158;
+            {4'd3, 6'd33}: tmpl = 8'd159;
+            {4'd3, 6'd34}: tmpl = 8'd160;
+            {4'd3, 6'd35}: tmpl = 8'd161;
+            {4'd3, 6'd36}: tmpl = 8'd162;
+            {4'd3, 6'd37}: tmpl = 8'd163;
+            {4'd3, 6'd38}: tmpl = 8'd164;
+            {4'd4, 6'd0}: tmpl = 8'd13;
+            {4'd4, 6'd1}: tmpl = 8'd19;
+            {4'd4, 6'd2}: tmpl = 8'd13;
+            {4'd4, 6'd3}: tmpl = 8'd22;
+            {4'd4, 6'd4}: tmpl = 8'd25;
+            {4'd4, 6'd6}: tmpl = 8'd29;
+            {4'd4, 6'd7}: tmpl = 8'd44;
+            {4'd4, 6'd9}: tmpl = 8'd16;
+            {4'd4, 6'd10}: tmpl = 8'd14;
+            {4'd4, 6'd11}: tmpl = 8'd33;
+            {4'd4, 6'd12}: tmpl = 8'd28;
+            {4'd4, 6'd14}: tmpl = 8'd165;
+            {4'd4, 6'd15}: tmpl = 8'd166;
+            {4'd4, 6'd16}: tmpl = 8'd167;
+            {4'd4, 6'd17}: tmpl = 8'd168;
+            {4'd4, 6'd18}: tmpl = 8'd169;
+            {4'd4, 6'd19}: tmpl = 8'd170;
+            {4'd4, 6'd20}: tmpl = 8'd171;
+            {4'd4, 6'd21}: tmpl = 8'd172;
+            {4'd4, 6'd23}: tmpl = 8'd13;
+            {4'd4, 6'd24}: tmpl = 8'd44;
+            {4'd4, 6'd26}: tmpl = 8'd13;
+            {4'd4, 6'd27}: tmpl = 8'd11;
+            {4'd4, 6'd28}: tmpl = 8'd29;
+            {4'd4, 6'd29}: tmpl = 8'd1;
+            {4'd4, 6'd31}: tmpl = 8'd173;
+            {4'd4, 6'd32}: tmpl = 8'd174;
+            {4'd4, 6'd33}: tmpl = 8'd175;
+            {4'd4, 6'd34}: tmpl = 8'd176;
+            {4'd4, 6'd35}: tmpl = 8'd177;
+            {4'd4, 6'd36}: tmpl = 8'd178;
+            {4'd4, 6'd37}: tmpl = 8'd179;
+            {4'd4, 6'd38}: tmpl = 8'd180;
+            {4'd5, 6'd0}: tmpl = 8'd16;
+            {4'd5, 6'd1}: tmpl = 8'd14;
+            {4'd5, 6'd2}: tmpl = 8'd13;
+            {4'd5, 6'd4}: tmpl = 8'd12;
+            {4'd5, 6'd5}: tmpl = 8'd11;
+            {4'd5, 6'd6}: tmpl = 8'd19;
+            {4'd5, 6'd7}: tmpl = 8'd34;
+            {4'd5, 6'd8}: tmpl = 8'd25;
+            {4'd5, 6'd9}: tmpl = 8'd37;
+            {4'd5, 6'd11}: tmpl = 8'd15;
+            {4'd5, 6'd12}: tmpl = 8'd29;
+            {4'd5, 6'd13}: tmpl = 8'd13;
+            {4'd5, 6'd15}: tmpl = 8'd181;
+            {4'd5, 6'd16}: tmpl = 8'd182;
+            {4'd5, 6'd17}: tmpl = 8'd183;
+            {4'd5, 6'd18}: tmpl = 8'd38;
+            {4'd5, 6'd19}: tmpl = 8'd184;
+            {4'd5, 6'd20}: tmpl = 8'd185;
+            {4'd5, 6'd21}: tmpl = 8'd186;
+            {4'd5, 6'd23}: tmpl = 8'd29;
+            {4'd5, 6'd24}: tmpl = 8'd15;
+            {4'd5, 6'd25}: tmpl = 8'd23;
+            {4'd5, 6'd27}: tmpl = 8'd16;
+            {4'd5, 6'd28}: tmpl = 8'd14;
+            {4'd5, 6'd29}: tmpl = 8'd33;
+            {4'd5, 6'd30}: tmpl = 8'd28;
+            {4'd5, 6'd32}: tmpl = 8'd187;
+            {4'd5, 6'd33}: tmpl = 8'd188;
+            {4'd5, 6'd34}: tmpl = 8'd189;
+            {4'd5, 6'd35}: tmpl = 8'd38;
+            {4'd5, 6'd36}: tmpl = 8'd190;
+            {4'd5, 6'd37}: tmpl = 8'd191;
+            {4'd5, 6'd38}: tmpl = 8'd192;
+            {4'd6, 6'd0}: tmpl = 8'd16;
+            {4'd6, 6'd1}: tmpl = 8'd14;
+            {4'd6, 6'd2}: tmpl = 8'd13;
+            {4'd6, 6'd3}: tmpl = 8'd40;
+            {4'd6, 6'd4}: tmpl = 8'd16;
+            {4'd6, 6'd5}: tmpl = 8'd14;
+            {4'd6, 6'd6}: tmpl = 8'd33;
+            {4'd6, 6'd7}: tmpl = 8'd28;
+            {4'd6, 6'd9}: tmpl = 8'd193;
+            {4'd6, 6'd10}: tmpl = 8'd194;
+            {4'd6, 6'd11}: tmpl = 8'd195;
+            {4'd6, 6'd12}: tmpl = 8'd38;
+            {4'd6, 6'd13}: tmpl = 8'd196;
+            {4'd6, 6'd14}: tmpl = 8'd197;
+            {4'd6, 6'd15}: tmpl = 8'd198;
+            {4'd6, 6'd18}: tmpl = 8'd22;
+            {4'd6, 6'd19}: tmpl = 8'd11;
+            {4'd6, 6'd20}: tmpl = 8'd28;
+            {4'd6, 6'd21}: tmpl = 8'd17;
+            {4'd6, 6'd22}: tmpl = 8'd31;
+            {4'd6, 6'd23}: tmpl = 8'd28;
+            {4'd6, 6'd24}: tmpl = 8'd11;
+            {4'd6, 6'd26}: tmpl = 8'd16;
+            {4'd6, 6'd27}: tmpl = 8'd14;
+            {4'd6, 6'd28}: tmpl = 8'd33;
+            {4'd6, 6'd29}: tmpl = 8'd28;
+            {4'd6, 6'd31}: tmpl = 8'd199;
+            {4'd6, 6'd32}: tmpl = 8'd200;
+            {4'd6, 6'd33}: tmpl = 8'd201;
+            {4'd6, 6'd34}: tmpl = 8'd38;
+            {4'd6, 6'd35}: tmpl = 8'd202;
+            {4'd6, 6'd36}: tmpl = 8'd203;
+            {4'd6, 6'd37}: tmpl = 8'd204;
+            {4'd7, 6'd0}: tmpl = 8'd16;
+            {4'd7, 6'd1}: tmpl = 8'd14;
+            {4'd7, 6'd2}: tmpl = 8'd13;
+            {4'd7, 6'd3}: tmpl = 8'd40;
+            {4'd7, 6'd4}: tmpl = 8'd13;
+            {4'd7, 6'd5}: tmpl = 8'd11;
+            {4'd7, 6'd6}: tmpl = 8'd29;
+            {4'd7, 6'd7}: tmpl = 8'd1;
+            {4'd7, 6'd9}: tmpl = 8'd205;
+            {4'd7, 6'd10}: tmpl = 8'd206;
+            {4'd7, 6'd11}: tmpl = 8'd207;
+            {4'd7, 6'd12}: tmpl = 8'd38;
+            {4'd7, 6'd13}: tmpl = 8'd208;
+            {4'd7, 6'd14}: tmpl = 8'd209;
+            {4'd7, 6'd15}: tmpl = 8'd210;
+            {4'd7, 6'd18}: tmpl = 8'd16;
+            {4'd7, 6'd19}: tmpl = 8'd28;
+            {4'd7, 6'd20}: tmpl = 8'd15;
+            {4'd7, 6'd21}: tmpl = 8'd29;
+            {4'd7, 6'd22}: tmpl = 8'd37;
+            {4'd7, 6'd23}: tmpl = 8'd211;
+            {4'd7, 6'd25}: tmpl = 8'd26;
+            {4'd7, 6'd26}: tmpl = 8'd31;
+            {4'd7, 6'd27}: tmpl = 8'd22;
+            {4'd7, 6'd28}: tmpl = 8'd29;
+            {4'd7, 6'd29}: tmpl = 8'd25;
+            {4'd7, 6'd30}: tmpl = 8'd29;
+            {4'd7, 6'd32}: tmpl = 8'd212;
+            {4'd7, 6'd33}: tmpl = 8'd213;
+            {4'd7, 6'd34}: tmpl = 8'd214;
+            {4'd7, 6'd35}: tmpl = 8'd215;
+            {4'd8, 6'd0}: tmpl = 8'd13;
+            {4'd8, 6'd1}: tmpl = 8'd11;
+            {4'd8, 6'd2}: tmpl = 8'd29;
+            {4'd8, 6'd3}: tmpl = 8'd1;
+            {4'd8, 6'd5}: tmpl = 8'd16;
+            {4'd8, 6'd6}: tmpl = 8'd25;
+            {4'd8, 6'd7}: tmpl = 8'd28;
+            {4'd8, 6'd8}: tmpl = 8'd11;
+            {4'd8, 6'd10}: tmpl = 8'd216;
+            {4'd8, 6'd11}: tmpl = 8'd217;
+            {4'd8, 6'd12}: tmpl = 8'd218;
+            {4'd8, 6'd13}: tmpl = 8'd219;
+            {4'd8, 6'd14}: tmpl = 8'd220;
+            {4'd8, 6'd15}: tmpl = 8'd221;
+            {4'd8, 6'd16}: tmpl = 8'd222;
+            {4'd8, 6'd17}: tmpl = 8'd223;
+            {4'd8, 6'd20}: tmpl = 8'd45;
+            {4'd8, 6'd21}: tmpl = 8'd31;
+            {4'd8, 6'd22}: tmpl = 8'd24;
+            {4'd8, 6'd23}: tmpl = 8'd19;
+            {4'd8, 6'd24}: tmpl = 8'd14;
+            {4'd8, 6'd25}: tmpl = 8'd11;
+            {4'd8, 6'd26}: tmpl = 8'd14;
+            {4'd8, 6'd27}: tmpl = 8'd15;
+            {4'd8, 6'd29}: tmpl = 8'd224;
+            {4'd8, 6'd30}: tmpl = 8'd225;
+            {4'd8, 6'd31}: tmpl = 8'd42;
+            {4'd8, 6'd32}: tmpl = 8'd226;
+            {4'd8, 6'd34}: tmpl = 8'd24;
+            {4'd8, 6'd35}: tmpl = 8'd29;
+            {4'd8, 6'd36}: tmpl = 8'd46;
+            default: tmpl = 8'd0;
+        endcase
+    endfunction
+
+    function [5:0] hexg(input [3:0] n); hexg = {2'b00, n} + 6'd1; endfunction
+    function [5:0] slotg(input [6:0] sl);
+        case (sl)
+            7'd0: slotg = (s_st ? 6'd29 : 6'd24);
+            7'd1: slotg = (s_md ? 6'd29 : 6'd24);
+            7'd2: slotg = {2'b00, s_n_acc[31:28]} + 6'd1;
+            7'd3: slotg = {2'b00, s_n_acc[27:24]} + 6'd1;
+            7'd4: slotg = {2'b00, s_n_acc[23:20]} + 6'd1;
+            7'd5: slotg = {2'b00, s_n_acc[19:16]} + 6'd1;
+            7'd6: slotg = {2'b00, s_n_acc[15:12]} + 6'd1;
+            7'd7: slotg = {2'b00, s_n_acc[11:8]} + 6'd1;
+            7'd8: slotg = {2'b00, s_n_acc[7:4]} + 6'd1;
+            7'd9: slotg = {2'b00, s_n_acc[3:0]} + 6'd1;
+            7'd10: slotg = {2'b00, s_n_drop[15:12]} + 6'd1;
+            7'd11: slotg = {2'b00, s_n_drop[11:8]} + 6'd1;
+            7'd12: slotg = {2'b00, s_n_drop[7:4]} + 6'd1;
+            7'd13: slotg = {2'b00, s_n_drop[3:0]} + 6'd1;
+            7'd14: slotg = {2'b00, s_fifo_hw[7:4]} + 6'd1;
+            7'd15: slotg = {2'b00, s_fifo_hw[3:0]} + 6'd1;
+            7'd16: slotg = {2'b00, s_last_off[3:0]} + 6'd1;
+            7'd17: slotg = {2'b00, s_last_d[15:12]} + 6'd1;
+            7'd18: slotg = {2'b00, s_last_d[11:8]} + 6'd1;
+            7'd19: slotg = {2'b00, s_last_d[7:4]} + 6'd1;
+            7'd20: slotg = {2'b00, s_last_d[3:0]} + 6'd1;
+            7'd21: slotg = {2'b00, s_n_wr[31:28]} + 6'd1;
+            7'd22: slotg = {2'b00, s_n_wr[27:24]} + 6'd1;
+            7'd23: slotg = {2'b00, s_n_wr[23:20]} + 6'd1;
+            7'd24: slotg = {2'b00, s_n_wr[19:16]} + 6'd1;
+            7'd25: slotg = {2'b00, s_n_wr[15:12]} + 6'd1;
+            7'd26: slotg = {2'b00, s_n_wr[11:8]} + 6'd1;
+            7'd27: slotg = {2'b00, s_n_wr[7:4]} + 6'd1;
+            7'd28: slotg = {2'b00, s_n_wr[3:0]} + 6'd1;
+            7'd29: slotg = {2'b00, s_n_wr_cas0[31:28]} + 6'd1;
+            7'd30: slotg = {2'b00, s_n_wr_cas0[27:24]} + 6'd1;
+            7'd31: slotg = {2'b00, s_n_wr_cas0[23:20]} + 6'd1;
+            7'd32: slotg = {2'b00, s_n_wr_cas0[19:16]} + 6'd1;
+            7'd33: slotg = {2'b00, s_n_wr_cas0[15:12]} + 6'd1;
+            7'd34: slotg = {2'b00, s_n_wr_cas0[11:8]} + 6'd1;
+            7'd35: slotg = {2'b00, s_n_wr_cas0[7:4]} + 6'd1;
+            7'd36: slotg = {2'b00, s_n_wr_cas0[3:0]} + 6'd1;
+            7'd37: slotg = {2'b00, s_n_rd[31:28]} + 6'd1;
+            7'd38: slotg = {2'b00, s_n_rd[27:24]} + 6'd1;
+            7'd39: slotg = {2'b00, s_n_rd[23:20]} + 6'd1;
+            7'd40: slotg = {2'b00, s_n_rd[19:16]} + 6'd1;
+            7'd41: slotg = {2'b00, s_n_rd[15:12]} + 6'd1;
+            7'd42: slotg = {2'b00, s_n_rd[11:8]} + 6'd1;
+            7'd43: slotg = {2'b00, s_n_rd[7:4]} + 6'd1;
+            7'd44: slotg = {2'b00, s_n_rd[3:0]} + 6'd1;
+            7'd45: slotg = {2'b00, s_n_rd_cas0[31:28]} + 6'd1;
+            7'd46: slotg = {2'b00, s_n_rd_cas0[27:24]} + 6'd1;
+            7'd47: slotg = {2'b00, s_n_rd_cas0[23:20]} + 6'd1;
+            7'd48: slotg = {2'b00, s_n_rd_cas0[19:16]} + 6'd1;
+            7'd49: slotg = {2'b00, s_n_rd_cas0[15:12]} + 6'd1;
+            7'd50: slotg = {2'b00, s_n_rd_cas0[11:8]} + 6'd1;
+            7'd51: slotg = {2'b00, s_n_rd_cas0[7:4]} + 6'd1;
+            7'd52: slotg = {2'b00, s_n_rd_cas0[3:0]} + 6'd1;
+            7'd53: slotg = {2'b00, s_fdcw_min[11:8]} + 6'd1;
+            7'd54: slotg = {2'b00, s_fdcw_min[7:4]} + 6'd1;
+            7'd55: slotg = {2'b00, s_fdcw_min[3:0]} + 6'd1;
+            7'd56: slotg = {2'b00, s_fdcw_max[11:8]} + 6'd1;
+            7'd57: slotg = {2'b00, s_fdcw_max[7:4]} + 6'd1;
+            7'd58: slotg = {2'b00, s_fdcw_max[3:0]} + 6'd1;
+            7'd59: slotg = {2'b00, s_fdcr_min[11:8]} + 6'd1;
+            7'd60: slotg = {2'b00, s_fdcr_min[7:4]} + 6'd1;
+            7'd61: slotg = {2'b00, s_fdcr_min[3:0]} + 6'd1;
+            7'd62: slotg = {2'b00, s_fdcr_max[11:8]} + 6'd1;
+            7'd63: slotg = {2'b00, s_fdcr_max[7:4]} + 6'd1;
+            7'd64: slotg = {2'b00, s_fdcr_max[3:0]} + 6'd1;
+            7'd65: slotg = {2'b00, s_f2w_min[11:8]} + 6'd1;
+            7'd66: slotg = {2'b00, s_f2w_min[7:4]} + 6'd1;
+            7'd67: slotg = {2'b00, s_f2w_min[3:0]} + 6'd1;
+            7'd68: slotg = {2'b00, s_f2w_max[11:8]} + 6'd1;
+            7'd69: slotg = {2'b00, s_f2w_max[7:4]} + 6'd1;
+            7'd70: slotg = {2'b00, s_f2w_max[3:0]} + 6'd1;
+            7'd71: slotg = {2'b00, s_ww_min[11:8]} + 6'd1;
+            7'd72: slotg = {2'b00, s_ww_min[7:4]} + 6'd1;
+            7'd73: slotg = {2'b00, s_ww_min[3:0]} + 6'd1;
+            7'd74: slotg = {2'b00, s_ww_max[11:8]} + 6'd1;
+            7'd75: slotg = {2'b00, s_ww_max[7:4]} + 6'd1;
+            7'd76: slotg = {2'b00, s_ww_max[3:0]} + 6'd1;
+            7'd77: slotg = {2'b00, s_f2c_min[11:8]} + 6'd1;
+            7'd78: slotg = {2'b00, s_f2c_min[7:4]} + 6'd1;
+            7'd79: slotg = {2'b00, s_f2c_min[3:0]} + 6'd1;
+            7'd80: slotg = {2'b00, s_f2c_max[11:8]} + 6'd1;
+            7'd81: slotg = {2'b00, s_f2c_max[7:4]} + 6'd1;
+            7'd82: slotg = {2'b00, s_f2c_max[3:0]} + 6'd1;
+            7'd83: slotg = (s_fres_now ? 6'd29 : 6'd24);
+            7'd84: slotg = {2'b00, s_n_fres[15:12]} + 6'd1;
+            7'd85: slotg = {2'b00, s_n_fres[11:8]} + 6'd1;
+            7'd86: slotg = {2'b00, s_n_fres[7:4]} + 6'd1;
+            7'd87: slotg = {2'b00, s_n_fres[3:0]} + 6'd1;
+            7'd88: slotg = {2'b00, s_n_cas_out[31:28]} + 6'd1;
+            7'd89: slotg = {2'b00, s_n_cas_out[27:24]} + 6'd1;
+            7'd90: slotg = {2'b00, s_n_cas_out[23:20]} + 6'd1;
+            7'd91: slotg = {2'b00, s_n_cas_out[19:16]} + 6'd1;
+            7'd92: slotg = {2'b00, s_n_cas_out[15:12]} + 6'd1;
+            7'd93: slotg = {2'b00, s_n_cas_out[11:8]} + 6'd1;
+            7'd94: slotg = {2'b00, s_n_cas_out[7:4]} + 6'd1;
+            7'd95: slotg = {2'b00, s_n_cas_out[3:0]} + 6'd1;
+            7'd96: slotg = {2'b00, s_unit_i[7:4]} + 6'd1;
+            7'd97: slotg = {2'b00, s_unit_i[3:0]} + 6'd1;
+            7'd98: slotg = {2'b00, s_unit_f[3:0]} + 6'd1;
+            default: slotg = 6'd0;
+        endcase
+    endfunction
+
+    function [7:0] font(input [5:0] g, input [2:0] r);
+        case ({g, r})
+            {6'd1, 3'd0}: font = 8'h38;
+            {6'd1, 3'd1}: font = 8'h44;
+            {6'd1, 3'd2}: font = 8'h4C;
+            {6'd1, 3'd3}: font = 8'h54;
+            {6'd1, 3'd4}: font = 8'h64;
+            {6'd1, 3'd5}: font = 8'h44;
+            {6'd1, 3'd6}: font = 8'h38;
+            {6'd2, 3'd0}: font = 8'h10;
+            {6'd2, 3'd1}: font = 8'h30;
+            {6'd2, 3'd2}: font = 8'h10;
+            {6'd2, 3'd3}: font = 8'h10;
+            {6'd2, 3'd4}: font = 8'h10;
+            {6'd2, 3'd5}: font = 8'h10;
+            {6'd2, 3'd6}: font = 8'h38;
+            {6'd3, 3'd0}: font = 8'h38;
+            {6'd3, 3'd1}: font = 8'h44;
+            {6'd3, 3'd2}: font = 8'h04;
+            {6'd3, 3'd3}: font = 8'h08;
+            {6'd3, 3'd4}: font = 8'h10;
+            {6'd3, 3'd5}: font = 8'h20;
+            {6'd3, 3'd6}: font = 8'h7C;
+            {6'd4, 3'd0}: font = 8'h78;
+            {6'd4, 3'd1}: font = 8'h04;
+            {6'd4, 3'd2}: font = 8'h04;
+            {6'd4, 3'd3}: font = 8'h38;
+            {6'd4, 3'd4}: font = 8'h04;
+            {6'd4, 3'd5}: font = 8'h04;
+            {6'd4, 3'd6}: font = 8'h78;
+            {6'd5, 3'd0}: font = 8'h08;
+            {6'd5, 3'd1}: font = 8'h18;
+            {6'd5, 3'd2}: font = 8'h28;
+            {6'd5, 3'd3}: font = 8'h48;
+            {6'd5, 3'd4}: font = 8'h7C;
+            {6'd5, 3'd5}: font = 8'h08;
+            {6'd5, 3'd6}: font = 8'h08;
+            {6'd6, 3'd0}: font = 8'h7C;
+            {6'd6, 3'd1}: font = 8'h40;
+            {6'd6, 3'd2}: font = 8'h78;
+            {6'd6, 3'd3}: font = 8'h04;
+            {6'd6, 3'd4}: font = 8'h04;
+            {6'd6, 3'd5}: font = 8'h44;
+            {6'd6, 3'd6}: font = 8'h38;
+            {6'd7, 3'd0}: font = 8'h18;
+            {6'd7, 3'd1}: font = 8'h20;
+            {6'd7, 3'd2}: font = 8'h40;
+            {6'd7, 3'd3}: font = 8'h78;
+            {6'd7, 3'd4}: font = 8'h44;
+            {6'd7, 3'd5}: font = 8'h44;
+            {6'd7, 3'd6}: font = 8'h38;
+            {6'd8, 3'd0}: font = 8'h7C;
+            {6'd8, 3'd1}: font = 8'h04;
+            {6'd8, 3'd2}: font = 8'h08;
+            {6'd8, 3'd3}: font = 8'h10;
+            {6'd8, 3'd4}: font = 8'h20;
+            {6'd8, 3'd5}: font = 8'h20;
+            {6'd8, 3'd6}: font = 8'h20;
+            {6'd9, 3'd0}: font = 8'h38;
+            {6'd9, 3'd1}: font = 8'h44;
+            {6'd9, 3'd2}: font = 8'h44;
+            {6'd9, 3'd3}: font = 8'h38;
+            {6'd9, 3'd4}: font = 8'h44;
+            {6'd9, 3'd5}: font = 8'h44;
+            {6'd9, 3'd6}: font = 8'h38;
+            {6'd10, 3'd0}: font = 8'h38;
+            {6'd10, 3'd1}: font = 8'h44;
+            {6'd10, 3'd2}: font = 8'h44;
+            {6'd10, 3'd3}: font = 8'h3C;
+            {6'd10, 3'd4}: font = 8'h04;
+            {6'd10, 3'd5}: font = 8'h08;
+            {6'd10, 3'd6}: font = 8'h30;
+            {6'd11, 3'd0}: font = 8'h38;
+            {6'd11, 3'd1}: font = 8'h44;
+            {6'd11, 3'd2}: font = 8'h44;
+            {6'd11, 3'd3}: font = 8'h7C;
+            {6'd11, 3'd4}: font = 8'h44;
+            {6'd11, 3'd5}: font = 8'h44;
+            {6'd11, 3'd6}: font = 8'h44;
+            {6'd12, 3'd0}: font = 8'h78;
+            {6'd12, 3'd1}: font = 8'h44;
+            {6'd12, 3'd2}: font = 8'h44;
+            {6'd12, 3'd3}: font = 8'h78;
+            {6'd12, 3'd4}: font = 8'h44;
+            {6'd12, 3'd5}: font = 8'h44;
+            {6'd12, 3'd6}: font = 8'h78;
+            {6'd13, 3'd0}: font = 8'h38;
+            {6'd13, 3'd1}: font = 8'h44;
+            {6'd13, 3'd2}: font = 8'h40;
+            {6'd13, 3'd3}: font = 8'h40;
+            {6'd13, 3'd4}: font = 8'h40;
+            {6'd13, 3'd5}: font = 8'h44;
+            {6'd13, 3'd6}: font = 8'h38;
+            {6'd14, 3'd0}: font = 8'h70;
+            {6'd14, 3'd1}: font = 8'h48;
+            {6'd14, 3'd2}: font = 8'h44;
+            {6'd14, 3'd3}: font = 8'h44;
+            {6'd14, 3'd4}: font = 8'h44;
+            {6'd14, 3'd5}: font = 8'h48;
+            {6'd14, 3'd6}: font = 8'h70;
+            {6'd15, 3'd0}: font = 8'h7C;
+            {6'd15, 3'd1}: font = 8'h40;
+            {6'd15, 3'd2}: font = 8'h40;
+            {6'd15, 3'd3}: font = 8'h78;
+            {6'd15, 3'd4}: font = 8'h40;
+            {6'd15, 3'd5}: font = 8'h40;
+            {6'd15, 3'd6}: font = 8'h7C;
+            {6'd16, 3'd0}: font = 8'h7C;
+            {6'd16, 3'd1}: font = 8'h40;
+            {6'd16, 3'd2}: font = 8'h40;
+            {6'd16, 3'd3}: font = 8'h78;
+            {6'd16, 3'd4}: font = 8'h40;
+            {6'd16, 3'd5}: font = 8'h40;
+            {6'd16, 3'd6}: font = 8'h40;
+            {6'd17, 3'd0}: font = 8'h38;
+            {6'd17, 3'd1}: font = 8'h44;
+            {6'd17, 3'd2}: font = 8'h40;
+            {6'd17, 3'd3}: font = 8'h5C;
+            {6'd17, 3'd4}: font = 8'h44;
+            {6'd17, 3'd5}: font = 8'h44;
+            {6'd17, 3'd6}: font = 8'h3C;
+            {6'd18, 3'd0}: font = 8'h44;
+            {6'd18, 3'd1}: font = 8'h44;
+            {6'd18, 3'd2}: font = 8'h44;
+            {6'd18, 3'd3}: font = 8'h7C;
+            {6'd18, 3'd4}: font = 8'h44;
+            {6'd18, 3'd5}: font = 8'h44;
+            {6'd18, 3'd6}: font = 8'h44;
+            {6'd19, 3'd0}: font = 8'h38;
+            {6'd19, 3'd1}: font = 8'h10;
+            {6'd19, 3'd2}: font = 8'h10;
+            {6'd19, 3'd3}: font = 8'h10;
+            {6'd19, 3'd4}: font = 8'h10;
+            {6'd19, 3'd5}: font = 8'h10;
+            {6'd19, 3'd6}: font = 8'h38;
+            {6'd20, 3'd0}: font = 8'h1C;
+            {6'd20, 3'd1}: font = 8'h08;
+            {6'd20, 3'd2}: font = 8'h08;
+            {6'd20, 3'd3}: font = 8'h08;
+            {6'd20, 3'd4}: font = 8'h08;
+            {6'd20, 3'd5}: font = 8'h48;
+            {6'd20, 3'd6}: font = 8'h30;
+            {6'd21, 3'd0}: font = 8'h44;
+            {6'd21, 3'd1}: font = 8'h48;
+            {6'd21, 3'd2}: font = 8'h50;
+            {6'd21, 3'd3}: font = 8'h60;
+            {6'd21, 3'd4}: font = 8'h50;
+            {6'd21, 3'd5}: font = 8'h48;
+            {6'd21, 3'd6}: font = 8'h44;
+            {6'd22, 3'd0}: font = 8'h40;
+            {6'd22, 3'd1}: font = 8'h40;
+            {6'd22, 3'd2}: font = 8'h40;
+            {6'd22, 3'd3}: font = 8'h40;
+            {6'd22, 3'd4}: font = 8'h40;
+            {6'd22, 3'd5}: font = 8'h40;
+            {6'd22, 3'd6}: font = 8'h7C;
+            {6'd23, 3'd0}: font = 8'h44;
+            {6'd23, 3'd1}: font = 8'h6C;
+            {6'd23, 3'd2}: font = 8'h54;
+            {6'd23, 3'd3}: font = 8'h54;
+            {6'd23, 3'd4}: font = 8'h44;
+            {6'd23, 3'd5}: font = 8'h44;
+            {6'd23, 3'd6}: font = 8'h44;
+            {6'd24, 3'd0}: font = 8'h44;
+            {6'd24, 3'd1}: font = 8'h64;
+            {6'd24, 3'd2}: font = 8'h54;
+            {6'd24, 3'd3}: font = 8'h4C;
+            {6'd24, 3'd4}: font = 8'h44;
+            {6'd24, 3'd5}: font = 8'h44;
+            {6'd24, 3'd6}: font = 8'h44;
+            {6'd25, 3'd0}: font = 8'h38;
+            {6'd25, 3'd1}: font = 8'h44;
+            {6'd25, 3'd2}: font = 8'h44;
+            {6'd25, 3'd3}: font = 8'h44;
+            {6'd25, 3'd4}: font = 8'h44;
+            {6'd25, 3'd5}: font = 8'h44;
+            {6'd25, 3'd6}: font = 8'h38;
+            {6'd26, 3'd0}: font = 8'h78;
+            {6'd26, 3'd1}: font = 8'h44;
+            {6'd26, 3'd2}: font = 8'h44;
+            {6'd26, 3'd3}: font = 8'h78;
+            {6'd26, 3'd4}: font = 8'h40;
+            {6'd26, 3'd5}: font = 8'h40;
+            {6'd26, 3'd6}: font = 8'h40;
+            {6'd27, 3'd0}: font = 8'h38;
+            {6'd27, 3'd1}: font = 8'h44;
+            {6'd27, 3'd2}: font = 8'h44;
+            {6'd27, 3'd3}: font = 8'h44;
+            {6'd27, 3'd4}: font = 8'h54;
+            {6'd27, 3'd5}: font = 8'h48;
+            {6'd27, 3'd6}: font = 8'h34;
+            {6'd28, 3'd0}: font = 8'h78;
+            {6'd28, 3'd1}: font = 8'h44;
+            {6'd28, 3'd2}: font = 8'h44;
+            {6'd28, 3'd3}: font = 8'h78;
+            {6'd28, 3'd4}: font = 8'h50;
+            {6'd28, 3'd5}: font = 8'h48;
+            {6'd28, 3'd6}: font = 8'h44;
+            {6'd29, 3'd0}: font = 8'h3C;
+            {6'd29, 3'd1}: font = 8'h40;
+            {6'd29, 3'd2}: font = 8'h40;
+            {6'd29, 3'd3}: font = 8'h38;
+            {6'd29, 3'd4}: font = 8'h04;
+            {6'd29, 3'd5}: font = 8'h04;
+            {6'd29, 3'd6}: font = 8'h78;
+            {6'd30, 3'd0}: font = 8'h7C;
+            {6'd30, 3'd1}: font = 8'h10;
+            {6'd30, 3'd2}: font = 8'h10;
+            {6'd30, 3'd3}: font = 8'h10;
+            {6'd30, 3'd4}: font = 8'h10;
+            {6'd30, 3'd5}: font = 8'h10;
+            {6'd30, 3'd6}: font = 8'h10;
+            {6'd31, 3'd0}: font = 8'h44;
+            {6'd31, 3'd1}: font = 8'h44;
+            {6'd31, 3'd2}: font = 8'h44;
+            {6'd31, 3'd3}: font = 8'h44;
+            {6'd31, 3'd4}: font = 8'h44;
+            {6'd31, 3'd5}: font = 8'h44;
+            {6'd31, 3'd6}: font = 8'h38;
+            {6'd32, 3'd0}: font = 8'h44;
+            {6'd32, 3'd1}: font = 8'h44;
+            {6'd32, 3'd2}: font = 8'h44;
+            {6'd32, 3'd3}: font = 8'h44;
+            {6'd32, 3'd4}: font = 8'h44;
+            {6'd32, 3'd5}: font = 8'h28;
+            {6'd32, 3'd6}: font = 8'h10;
+            {6'd33, 3'd0}: font = 8'h44;
+            {6'd33, 3'd1}: font = 8'h44;
+            {6'd33, 3'd2}: font = 8'h44;
+            {6'd33, 3'd3}: font = 8'h54;
+            {6'd33, 3'd4}: font = 8'h54;
+            {6'd33, 3'd5}: font = 8'h54;
+            {6'd33, 3'd6}: font = 8'h28;
+            {6'd34, 3'd0}: font = 8'h44;
+            {6'd34, 3'd1}: font = 8'h44;
+            {6'd34, 3'd2}: font = 8'h28;
+            {6'd34, 3'd3}: font = 8'h10;
+            {6'd34, 3'd4}: font = 8'h28;
+            {6'd34, 3'd5}: font = 8'h44;
+            {6'd34, 3'd6}: font = 8'h44;
+            {6'd35, 3'd0}: font = 8'h44;
+            {6'd35, 3'd1}: font = 8'h44;
+            {6'd35, 3'd2}: font = 8'h28;
+            {6'd35, 3'd3}: font = 8'h10;
+            {6'd35, 3'd4}: font = 8'h10;
+            {6'd35, 3'd5}: font = 8'h10;
+            {6'd35, 3'd6}: font = 8'h10;
+            {6'd36, 3'd0}: font = 8'h7C;
+            {6'd36, 3'd1}: font = 8'h04;
+            {6'd36, 3'd2}: font = 8'h08;
+            {6'd36, 3'd3}: font = 8'h10;
+            {6'd36, 3'd4}: font = 8'h20;
+            {6'd36, 3'd5}: font = 8'h40;
+            {6'd36, 3'd6}: font = 8'h7C;
+            {6'd37, 3'd1}: font = 8'h30;
+            {6'd37, 3'd2}: font = 8'h30;
+            {6'd37, 3'd4}: font = 8'h30;
+            {6'd37, 3'd5}: font = 8'h30;
+            {6'd38, 3'd3}: font = 8'h7C;
+            {6'd39, 3'd1}: font = 8'h10;
+            {6'd39, 3'd2}: font = 8'h10;
+            {6'd39, 3'd3}: font = 8'h7C;
+            {6'd39, 3'd4}: font = 8'h10;
+            {6'd39, 3'd5}: font = 8'h10;
+            {6'd40, 3'd0}: font = 8'h20;
+            {6'd40, 3'd1}: font = 8'h10;
+            {6'd40, 3'd2}: font = 8'h08;
+            {6'd40, 3'd3}: font = 8'h04;
+            {6'd40, 3'd4}: font = 8'h08;
+            {6'd40, 3'd5}: font = 8'h10;
+            {6'd40, 3'd6}: font = 8'h20;
+            {6'd41, 3'd2}: font = 8'h7C;
+            {6'd41, 3'd4}: font = 8'h7C;
+            {6'd42, 3'd5}: font = 8'h30;
+            {6'd42, 3'd6}: font = 8'h30;
+            {6'd43, 3'd0}: font = 8'h38;
+            {6'd43, 3'd1}: font = 8'h44;
+            {6'd43, 3'd2}: font = 8'h04;
+            {6'd43, 3'd3}: font = 8'h08;
+            {6'd43, 3'd4}: font = 8'h10;
+            {6'd43, 3'd6}: font = 8'h10;
+            {6'd44, 3'd1}: font = 8'h04;
+            {6'd44, 3'd2}: font = 8'h08;
+            {6'd44, 3'd3}: font = 8'h10;
+            {6'd44, 3'd4}: font = 8'h20;
+            {6'd44, 3'd5}: font = 8'h40;
+            {6'd45, 3'd0}: font = 8'h08;
+            {6'd45, 3'd1}: font = 8'h10;
+            {6'd45, 3'd2}: font = 8'h20;
+            {6'd45, 3'd3}: font = 8'h20;
+            {6'd45, 3'd4}: font = 8'h20;
+            {6'd45, 3'd5}: font = 8'h10;
+            {6'd45, 3'd6}: font = 8'h08;
+            {6'd46, 3'd0}: font = 8'h20;
+            {6'd46, 3'd1}: font = 8'h10;
+            {6'd46, 3'd2}: font = 8'h08;
+            {6'd46, 3'd3}: font = 8'h08;
+            {6'd46, 3'd4}: font = 8'h08;
+            {6'd46, 3'd5}: font = 8'h10;
+            {6'd46, 3'd6}: font = 8'h20;
+            default: font = 8'h00;
+        endcase
+    endfunction
+
+    // ---- 4-stage pipeline (one stage per pixel), video delayed to match.
+    // ECP5-P1: stage 1b registers the template ROM output in logic before the slot mux
+    // (template ROM -> slot mux -> font ROM no longer sits in one system clock).
+    localparam [4:0] TOP = 5'd21;
+    wire [4:0] trow = y[8:4];
+    wire       in_box0 = enable && (y < 10'd480) && (trow >= TOP) && (x < 10'd640);
+    reg  [7:0] code1; reg [2:0] gy1, gx1; reg box1, title1;
+    reg  [7:0] code1b; reg [2:0] gy1b, gx1b; reg box1b, title1b;
+    reg  [5:0] gl2;   reg [2:0] gy2, gx2; reg box2, title2;
+    reg  [26:0] d1, d1b, d2;
+    wire [3:0] trel = trow - TOP;
+    wire [7:0] frow = font(gl2, gy2);
+    always @(posedge clk) begin
+        out_ce <= in_ce;
+        if (in_ce) begin
+            // stage 1: template
+            code1 <= tmpl(trel, x[9:4]);
+            gy1 <= y[3:1]; gx1 <= x[3:1]; box1 <= in_box0; title1 <= (trel == 4'd0);
+            d1 <= {in_r, in_g, in_b, in_hs_n, in_vs_n, in_de};
+            // stage 1b: register (timing only)
+            code1b <= code1; gy1b <= gy1; gx1b <= gx1; box1b <= box1; title1b <= title1;
+            d1b <= d1;
+            // stage 2: slot -> glyph
+            gl2 <= code1b[7] ? slotg(code1b[6:0]) : code1b[5:0];
+            gy2 <= gy1b; gx2 <= gx1b; box2 <= box1b; title2 <= title1b;
+            d2 <= d1b;
+            // stage 3: font pixel and mix
+            out_hs_n <= d2[2]; out_vs_n <= d2[1]; out_de <= d2[0];
+            if (box2) begin
+                if (frow[3'd7 - gx2]) begin
+                    out_r <= 8'hFF; out_g <= title2 ? 8'hE0 : 8'hFF; out_b <= title2 ? 8'h40 : 8'hFF;
+                end else begin
+                    out_r <= 8'h08; out_g <= 8'h10; out_b <= 8'h38;
+                end
+            end else begin
+                out_r <= d2[26:19]; out_g <= d2[18:11]; out_b <= d2[10:3];
+            end
+        end
+    end
+endmodule

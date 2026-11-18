@@ -1,0 +1,9 @@
+MD-VDPX M4.2 SONDA CN2  AUTOTESTE:{st:f} MD:{md:f}
+ESCRITAS ACEITAS {n_acc:h8}  PERDIDAS {n_drop:h4}
+FIFO MAX {fifo_hw:d2}   ULTIMA A1200{last_off:h1}={last_d:h4}
+CICLO C/ FDWR {n_wr:h8} C/ CAS0 {n_wr_cas0:h8}
+CICLO S/ FDWR {n_rd:h8} C/ CAS0 {n_rd_cas0:h8}
+FDC BAIXO: ESC {fdcw_min:d3}-{fdcw_max:d3} SEM FDWR {fdcr_min:d3}-{fdcr_max:d3}
+FDC>FDWR {f2w_min:d3}-{f2w_max:d3}  LARGURA FDWR {ww_min:d3}-{ww_max:d3}
+FDC>CAS0 {f2c_min:d3}-{f2c_max:d3}  FRES:{fres_now:f} PULSOS {n_fres:h4}
+CAS0 FORA {n_cas_out:h8}  (UNIDADE 19.8 NS)

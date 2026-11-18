@@ -1,0 +1,97 @@
+// MD-VDPX - Tang Nano 20K (GW2AR-LV18QN88C8/I7)
+// Pinos conferidos com a plataforma LiteX da placa (sipeed_tang_nano_20k.py).
+// A distribuição dos pinos do Mega Drive pelos conectores J5/J6 é PROPOSTA (M5):
+// conferir com o esquemático antes de fazer a placa adaptadora.
+
+IO_LOC "clk27" 4;
+IO_PORT "clk27" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_LOC "btn_s1" 88;
+IO_PORT "btn_s1" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+IO_LOC "btn_s2" 87;
+IO_PORT "btn_s2" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;
+
+// HDMI (TLVDS, como no exemplo DVI do apicula para a Tang Nano 20K)
+IO_LOC "tmds_clk_p" 33;
+IO_PORT "tmds_clk_p" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_clk_n" 34;
+IO_PORT "tmds_clk_n" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_d_p[0]" 35;
+IO_PORT "tmds_d_p[0]" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_d_n[0]" 36;
+IO_PORT "tmds_d_n[0]" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_d_p[1]" 37;
+IO_PORT "tmds_d_p[1]" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_d_n[1]" 38;
+IO_PORT "tmds_d_n[1]" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_d_p[2]" 39;
+IO_PORT "tmds_d_p[2]" IO_TYPE=LVDS25 PULL_MODE=NONE;
+IO_LOC "tmds_d_n[2]" 40;
+IO_PORT "tmds_d_n[2]" IO_TYPE=LVDS25 PULL_MODE=NONE;
+
+// Audio: MAX98357A da placa
+IO_LOC "hp_bck" 56;
+IO_PORT "hp_bck" IO_TYPE=LVCMOS33;
+IO_LOC "hp_ws" 55;
+IO_PORT "hp_ws" IO_TYPE=LVCMOS33;
+IO_LOC "hp_din" 54;
+IO_PORT "hp_din" IO_TYPE=LVCMOS33;
+IO_LOC "pa_en" 51;
+IO_PORT "pa_en" IO_TYPE=LVCMOS33;
+// ADC externo (PCM1808): BCK e LRCK em paralelo com os pinos 56/55 (J5)
+IO_LOC "adc_dout" 18;
+IO_PORT "adc_dout" IO_TYPE=LVCMOS33;
+IO_LOC "adc_mclk" 19;
+IO_PORT "adc_mclk" IO_TYPE=LVCMOS33;
+
+// LED de estado (LED 6 da placa, ativo em 0)
+IO_LOC "led_n" 20;
+IO_PORT "led_n" IO_TYPE=LVCMOS33;
+
+// Mega Drive - porta de expansão CN2, via 74LVC245 (5 V -> 3,3 V)
+// Pinos 52/53 (DDC do HDMI) e 25/26 (banco de 1,8 V) ficam livres de propósito.
+IO_LOC "md_d[0]" 73;
+IO_LOC "md_d[1]" 74;
+IO_LOC "md_d[2]" 76;
+IO_LOC "md_d[3]" 77;
+IO_LOC "md_d[4]" 27;
+IO_LOC "md_d[5]" 28;
+IO_LOC "md_d[6]" 29;
+IO_LOC "md_d[7]" 30;
+IO_LOC "md_d[8]" 31;
+IO_LOC "md_d[9]" 41;
+IO_LOC "md_d[10]" 42;
+IO_LOC "md_d[11]" 48;
+IO_LOC "md_d[12]" 49;
+IO_LOC "md_d[13]" 71;
+IO_LOC "md_d[14]" 72;
+IO_LOC "md_d[15]" 75;
+IO_LOC "md_a[1]" 86;
+IO_LOC "md_a[2]" 80;
+IO_LOC "md_a[3]" 85;
+IO_LOC "md_fdc_n" 15;
+IO_LOC "md_fdwr_n" 16;
+IO_LOC "md_cas0_n" 17;
+IO_LOC "md_fres" 79;
+IO_PORT "md_d[0]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[1]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[2]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[3]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[4]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[5]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[6]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[7]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[8]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[9]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[10]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[11]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[12]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[13]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[14]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_d[15]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_a[1]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_a[2]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_a[3]" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_fdc_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_fdwr_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_cas0_n" IO_TYPE=LVCMOS33 PULL_MODE=UP;
+IO_PORT "md_fres" IO_TYPE=LVCMOS33 PULL_MODE=DOWN;

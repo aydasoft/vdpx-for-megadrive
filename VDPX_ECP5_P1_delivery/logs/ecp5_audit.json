@@ -1,0 +1,194 @@
+{
+ "LPF sites unicos": {
+  "ok": true,
+  "detail": "83 portas"
+ },
+ "HDMI P = esquema da Ext-Board": {
+  "ok": true,
+  "detail": "gpdi_dp[0]=G19, gpdi_dp[1]=E20, gpdi_dp[2]=C20, gpdi_dp[3]=J19"
+ },
+ "HDMI pares verdadeiros A/B no banco 2 (prjtrellis-db)": {
+  "ok": true,
+  "detail": "G19(A)/H20(B) banco 2; E20(A)/F19(B) banco 2; C20(A)/D19(B) banco 2; J19(A)/K19(B) banco 2"
+ },
+ "HDMI lado N livre": {
+  "ok": true,
+  "detail": ""
+ },
+ "HDMI IO_TYPE LVCMOS33D": {
+  "ok": true,
+  "detail": ""
+ },
+ "nao usa pinos reservados: flash": {
+  "ok": true,
+  "detail": ""
+ },
+ "nao usa pinos reservados: eth": {
+  "ok": true,
+  "detail": ""
+ },
+ "nao usa pinos reservados: D16 (divergencia SDRAM)": {
+  "ok": true,
+  "detail": ""
+ },
+ "nao usa pinos reservados: K18/J17/H18 (botao/serial)": {
+  "ok": true,
+  "detail": ""
+ },
+ "SDRAM: 49 pinos (clk, ras, cas, we, 2 ba, 11 a, 32 dq)": {
+  "ok": true,
+  "detail": "49"
+ },
+ "CN2: 23 entradas (16 dados, 3 endereco, FDC FDWR CAS0 FRES), sem DRIVE": {
+  "ok": true,
+  "detail": "23"
+ },
+ "todos os I/O em LVCMOS33/LVCMOS33D": {
+  "ok": true,
+  "detail": ""
+ },
+ "banks": {
+  "6": [
+   "clk25",
+   "led_n",
+   "md_a[3]"
+  ],
+  "2": [
+   "adc_dout",
+   "gpdi_dp[0]",
+   "gpdi_dp[1]",
+   "gpdi_dp[2]",
+   "gpdi_dp[3]",
+   "i2s_bck",
+   "md_d[3]",
+   "md_d[7]"
+  ],
+  "0": [
+   "sdram_a[9]",
+   "sdram_ba[0]",
+   "sdram_ba[1]",
+   "sdram_cas_n",
+   "sdram_clk",
+   "sdram_dq[0]",
+   "sdram_dq[10]",
+   "sdram_dq[11]",
+   "sdram_dq[12]",
+   "sdram_dq[14]",
+   "sdram_dq[16]",
+   "sdram_dq[17]",
+   "sdram_dq[20]",
+   "sdram_dq[22]",
+   "sdram_dq[2]",
+   "sdram_dq[3]",
+   "sdram_dq[4]",
+   "sdram_dq[5]",
+   "sdram_dq[7]",
+   "sdram_dq[8]",
+   "sdram_dq[9]",
+   "sdram_ras_n",
+   "sdram_we_n"
+  ],
+  "1": [
+   "md_d[0]",
+   "md_d[1]",
+   "md_d[2]",
+   "md_d[4]",
+   "md_d[5]",
+   "md_d[6]",
+   "sdram_a[0]",
+   "sdram_a[10]",
+   "sdram_a[1]",
+   "sdram_a[2]",
+   "sdram_a[3]",
+   "sdram_a[4]",
+   "sdram_a[5]",
+   "sdram_a[6]",
+   "sdram_a[7]",
+   "sdram_a[8]",
+   "sdram_dq[18]",
+   "sdram_dq[19]",
+   "sdram_dq[21]",
+   "sdram_dq[23]",
+   "sdram_dq[24]",
+   "sdram_dq[25]",
+   "sdram_dq[26]",
+   "sdram_dq[27]",
+   "sdram_dq[28]",
+   "sdram_dq[29]",
+   "sdram_dq[30]",
+   "sdram_dq[31]"
+  ],
+  "7": [
+   "adc_mclk",
+   "i2s_dout",
+   "i2s_ws",
+   "md_a[1]",
+   "md_a[2]",
+   "md_cas0_n",
+   "md_d[10]",
+   "md_d[11]",
+   "md_d[12]",
+   "md_d[13]",
+   "md_d[14]",
+   "md_d[15]",
+   "md_d[8]",
+   "md_d[9]",
+   "md_fdc_n",
+   "md_fdwr_n",
+   "md_fres",
+   "sdram_dq[13]",
+   "sdram_dq[15]",
+   "sdram_dq[1]",
+   "sdram_dq[6]"
+  ]
+ },
+ "netlist: md_* somente input (write-only)": {
+  "ok": true,
+  "detail": "md_a:input, md_cas0_n:input, md_d:input, md_fdc_n:input, md_fdwr_n:input, md_fres:input"
+ },
+ "PLL VCO 400..800 MHz": {
+  "ok": true,
+  "detail": "500.0 MHz"
+ },
+ "PLL 125/50/25/50 MHz": {
+  "ok": true,
+  "detail": "CLKOP=125.0, CLKOS=50.0, CLKOS2=25.0, CLKOS3=50.0"
+ },
+ "125/50/25 MHz com a mesma fase (bordas alinhadas)": {
+  "ok": true,
+  "detail": "CPHASE 2/2/2"
+ },
+ "clock da SDRAM 16 ns depois de clk_sys (288 graus)": {
+  "ok": true,
+  "detail": "16.0 ns"
+ },
+ "video 640x480 800x525 a 25 MHz": {
+  "ok": true,
+  "detail": "59.5238 Hz"
+ },
+ "quadro I2S 3125/3 ciclos = 48 kHz exatos": {
+  "ok": true,
+  "detail": "48000.0 Hz"
+ },
+ "MCLK media 256 fs = 12,288 MHz": {
+  "ok": true,
+  "detail": "12.288 MHz; meios periodos [2, 3] ciclos (jitter fracionario, EXPERIMENTAL)"
+ },
+ "ACR N=6144 CTS=25000 exato para 25 MHz": {
+  "ok": true,
+  "detail": "25000"
+ },
+ "vdpx_board: CTS 25000 com CLK50": {
+  "ok": true,
+  "detail": ""
+ },
+ "clocks": {
+  "CLKOP": 125.0,
+  "CLKOS": 50.0,
+  "CLKOS2": 25.0,
+  "CLKOS3": 50.0,
+  "vco": 500.0,
+  "video_hz": 59.523809523809526,
+  "sdram_clk_phase_ns": 16.0
+ }
+}

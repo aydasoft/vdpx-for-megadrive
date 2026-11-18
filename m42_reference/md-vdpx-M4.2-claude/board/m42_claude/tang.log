@@ -1,0 +1,597 @@
+cp rtl/board/selftest.hex build_tang/
+cd build_tang && /home/claude/tools/yosys/build-rel/yosys -q -l synth.log -p "read_verilog -D SYNTHESIS ../rtl/vdpx_top.v ../rtl/vdpx_timing.v ../rtl/vdpx_render.v ../rtl/vdpx_sdpram.v ../rtl/vdpx_apu.v ../rtl/vdpx_i2s.v ../rtl/md_fdc_adapter.v ../rtl/hdmi/tmds_enc.v ../rtl/hdmi/hdmi_tx.v ../rtl/board/async_fifo.v ../rtl/board/sdram_ctrl.v ../rtl/board/vdpx_selftest.v ../rtl/board/vdpx_board.v ../rtl/board/cn2_probe.v ../rtl/board/vdpx_overlay.v ../rtl/board/tang_top.v; \
+  synth_gowin -family gw2a -top tang_top -json tang.json; tee -q -o synth_stat.txt stat"
+../rtl/board/tang_top.v:102: Warning: Yosys has only limited support for tri-state logic at the moment.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:215: Warning: Range [7:0] select out of bounds on signal `\PORT_A_WR_DATA': Setting 7 MSB bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:215: Warning: Range select [16:9] out of bounds on signal `\PORT_A_WR_DATA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:215: Warning: Range select [25:18] out of bounds on signal `\PORT_A_WR_DATA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:215: Warning: Range select [34:27] out of bounds on signal `\PORT_A_WR_DATA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:216: Warning: Range [7:0] select out of bounds on signal `\PORT_B_WR_DATA': Setting 7 MSB bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:216: Warning: Range select [16:9] out of bounds on signal `\PORT_B_WR_DATA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:216: Warning: Range select [25:18] out of bounds on signal `\PORT_B_WR_DATA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:216: Warning: Range select [34:27] out of bounds on signal `\PORT_B_WR_DATA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:220: Warning: Range select [23:16] out of bounds on signal `\genblk1.DOA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:220: Warning: Range select [31:24] out of bounds on signal `\genblk1.DOA': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:221: Warning: Range select [23:16] out of bounds on signal `\genblk1.DOB': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:221: Warning: Range select [31:24] out of bounds on signal `\genblk1.DOB': Setting all 8 result bits to undef.
+/home/claude/tools/yosys/build-rel/share/gowin/brams_map.v:114: Warning: Range [7:0] select out of bounds on signal `\PORT_A_WR_DATA': Setting 4 MSB bits to undef.
+cd build_tang && /home/claude/tools/nextpnr/build/nextpnr-himbaechel --json tang.json --write pnr.json --device GW2AR-LV18QN88C8/I7 \
+  --vopt family=GW2A-18C --vopt cst=../board/tang_nano_20k.cst --freq 50.4 -l pnr.log
+Info: Using uarch 'gowin' for device 'GW2AR-LV18QN88C8/I7'
+Could not find platform dependent libraries <exec_prefix>
+
+Info: Reading constraints...
+Info: Create constant nets...
+Info: Modify LUTs...
+Info: Pack IOBs...
+Info: Pack I3C IOs...
+Info: Pack MIPI IOs...
+Info: Pack diff IOBs...
+Info: Pack FFs into IO cells...
+Info: Pack IODELAY...
+Info: Pack Input Edge Monitors...
+Info: Pack IO logic...
+Info: Pack DESER16 logic...
+Info: Pack GSR...
+Info: Pack HCLK cells...
+Info: Pack DLLDLYs...
+Info: Pack wide LUTs...
+Info: Packed MUX2_LUT8:6, MUX2_LU7:2, MUX2_LUT6:16, MUX2_LUT5:374
+Info: Pack ALUs...
+Info: Pack SSRAMs...
+Info: Constrained 716 LUTFF pairs.
+Info: Pack PLL...
+Info: Pack ADC...
+Info: Pack GW JTAG...
+Info: Pack BSRAMs...
+Info: Pack DSP...
+Info: Pack INV...
+Info: Pack buffered nets...
+Info: Pack EMCU and UserFlash cells...
+Info: Pack UserFlash cells...
+Info: Pack DQCE cells...
+Info: Pack DCS cells...
+Info: Checksum: 0xf9e9e82f
+
+Info: Device utilisation:
+Info: 	                 VCC:       1/      1   100%
+Info: 	                 IOB:      64/    384    16%
+Info: 	                LUT4:    8532/  20736    41%
+Info: 	            IOLOGICI:       0/    384     0%
+Info: 	            IOLOGICO:       4/    384     1%
+Info: 	           MUX2_LUT5:     462/  10368     4%
+Info: 	           MUX2_LUT6:      44/   5184     0%
+Info: 	           MUX2_LUT7:      14/   2592     0%
+Info: 	           MUX2_LUT8:       6/   2592     0%
+Info: 	                 ALU:    3264/  15552    20%
+Info: 	                 GND:       1/      1   100%
+Info: 	                 DFF:    3713/  15552    23%
+Info: 	           RAM16SDP4:     161/    648    24%
+Info: 	               BSRAM:      43/     46    93%
+Info: 	              ALU54D:       0/     24     0%
+Info: 	     MULTADDALU18X18:       0/     24     0%
+Info: 	        MULTALU18X18:       0/     24     0%
+Info: 	        MULTALU36X18:       0/     24     0%
+Info: 	           MULT36X36:       0/     12     0%
+Info: 	           MULT18X18:       1/     48     2%
+Info: 	             MULT9X9:       0/     96     0%
+Info: 	              PADD18:       0/     48     0%
+Info: 	               PADD9:       0/     96     0%
+Info: 	                 GSR:       1/      1   100%
+Info: 	                 OSC:       0/      1     0%
+Info: 	                rPLL:       2/      2   100%
+Info: 	             GW_JTAG:       0/      1     0%
+Info: 	                BUFG:       1/     24     4%
+Info: 	                DQCE:       0/     24     0%
+Info: 	                 DCS:       0/      8     0%
+Info: 	               DHCEN:       0/     24     0%
+Info: 	              CLKDIV:       1/      8    12%
+Info: 	             CLKDIV2:       0/     16     0%
+
+Info: Running custom HCLK placer...
+Info: Placed 0 cells based on constraints.
+Info: Creating initial analytic placement for 6038 cells, random placement wirelen = 381848.
+Info:     at initial placer iter 0, wirelen = 9904
+Info:     at initial placer iter 1, wirelen = 8317
+Info:     at initial placer iter 2, wirelen = 7942
+Info:     at initial placer iter 3, wirelen = 7585
+Info: Running main analytical placer, max placement attempts per cell = 33435753.
+Info:     at iteration #1, type ALL: wirelen solved = 7769, spread = 86247, legal = 162764; time = 1.61s
+Info:     at iteration #2, type ALL: wirelen solved = 10507, spread = 75346, legal = 134188; time = 1.36s
+Info:     at iteration #3, type ALL: wirelen solved = 12735, spread = 72531, legal = 114033; time = 0.79s
+Info:     at iteration #4, type ALL: wirelen solved = 13370, spread = 63129, legal = 99571; time = 0.72s
+Info:     at iteration #5, type ALL: wirelen solved = 15346, spread = 62009, legal = 91189; time = 0.72s
+Info:     at iteration #6, type ALL: wirelen solved = 16926, spread = 58413, legal = 87056; time = 0.62s
+Info:     at iteration #7, type ALL: wirelen solved = 18319, spread = 62623, legal = 89248; time = 0.78s
+Info:     at iteration #8, type ALL: wirelen solved = 19632, spread = 62821, legal = 97049; time = 0.71s
+Info:     at iteration #9, type ALL: wirelen solved = 20830, spread = 60347, legal = 95384; time = 0.67s
+Info:     at iteration #10, type ALL: wirelen solved = 21325, spread = 68647, legal = 104315; time = 1.37s
+Info:     at iteration #11, type ALL: wirelen solved = 22860, spread = 67884, legal = 114190; time = 1.67s
+Info: HeAP Placer Time: 12.95s
+Info:   of which solving equations: 3.01s
+Info:   of which spreading cells: 0.37s
+Info:   of which strict legalisation: 8.41s
+
+Info: Running simulated annealing placer for refinement.
+Info:   at iteration #1: temp = 0.000000, timing cost = 679, wirelen = 87056
+Info:   at iteration #5: temp = 0.000000, timing cost = 460, wirelen = 62994
+Info:   at iteration #10: temp = 0.000000, timing cost = 414, wirelen = 57676
+Info:   at iteration #15: temp = 0.000000, timing cost = 443, wirelen = 55620
+Info:   at iteration #20: temp = 0.000000, timing cost = 443, wirelen = 54325
+Info:   at iteration #25: temp = 0.000000, timing cost = 412, wirelen = 53708
+Info:   at iteration #30: temp = 0.000000, timing cost = 412, wirelen = 53499
+Info:   at iteration #34: temp = 0.000000, timing cost = 408, wirelen = 53431 
+Info: SA placement time 39.77s
+
+Info: Max frequency for clock 'clk_pix': 82.97 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_sys': 65.35 MHz (PASS at 50.40 MHz)
+
+Info: Max delay posedge clk_pix -> posedge clk_sys: 0.47 ns
+Info: Max delay posedge clk_sys -> posedge clk_pix: 10.36 ns
+
+Info: Slack histogram:
+Info:  legend: times are in ps
+Info:          * represents 20 endpoint(s)
+Info:          + represents [1,20) endpoint(s)
+Info: [  4538,   5290) |+
+Info: [  5290,   6042) |+
+Info: [  6042,   6794) |*+
+Info: [  6794,   7546) |*+
+Info: [  7546,   8298) |***+
+Info: [  8298,   9050) |*****+
+Info: [  9050,   9802) |*************+
+Info: [  9802,  10554) |*******************+
+Info: [ 10554,  11306) |********************+
+Info: [ 11306,  12058) |*************************+
+Info: [ 12058,  12810) |******************************************+
+Info: [ 12810,  13562) |********************************+
+Info: [ 13562,  14314) |*******************************+
+Info: [ 14314,  15066) |*************************+
+Info: [ 15066,  15818) |*********************+
+Info: [ 15818,  16570) |********************+
+Info: [ 16570,  17322) |******************+
+Info: [ 17322,  18074) |*****************************+
+Info: [ 18074,  18826) |************************************+
+Info: [ 18826,  19578) |************************************************************ 
+Info: Checksum: 0xa3af0c1c
+Info: Routing globals...
+Info:     'clk27_IBUF_I_O' net was routed.
+Info:     'clk126' net was routed using global resources only.
+Warning: Failed to route net 'u_board.md_d_in[3]' from X29Y0/F6 to X11Y17/D4 using dedicated routing.
+Warning: Failed to route net 'u_board.md_d_in[3]' from X29Y0/F6 to X8Y4/D5 using dedicated routing.
+Warning: Failed to route net 'u_board.md_a[2]' from X26Y0/F6 to X10Y17/D0 using dedicated routing.
+Warning: Failed to route net 'u_board.md_a[2]' from X26Y0/F6 to X7Y4/B5 using dedicated routing.
+Info:     'clk_pix' net was routed using global resources only.
+Warning: Failed to route net 'clk_sys' from X2Y45/F5 to X54Y10/A0 using dedicated routing.
+Info:     'clk_sys' net was routed using global resources only.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_SUM[2]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT4_I3_F_MUX2_LUT5_I1_O[5]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F[2]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM[2]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F[0]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT4_I3_F_MUX2_LUT5_I1_O[0]' is routed using segments.
+Info:     'u_board.u_vdpx.sat_we_DFF_D_Q[2]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_1_COUT_ALU_CIN_SUM[1]' is routed using segments.
+Info:     'u_board.u_vdpx.sat_we_DFFR_Q_RESET_LUT4_I3_F' is routed using segments.
+Info:     'u_board.u_vdpx.cram_we_DFF_D_Q[0]' is routed using segments.
+Info:     'u_board.u_vdpx.u_vram.mem.0.0_DOB[0]' is routed using segments.
+Info:     'u_board.u_vdpx.cm_req_LUT4_I1_F_LUT3_I2_F' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_SUM[1]' is routed using segments.
+Info:     'u_board.u_sdram.sd_ras_n_DFFS_Q_D_LUT4_F_I2[0]' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.lfsr.0.0_DO[3]' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_SUM_LUT4_I3_F_LUT3_I2_F[0]' is routed using segments.
+Info:     'u_board.u_sdram.sd_dq_oe_LUT1_I0_F' is routed using segments.
+Info:     'u_board.p_f2wmax_DFFRE_Q_CE_LUT4_F_I3[2]' is routed using segments.
+Info:     'u_board.u_hdmi.a_rd_DFFRE_Q_D_ALU_SUM_CIN_ALU_COUT_SUM_LUT3_I1_F_DFFR_D_Q' is routed using segments.
+Info:     'u_board.u_probe.saw_wr_LUT4_I1_1_F' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.f_rd_DFFRE_Q_D_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT3_I1_F_DFFR_D_Q' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.fifo.0.8_RAD' is routed using segments.
+Info:     'u_board.u_sdram.rd_pipe[1]' is routed using segments.
+Info:     'u_board.u_ovl.gl2[2]' is routed using segments.
+Info:     'u_board.u_adp.activity_LUT3_I0_F' is routed using segments.
+Info:     'u_board.u_probe.saw_wr_LUT4_I1_F' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.fifo.0.4_DO_2_LUT2_F_1_I1_LUT2_I1_F' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.cm_busy_LUT3_I2_F[0]' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.fifo.0.3_DO[0]' is routed using segments.
+Info:     'u_board.u_vdpx.hold_LUT2_I0_F_LUT3_I2_F[2]' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.f_rd_DFFRE_Q_D_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT3_I1_F_DFFR_D_Q' is routed using segments.
+Info:     'u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT4_I3_F_LUT3_I2_F[0]' is routed using segments.
+Info:     'u_board.u_sdram.cur_hi' is routed using segments.
+Info:     'u_board.u_vdpx.u_apu.st[10]' is routed using segments.
+Info:     'u_board.sm_addr_DFFE_Q_10_D_MUX2_LUT5_O_S0[2]' is routed using segments.
+Info:     'u_board.u_vdpx.u_vram.mem.0.0_DOB[1]' is routed using segments.
+Info:     'leds[0]' is routed using segments.
+Info:     'u_board.u_vdpx.sat_we_DFF_D_Q[1]' is routed using segments.
+Info:     'u_board.u_vdpx.cram_we_DFF_D_Q[1]' is routed using segments.
+
+Info: Routing..
+Info: Setting up routing queue.
+Info: Routing 35513 arcs.
+Info:            |   (re-)routed arcs  |   delta    | remaining|       time spent     |
+Info:    IterCnt |  w/ripup   wo/ripup |  w/r  wo/r |      arcs| batch(sec) total(sec)|
+Info:       1000 |       24        975 |   24   975 |     34542|       1.02       1.02|
+Info:       2000 |       46       1953 |   22   978 |     33572|       0.48       1.50|
+Info:       3000 |       73       2926 |   27   973 |     32715|       0.53       2.03|
+Info:       4000 |       93       3906 |   20   980 |     31737|       0.63       2.66|
+Info:       5000 |      134       4865 |   41   959 |     30787|       0.70       3.36|
+Info:       6000 |      177       5822 |   43   957 |     29843|       0.88       4.24|
+Info:       7000 |      230       6769 |   53   947 |     28909|       0.98       5.22|
+Info:       8000 |      307       7692 |   77   923 |     27997|       0.89       6.11|
+Info:       9000 |      377       8622 |   70   930 |     27093|       0.78       6.90|
+Info:      10000 |      530       9469 |  153   847 |     26332|       0.86       7.75|
+Info:      11000 |      737      10262 |  207   793 |     25714|       1.11       8.86|
+Info:      12000 |      914      11085 |  177   823 |     24990|       0.99       9.85|
+Info:      13000 |     1038      11961 |  124   876 |     24207|       0.89      10.74|
+Info:      14000 |     1200      12799 |  162   838 |     23491|       0.99      11.73|
+Info:      15000 |     1327      13547 |  127   748 |     22678|       0.73      12.47|
+Info:      16000 |     1436      14277 |  109   730 |     21835|       0.99      13.45|
+Info:      17000 |     1551      15026 |  115   749 |     21003|       1.17      14.62|
+Info:      18000 |     1626      15716 |   75   690 |     20091|       0.61      15.23|
+Info:      19000 |     1718      16355 |   92   639 |     19252|       0.72      15.95|
+Info:      20000 |     1797      17097 |   79   742 |     18355|       0.73      16.68|
+Info:      21000 |     1878      17812 |   81   715 |     17471|       0.76      17.44|
+Info:      22000 |     1919      18444 |   41   632 |     16535|       0.77      18.21|
+Info:      23000 |     1973      19063 |   54   619 |     15616|       0.80      19.01|
+Info:      24000 |     2062      19739 |   89   676 |     14745|       0.81      19.82|
+Info:      25000 |     2118      20487 |   56   748 |     13811|       0.79      20.61|
+Info:      26000 |     2167      21219 |   49   732 |     12877|       0.93      21.54|
+Info:      27000 |     2220      21954 |   53   735 |     11962|       0.70      22.23|
+Info:      28000 |     2263      22629 |   43   675 |     11021|       0.68      22.91|
+Info:      29000 |     2309      23399 |   46   770 |     10103|       0.53      23.44|
+Info:      30000 |     2364      24316 |   55   917 |      9211|       0.58      24.01|
+Info:      31000 |     2436      25244 |   72   928 |      8308|       0.49      24.50|
+Info:      32000 |     2448      26179 |   12   935 |      7333|       0.63      25.13|
+Info:      33000 |     2465      27099 |   17   920 |      6360|       0.80      25.93|
+Info:      34000 |     2474      28028 |    9   929 |      5372|       0.89      26.82|
+Info:      35000 |     2493      28942 |   19   914 |      4397|       0.87      27.69|
+Info:      36000 |     2518      29848 |   25   906 |      3440|       0.82      28.51|
+Info:      37000 |     2539      30769 |   21   921 |      2477|       0.81      29.31|
+Info:      38000 |     2575      31670 |   36   901 |      1528|       0.82      30.13|
+Info:      39000 |     2614      32575 |   39   905 |       586|       0.95      31.08|
+Info:      39643 |     2659      33131 |   45   556 |         0|       0.81      31.89|
+Info: Routing complete.
+Info: Router1 time 31.89s
+Info: Checksum: 0x92b48230
+
+Info: Critical path report for clock 'clk_pix' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.23  0.23 Source u_board.u_vfifo.rbin_DFFR_Q_4.Q
+Info:    routing  0.69  0.92 Net u_board.u_vfifo.rbin[0] (28,31) -> (28,41)
+Info:                          Sink u_board.u_vfifo.mem.0.0.RAD[0]
+Info:                          Defined in:
+Info:                               ../rtl/board/async_fifo.v:19.29-19.33
+Info:      logic  0.55  1.47 Source u_board.u_vfifo.mem.0.0.DO[2]
+Info:    routing  0.94  2.41 Net t0_DFF_Q_5_D_LUT4_F_I3[0] (28,41) -> (32,35)
+Info:                          Sink u_board.u_hdmi.hs_d_LUT2_I0.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  2.98 Source u_board.u_hdmi.hs_d_LUT2_I0.F
+Info:    routing  0.66  3.64 Net u_board.u_hdmi.hs_d_LUT2_I0_F[1] (32,35) -> (36,34)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  4.21 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_F.F
+Info:    routing  0.40  4.62 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1[1] (36,34) -> (37,33)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_I1.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  5.19 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_I1.F
+Info:    routing  0.88  6.07 Net u_board.u_hdmi.hc_DFFR_Q_3_D_ALU_SUM_I1_ALU_I0_COUT_ALU_CIN_COUT_ALU_CIN_COUT_ALU_CIN_COUT_ALU_CIN_COUT_LUT2_I0_F_LUT4_F_2_I3[1] (37,33) -> (35,29)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O_S0_LUT4_F.I2
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.46  6.53 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O_S0_LUT4_F.F
+Info:    routing  0.14  6.68 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O_S0[4] (35,29) -> (35,29)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  6.94 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O.O
+Info:    routing  0.66  7.60 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0[3] (35,29) -> (35,33)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_I0_LUT4_F.I3
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.37  7.97 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_I0_LUT4_F.F
+Info:    routing  0.00  7.97 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_I0 (35,33) -> (35,33)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O.I0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:151.9-151.11
+Info:      logic  0.10  8.07 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O.O
+Info:    routing  0.79  8.87 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2[1] (35,33) -> (34,37)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  9.44 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F.F
+Info:    routing  0.40  9.84 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3[3] (34,37) -> (33,38)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F.I3
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.37  10.21 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F.F
+Info:    routing  0.25  10.46 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F[2] (33,38) -> (32,38)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT3_I1_F_LUT4_I3_F_LUT4_I3_F_LUT3_I2_F_LUT4_I3_F_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  11.03 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT3_I1_F_LUT4_I3_F_LUT4_I3_F_LUT3_I2_F_LUT4_I3_F_LUT2_F.F
+Info:    routing  0.00  11.03 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT3_I1_F_LUT4_I3_F_LUT4_I3_F_LUT3_I2_F_LUT4_I3_F[4] (32,38) -> (32,38)
+Info:                          Sink t1_DFF_Q_7_D_LUT4_F_I2_LUT4_F_I3_LUT4_F_I3_LUT2_F_1.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  11.60 Source t1_DFF_Q_7_D_LUT4_F_I2_LUT4_F_I3_LUT4_F_I3_LUT2_F_1.F
+Info:    routing  0.39  11.99 Net t1_DFF_Q_7_D_LUT4_F_I2_LUT4_F_I3_LUT4_F_I2_LUT2_I1_F[4] (32,38) -> (32,39)
+Info:                          Sink t1_DFF_Q_4_D_LUT4_F_I3_LUT4_F_I1_LUT4_I1_F_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  12.25 Source t1_DFF_Q_4_D_LUT4_F_I3_LUT4_F_I1_LUT4_I1_F_MUX2_LUT5_O.O
+Info:    routing  0.89  13.14 Net t1_DFF_Q_4_D_LUT4_F_I3_LUT4_F_I1_LUT4_I1_F[3] (32,39) -> (32,39)
+Info:                          Sink t1_DFF_Q_3_D_MUX2_LUT5_O_I1_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  13.71 Source t1_DFF_Q_3_D_MUX2_LUT5_O_I1_LUT2_F.F
+Info:    routing  0.00  13.71 Net t1_DFF_Q_3_D_MUX2_LUT5_O_I1 (32,39) -> (32,39)
+Info:                          Sink t1_DFF_Q_3_D_MUX2_LUT5_O.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:151.13-151.15
+Info:      logic  0.10  13.82 Source t1_DFF_Q_3_D_MUX2_LUT5_O.O
+Info:    routing  0.26  14.08 Net t1_DFF_Q_3_D (32,39) -> (32,40)
+Info:                          Sink t1_DFF_Q_3_passthrough_lut$.I3
+Info:      logic  0.37  14.45 Source t1_DFF_Q_3_passthrough_lut$.F
+Info:    routing  0.00  14.45 Net t1_DFF_Q_3$conn$D (32,40) -> (32,40)
+Info:                          Sink t1_DFF_Q_3.D
+Info:      setup  0.04  14.48 Source t1_DFF_Q_3.D
+Info: 7.12 ns logic, 7.37 ns routing
+
+Info: Critical path report for clock 'clk_sys' (posedge -> posedge):
+Info:       type curr  total name
+Info:   clk-to-q  0.23  0.23 Source u_board.u_vdpx.u_ren.j_DFFE_Q_2_D_LUT3_I1_F_DFF_D.Q
+Info:    routing  0.68  0.91 Net u_board.u_vdpx.u_ren.j_DFFE_Q_2_D_LUT3_I1_F_DFF_D_Q (12,15) -> (12,22)
+Info:                          Sink u_board.u_vdpx.u_ren.ls_w.0.0.RAD[2]
+Info:      logic  0.46  1.37 Source u_board.u_vdpx.u_ren.ls_w.0.0.DO[0]
+Info:    routing  0.66  2.03 Net u_board.u_vdpx.u_ren.ls_w.0.0_DO[1] (12,22) -> (12,15)
+Info:                          Sink u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_1_I0_LUT3_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  2.60 Source u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_1_I0_LUT3_F.F
+Info:    routing  0.63  3.23 Net u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_1_I0 (12,15) -> (16,15)
+Info:                          Sink u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_1.I0
+Info:      logic  0.55  3.78 Source u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_1.COUT
+Info:    routing  0.00  3.78 Net u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_1_COUT (16,15) -> (16,15)
+Info:                          Sink u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM.CIN
+Info:                          Defined in:
+Info:                               ../rtl/vdpx_render.v:139.33-139.41
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/arith_map.v:57.7-63.5
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_sim.v:1033.25-1033.29
+Info:      logic  0.04  3.81 Source u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM.COUT
+Info:    routing  0.00  3.81 Net u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_COUT (16,15) -> (16,15)
+Info:                          Sink u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_COUT_ALU_CIN.CIN
+Info:                          Defined in:
+Info:                               ../rtl/vdpx_render.v:139.33-139.41
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/arith_map.v:57.7-63.5
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_sim.v:1033.25-1033.29
+Info:      logic  0.47  4.28 Source u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_COUT_ALU_CIN.SUM
+Info:    routing  0.55  4.83 Net u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_COUT_ALU_CIN_SUM[4] (16,15) -> (17,13)
+Info:                          Sink u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_2_COUT_ALU_CIN_SUM_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  5.10 Source u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_2_COUT_ALU_CIN_SUM_MUX2_LUT5_O.O
+Info:    routing  0.41  5.51 Net u_board.u_vdpx.u_ren.ls_h.0.0_DO_LUT2_I1_F_ALU_SUM_2_COUT_ALU_CIN_SUM[7] (17,13) -> (17,15)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I1_LUT4_F_I3_LUT2_F_I1_MUX2_LUT5_S0_O_MUX2_LUT8_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  5.78 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I1_LUT4_F_I3_LUT2_F_I1_MUX2_LUT5_S0_O_MUX2_LUT8_O.O
+Info:    routing  0.55  6.33 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I1_LUT4_F_I3_LUT2_F_I1_MUX2_LUT5_S0_O[4] (17,15) -> (16,13)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I0_LUT2_F_I1_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  6.60 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I0_LUT2_F_I1_MUX2_LUT5_O.O
+Info:    routing  0.40  7.00 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I0_LUT2_F_I1[1] (16,13) -> (18,13)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I0_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  7.57 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I0_LUT2_F.F
+Info:    routing  0.00  7.57 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_I0 (18,13) -> (18,13)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM.I0
+Info:      logic  0.55  8.12 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM.COUT
+Info:    routing  0.00  8.12 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_I1_ALU_SUM_COUT (18,13) -> (18,13)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_I1_ALU_SUM.CIN
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/arith_map.v:57.7-63.5
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_sim.v:1033.25-1033.29
+Info:      logic  0.47  8.59 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_I1_ALU_SUM.SUM
+Info:    routing  0.40  8.99 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_I1 (18,13) -> (19,12)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN.I1
+Info:      logic  0.57  9.56 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN.COUT
+Info:    routing  0.00  9.56 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT (19,12) -> (19,12)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN.CIN
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/arith_map.v:57.7-63.5
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_sim.v:1033.25-1033.29
+Info:      logic  0.47  10.03 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN.SUM
+Info:    routing  0.88  10.91 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM[4] (19,12) -> (19,7)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  11.18 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_MUX2_LUT5_O.O
+Info:    routing  0.89  12.07 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM[4] (19,7) -> (19,7)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F_MUX2_LUT6_O_I0_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  12.34 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F_MUX2_LUT6_O_I0_MUX2_LUT5_O.O
+Info:    routing  0.00  12.34 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F_MUX2_LUT6_O_I0 (19,7) -> (19,7)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F_MUX2_LUT6_O.I0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:157.9-157.11
+Info:      logic  0.10  12.44 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F_MUX2_LUT6_O.O
+Info:    routing  1.03  13.48 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_CIN_ALU_COUT_SUM_ALU_SUM_COUT_ALU_CIN_COUT_ALU_CIN_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_LUT3_I2_F[4] (19,7) -> (16,10)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  13.75 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT4_I3_F_MUX2_LUT5_I1_O_MUX2_LUT5_O.O
+Info:    routing  0.45  14.19 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT4_I2_F_ALU_SUM_CIN_ALU_COUT_CIN_ALU_COUT_SUM_LUT4_I3_F_MUX2_LUT5_I1_O[4] (16,10) -> (18,10)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O_I0_MUX2_LUT6_O_I0_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  14.46 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O_I0_MUX2_LUT6_O_I0_MUX2_LUT5_O.O
+Info:    routing  0.00  14.46 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O_I0_MUX2_LUT6_O_I0 (18,10) -> (18,10)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O_I0_MUX2_LUT6_O.I0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:170.42-170.67
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:164.41-164.66
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:157.9-157.11
+Info:      logic  0.10  14.56 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O_I0_MUX2_LUT6_O.O
+Info:    routing  0.00  14.56 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O_I0 (18,10) -> (18,10)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O.I0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:170.42-170.67
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:163.9-163.11
+Info:      logic  0.10  14.67 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0_MUX2_LUT7_O.O
+Info:    routing  0.00  14.67 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O_I0 (18,10) -> (17,10)
+Info:                          Sink u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O.I0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:169.9-169.11
+Info:      logic  0.10  14.77 Source u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O_MUX2_LUT8_O.O
+Info:    routing  0.89  15.67 Net u_board.u_vdpx.vram_we_DFF_D_Q_LUT2_I1_I0_LUT2_I0_F_MUX2_LUT5_I1_O_MUX2_LUT6_I0_O_MUX2_LUT7_I0_O_MUX2_LUT8_I1_O[5] (17,10) -> (23,10)
+Info:                          Sink u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q_D_MUX2_LUT6_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  15.94 Source u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q_D_MUX2_LUT6_O.O
+Info:    routing  0.99  16.92 Net u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q_D (23,10) -> (25,15)
+Info:                          Sink u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q_passthrough_lut$.I3
+Info:      logic  0.37  17.29 Source u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q_passthrough_lut$.F
+Info:    routing  0.00  17.29 Net u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q$conn$D (25,15) -> (25,15)
+Info:                          Sink u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q.D
+Info:      setup  0.04  17.33 Source u_board.u_vdpx.u_vram.mem.0.31_DOB_DFF_Q.D
+Info: 7.91 ns logic, 9.42 ns routing
+
+Info: Critical path report for cross-domain path 'posedge clk_pix' -> 'posedge clk_sys':
+Info:       type curr  total name
+Info:   clk-to-q  0.23  0.23 Source u_board.u_vfifo.rgray_DFFR_Q_2.Q
+Info:    routing  0.49  0.72 Net u_board.vf_err_DFFRE_Q_CE_LUT2_F_I1_LUT4_F_I3[0] (28,30) -> (29,28)
+Info:                          Sink u_board.u_vfifo.rq1_DFFR_Q_3_passthrough_lut$.I3
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.37  1.09 Source u_board.u_vfifo.rq1_DFFR_Q_3_passthrough_lut$.F
+Info:    routing  0.00  1.09 Net u_board.u_vfifo.rq1_DFFR_Q_3$conn$D (29,28) -> (29,28)
+Info:                          Sink u_board.u_vfifo.rq1_DFFR_Q_3.D
+Info:      setup  0.04  1.12 Source u_board.u_vfifo.rq1_DFFR_Q_3.D
+Info: 0.64 ns logic, 0.49 ns routing
+
+Info: Critical path report for cross-domain path 'posedge clk_sys' -> 'posedge clk_pix':
+Info:       type curr  total name
+Info:   clk-to-q  0.31  0.31 Source u_board.u_vfifo.mem.0.0.DO[2]
+Info:    routing  0.94  1.25 Net t0_DFF_Q_5_D_LUT4_F_I3[0] (28,41) -> (32,35)
+Info:                          Sink u_board.u_hdmi.hs_d_LUT2_I0.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  1.82 Source u_board.u_hdmi.hs_d_LUT2_I0.F
+Info:    routing  0.66  2.48 Net u_board.u_hdmi.hs_d_LUT2_I0_F[1] (32,35) -> (36,34)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  3.05 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_F.F
+Info:    routing  0.40  3.46 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1[1] (36,34) -> (37,33)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_I1.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  4.03 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_CIN_ALU_COUT_I1_LUT2_I1.F
+Info:    routing  0.88  4.91 Net u_board.u_hdmi.hc_DFFR_Q_3_D_ALU_SUM_I1_ALU_I0_COUT_ALU_CIN_COUT_ALU_CIN_COUT_ALU_CIN_COUT_ALU_CIN_COUT_LUT2_I0_F_LUT4_F_2_I3[1] (37,33) -> (35,29)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O_S0_LUT4_F.I2
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.46  5.37 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O_S0_LUT4_F.F
+Info:    routing  0.14  5.51 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O_S0[4] (35,29) -> (35,29)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  5.78 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0_MUX2_LUT5_O.O
+Info:    routing  0.66  6.44 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_S0[3] (35,29) -> (35,33)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_I0_LUT4_F.I3
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.37  6.81 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_I0_LUT4_F.F
+Info:    routing  0.00  6.81 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O_I0 (35,33) -> (35,33)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O.I0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:151.9-151.11
+Info:      logic  0.10  6.91 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2_MUX2_LUT5_O.O
+Info:    routing  0.79  7.71 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F_I2[1] (35,33) -> (34,37)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  8.28 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3_LUT3_F.F
+Info:    routing  0.40  8.68 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F_I3[3] (34,37) -> (33,38)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F.I3
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.37  9.05 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_F.F
+Info:    routing  0.25  9.30 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F_LUT4_I3_F[2] (33,38) -> (32,38)
+Info:                          Sink u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT3_I1_F_LUT4_I3_F_LUT4_I3_F_LUT3_I2_F_LUT4_I3_F_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  9.87 Source u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT3_I1_F_LUT4_I3_F_LUT4_I3_F_LUT3_I2_F_LUT4_I3_F_LUT2_F.F
+Info:    routing  0.00  9.87 Net u_board.u_hdmi.hc_DFFR_Q_7_D_ALU_SUM_I1_LUT3_I1_F_LUT4_I3_F_LUT4_I3_F_LUT3_I2_F_LUT4_I3_F[4] (32,38) -> (32,38)
+Info:                          Sink t1_DFF_Q_7_D_LUT4_F_I2_LUT4_F_I3_LUT4_F_I3_LUT2_F_1.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  10.44 Source t1_DFF_Q_7_D_LUT4_F_I2_LUT4_F_I3_LUT4_F_I3_LUT2_F_1.F
+Info:    routing  0.39  10.83 Net t1_DFF_Q_7_D_LUT4_F_I2_LUT4_F_I3_LUT4_F_I2_LUT2_I1_F[4] (32,38) -> (32,39)
+Info:                          Sink t1_DFF_Q_4_D_LUT4_F_I3_LUT4_F_I1_LUT4_I1_F_MUX2_LUT5_O.S0
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.27  11.09 Source t1_DFF_Q_4_D_LUT4_F_I3_LUT4_F_I1_LUT4_I1_F_MUX2_LUT5_O.O
+Info:    routing  0.89  11.98 Net t1_DFF_Q_4_D_LUT4_F_I3_LUT4_F_I1_LUT4_I1_F[3] (32,39) -> (32,39)
+Info:                          Sink t1_DFF_Q_3_D_MUX2_LUT5_O_I1_LUT2_F.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:130.20-130.21
+Info:      logic  0.57  12.55 Source t1_DFF_Q_3_D_MUX2_LUT5_O_I1_LUT2_F.F
+Info:    routing  0.00  12.55 Net t1_DFF_Q_3_D_MUX2_LUT5_O_I1 (32,39) -> (32,39)
+Info:                          Sink t1_DFF_Q_3_D_MUX2_LUT5_O.I1
+Info:                          Defined in:
+Info:                               /home/claude/tools/yosys/build-rel/share/gowin/cells_map.v:151.13-151.15
+Info:      logic  0.10  12.66 Source t1_DFF_Q_3_D_MUX2_LUT5_O.O
+Info:    routing  0.26  12.92 Net t1_DFF_Q_3_D (32,39) -> (32,40)
+Info:                          Sink t1_DFF_Q_3_passthrough_lut$.I3
+Info:      logic  0.37  13.29 Source t1_DFF_Q_3_passthrough_lut$.F
+Info:    routing  0.00  13.29 Net t1_DFF_Q_3$conn$D (32,40) -> (32,40)
+Info:                          Sink t1_DFF_Q_3.D
+Info:      setup  0.04  13.32 Source t1_DFF_Q_3.D
+Info: 6.65 ns logic, 6.68 ns routing
+
+Info: Max frequency for clock 'clk_pix': 69.04 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_sys': 57.71 MHz (PASS at 50.40 MHz)
+
+Info: Max delay posedge clk_pix -> posedge clk_sys: 1.12 ns
+Info: Max delay posedge clk_sys -> posedge clk_pix: 13.32 ns
+
+Info: Slack histogram:
+Info:  legend: times are in ps
+Info:          * represents 24 endpoint(s)
+Info:          + represents [1,24) endpoint(s)
+Info: [  2512,   3358) |+
+Info: [  3358,   4204) | 
+Info: [  4204,   5050) | 
+Info: [  5050,   5896) |*+
+Info: [  5896,   6742) |*+
+Info: [  6742,   7588) |**+
+Info: [  7588,   8434) |**+
+Info: [  8434,   9280) |*********+
+Info: [  9280,  10126) |******+
+Info: [ 10126,  10972) |***************+
+Info: [ 10972,  11818) |*********************+
+Info: [ 11818,  12664) |*************+
+Info: [ 12664,  13510) |*************************+
+Info: [ 13510,  14356) |***********************+
+Info: [ 14356,  15202) |***********************+
+Info: [ 15202,  16048) |*********************************+
+Info: [ 16048,  16894) |*****************************************+
+Info: [ 16894,  17740) |**********************+
+Info: [ 17740,  18586) |************************************************************ 
+Info: [ 18586,  19432) |*****************************************+
+
+5 warnings, 0 errors
+
+Info: Program finished normally.
+cd build_tang && gowin_pack -d GW2A-18C -o md_vdpx.fs pnr.json
+Info: Max frequency for clock 'clk_pix': 82.97 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_sys': 65.35 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_pix': 69.04 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_sys': 57.71 MHz (PASS at 50.40 MHz)
+EXIT 0

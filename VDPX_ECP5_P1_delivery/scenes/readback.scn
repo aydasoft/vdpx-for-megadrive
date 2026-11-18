@@ -1,0 +1,1959 @@
+# leitura: VRAM/CRAM com incrementos variados, registradores, ID
+r 6
+w 2 c
+w 3 0
+w 2 e
+w 3 1
+w 2 d
+w 3 1234
+w 0 676b
+w 0 6179
+w 0 3338
+w 0 9974
+w 0 2dc5
+w 0 3af2
+w 0 3f99
+w 0 221c
+w 0 c287
+w 0 162a
+w 0 404b
+w 0 baa1
+w 0 6210
+w 0 87e3
+w 0 af2e
+w 0 b353
+w 0 89e3
+w 0 16ff
+w 0 f039
+w 0 9fb9
+w 0 7d41
+w 0 3310
+w 0 6bf0
+w 0 b8e3
+w 0 9cfb
+w 0 96a1
+w 0 3779
+w 0 cae8
+w 0 e6e9
+w 0 c9cf
+w 0 5fbd
+w 0 d283
+w 0 635b
+w 0 dc8a
+w 0 aeaf
+w 0 366c
+w 0 26fb
+w 0 7623
+w 0 a91a
+w 0 2dd3
+w 0 d997
+w 0 9121
+w 0 56bc
+w 0 153d
+w 0 f265
+w 0 b778
+w 0 8759
+w 0 ad68
+w 0 c643
+w 0 167a
+w 0 7812
+w 0 50fe
+w 0 6712
+w 0 aeb
+w 0 44f7
+w 0 8ed5
+w 0 1f3
+w 0 6cda
+w 0 3429
+w 0 5cce
+w 0 fd54
+w 0 eee1
+w 0 88c8
+w 0 14b0
+w 0 764b
+w 0 84c6
+w 0 e676
+w 0 32b5
+w 0 9b02
+w 0 7673
+w 0 fa09
+w 0 d23
+w 0 5b86
+w 0 210f
+w 0 3740
+w 0 f3d2
+w 0 ebb7
+w 0 b713
+w 0 292a
+w 0 bf5c
+w 0 cab5
+w 0 7114
+w 0 986d
+w 0 ecc2
+w 0 fb9e
+w 0 2d78
+w 0 f1a4
+w 0 80d1
+w 0 a909
+w 0 2d0f
+w 0 97c
+w 0 1c1b
+w 0 5f7
+w 0 2bd2
+w 0 7946
+w 0 af11
+w 0 d1d5
+w 0 6b45
+w 0 14c6
+w 0 efca
+w 0 6ce8
+w 0 a1cb
+w 0 1605
+w 0 2495
+w 0 4f4f
+w 0 9e0d
+w 0 173
+w 0 618d
+w 0 5467
+w 0 22c4
+w 0 85fd
+w 0 67c3
+w 0 3367
+w 0 e664
+w 0 c986
+w 0 f94c
+w 0 e2e
+w 0 a3f3
+w 0 3620
+w 0 7166
+w 0 41f0
+w 0 8ba3
+w 0 6770
+w 0 d33b
+w 0 c388
+w 0 2058
+w 0 5a93
+w 0 f0fc
+w 0 b1eb
+w 0 79e4
+w 0 ec15
+w 0 e4a
+w 0 2184
+w 0 bd11
+w 0 dd2a
+w 0 b7e6
+w 0 9983
+w 0 c768
+w 0 bf49
+w 0 2683
+w 0 9ba8
+w 0 f0f4
+w 0 6886
+w 0 1fd6
+w 0 18b3
+w 0 1e64
+w 0 24c7
+w 0 4bc4
+w 0 2c94
+w 0 fdba
+w 0 2d7a
+w 0 68ed
+w 0 2540
+w 0 ec94
+w 0 3523
+w 0 e163
+w 0 8f9b
+w 0 51b0
+w 0 c543
+w 0 7fc7
+w 0 cc47
+w 0 3be1
+w 0 d89b
+w 0 41f1
+w 0 1e01
+w 0 db9d
+w 0 d285
+w 0 5c98
+w 0 2f9a
+w 0 ada6
+w 0 1288
+w 0 8050
+w 0 49a7
+w 0 2da
+w 0 95ef
+w 0 d522
+w 0 c34
+w 0 5662
+w 0 3760
+w 0 6081
+w 0 662b
+w 0 5635
+w 0 d286
+w 0 cff7
+w 0 663f
+w 0 62cc
+w 0 6a00
+w 0 d04d
+w 0 5ef8
+w 0 88cc
+w 0 17b8
+w 0 2e64
+w 0 e12b
+w 0 99f
+w 0 ec4c
+w 0 5f7c
+w 0 b8be
+w 0 db6d
+w 0 6609
+w 0 c554
+w 0 71a8
+w 0 3aef
+w 0 4fb9
+w 0 da84
+w 0 a782
+w 0 39de
+w 0 a742
+w 0 b84f
+w 0 4f87
+w 0 1b12
+w 0 dfcd
+w 0 b019
+w 0 b881
+w 0 505d
+w 0 37f6
+w 0 c395
+w 0 cf2c
+w 0 b627
+w 0 ac9e
+w 0 b62c
+w 0 3fed
+w 0 6230
+w 0 4bdf
+w 0 7028
+w 0 c062
+w 0 f587
+w 0 1483
+w 0 e1ec
+w 0 7014
+w 0 6bcd
+w 0 f6bc
+w 0 e85c
+w 0 4197
+w 0 11d6
+w 0 80ce
+w 0 4b04
+w 0 e83e
+w 0 af4f
+w 0 dfe5
+w 0 5212
+w 0 c9c7
+w 0 7a23
+w 0 8882
+w 0 2095
+w 0 ee09
+w 0 e561
+w 0 41bf
+w 0 6e50
+w 0 e1af
+w 0 4a77
+w 0 68ca
+w 0 f7d6
+w 0 a880
+w 0 d389
+w 0 9c6a
+w 0 28cf
+w 0 4844
+w 0 6103
+w 0 ada1
+w 0 ada8
+w 0 9ab1
+w 0 dcda
+w 0 fcbf
+w 0 9e60
+w 0 aab2
+w 0 b6fe
+w 0 70a7
+w 0 31c8
+w 0 613c
+w 0 563b
+w 0 e331
+w 0 3299
+w 0 586a
+w 0 11a
+w 0 aac4
+w 0 5af4
+w 0 b1c0
+w 0 4b9f
+w 0 f6f3
+w 0 d9b7
+w 0 317a
+w 0 e42e
+w 0 aa3e
+w 0 aaf6
+w 0 2bf1
+w 0 ca1c
+w 0 a3db
+w 0 42cf
+w 0 a83c
+w 0 6aad
+w 0 be36
+w 0 c0ad
+w 0 ddc4
+w 0 b4cd
+w 0 3b32
+w 0 6882
+w 0 dc4a
+w 0 dc9b
+w 0 5875
+w 0 a814
+w 0 665f
+w 0 ed
+w 0 1cc1
+w 0 806c
+w 0 8820
+w 0 33d6
+w 0 54
+w 0 85a8
+w 0 4f7f
+w 0 f32c
+w 0 ac1b
+w 0 fa71
+w 0 bf5f
+w 0 fd8e
+w 0 2ad8
+w 0 82d8
+w 0 c8ed
+w 0 ce48
+w 0 71b1
+w 0 eedf
+w 0 348e
+w 0 438f
+w 0 bfa2
+w 0 d9f8
+w 0 bd2a
+w 0 6ab5
+w 0 77d0
+w 0 8f74
+w 0 87f1
+w 0 a040
+w 0 9eab
+w 0 c492
+w 0 a1b6
+w 0 d49d
+w 0 c3d9
+w 0 9b1e
+w 0 c4d9
+w 0 4999
+w 0 3345
+w 0 bd3e
+w 0 547
+w 0 ffe1
+w 0 1aeb
+w 0 ce6e
+w 0 4eb8
+w 0 1358
+w 0 949c
+w 0 82e
+w 0 f60d
+w 0 eed
+w 0 6ab1
+w 0 4cba
+w 0 5e85
+w 0 f887
+w 0 8ea6
+w 0 a05b
+w 0 f2c4
+w 0 b5fe
+w 0 9687
+w 0 932d
+w 0 4b90
+w 0 31aa
+w 0 c1b4
+w 0 19a0
+w 0 fde7
+w 0 dd1c
+w 0 cb2a
+w 0 6508
+w 0 6600
+w 0 ca0c
+w 0 2c18
+w 0 43ca
+w 0 75f8
+w 0 543d
+w 0 20e3
+w 0 e0bc
+w 0 2173
+w 0 e6da
+w 0 7251
+w 0 de30
+w 0 d9a8
+w 0 b1d3
+w 0 b3ab
+w 0 6396
+w 0 6b0c
+w 0 8fd7
+w 0 f44f
+w 0 b70d
+w 0 2dc8
+w 0 5c1e
+w 0 400a
+w 0 3526
+w 0 4609
+w 0 7691
+w 0 929a
+w 0 d827
+w 0 e3c7
+w 0 b322
+w 0 61f5
+w 0 2f04
+w 0 d3a0
+w 0 e9a5
+w 0 efdb
+w 0 ff86
+w 0 7aab
+w 0 92a2
+w 0 e497
+w 0 a037
+w 0 e3a6
+w 0 ea7e
+w 0 79f2
+w 0 aa3e
+w 0 2b63
+w 0 fafd
+w 0 1322
+w 0 881b
+w 0 3d54
+w 0 ff47
+w 0 75ba
+w 0 85ee
+w 0 3f2
+w 0 1d67
+w 0 546a
+w 0 cbd7
+w 0 7e7e
+w 0 1278
+w 0 55f3
+w 0 a7ba
+w 0 bbd5
+w 0 102
+w 0 91d2
+w 0 ae3d
+w 0 8873
+w 0 467d
+w 0 a22d
+w 0 312
+w 0 953b
+w 0 51af
+w 0 69f7
+w 0 42f4
+w 0 2a7d
+w 0 22da
+w 0 9690
+w 0 eb84
+w 0 c28
+w 0 65b3
+w 0 940
+w 0 c39
+w 0 57a6
+w 0 82e6
+w 0 3ade
+w 0 8e25
+w 0 c169
+w 0 4aca
+w 0 2894
+w 0 d67c
+w 0 7067
+w 0 eb8
+w 0 b20e
+w 0 c668
+w 0 6aef
+w 0 3ac7
+w 0 ce2b
+w 0 3040
+w 0 1dfe
+w 0 7c12
+w 0 2bfd
+w 0 45d6
+w 0 4686
+w 0 a826
+w 0 5d7b
+w 0 1215
+w 0 8f48
+w 0 eb36
+w 0 32bf
+w 0 c68d
+w 0 8f1a
+w 0 2c73
+w 0 b3aa
+w 0 5a8a
+w 0 a710
+w 0 f5bf
+w 0 d0b1
+w 0 88f2
+w 0 14da
+w 0 be51
+w 0 ad89
+w 0 1d12
+w 0 b989
+w 0 202d
+w 0 d337
+w 0 230f
+w 0 2673
+w 0 8b9a
+w 0 1625
+w 0 878
+w 0 c259
+w 0 8342
+w 0 a588
+w 0 6116
+w 0 2aa3
+w 0 5a99
+w 0 def1
+w 0 c843
+w 0 b789
+w 0 3b47
+w 0 9d6f
+w 0 9bb7
+w 0 c2b3
+w 0 f7f7
+w 0 9c70
+w 0 293e
+w 2 c
+w 3 0
+w 2 e
+w 3 3
+w 2 d
+w 3 7f00
+w 0 676b
+w 0 6179
+w 0 3338
+w 0 9974
+w 0 2dc5
+w 0 3af2
+w 0 3f99
+w 0 221c
+w 0 c287
+w 0 162a
+w 0 404b
+w 0 baa1
+w 0 6210
+w 0 87e3
+w 0 af2e
+w 0 b353
+w 0 89e3
+w 0 16ff
+w 0 f039
+w 0 9fb9
+w 0 7d41
+w 0 3310
+w 0 6bf0
+w 0 b8e3
+w 0 9cfb
+w 0 96a1
+w 0 3779
+w 0 cae8
+w 0 e6e9
+w 0 c9cf
+w 0 5fbd
+w 0 d283
+w 0 635b
+w 0 dc8a
+w 0 aeaf
+w 0 366c
+w 0 26fb
+w 0 7623
+w 0 a91a
+w 0 2dd3
+w 0 d997
+w 0 9121
+w 0 56bc
+w 0 153d
+w 0 f265
+w 0 b778
+w 0 8759
+w 0 ad68
+w 0 c643
+w 0 167a
+w 0 7812
+w 0 50fe
+w 0 6712
+w 0 aeb
+w 0 44f7
+w 0 8ed5
+w 0 1f3
+w 0 6cda
+w 0 3429
+w 0 5cce
+w 0 fd54
+w 0 eee1
+w 0 88c8
+w 0 14b0
+w 0 764b
+w 0 84c6
+w 0 e676
+w 0 32b5
+w 0 9b02
+w 0 7673
+w 0 fa09
+w 0 d23
+w 0 5b86
+w 0 210f
+w 0 3740
+w 0 f3d2
+w 0 ebb7
+w 0 b713
+w 0 292a
+w 0 bf5c
+w 0 cab5
+w 0 7114
+w 0 986d
+w 0 ecc2
+w 0 fb9e
+w 0 2d78
+w 0 f1a4
+w 0 80d1
+w 0 a909
+w 0 2d0f
+w 0 97c
+w 0 1c1b
+w 0 5f7
+w 0 2bd2
+w 0 7946
+w 0 af11
+w 0 d1d5
+w 0 6b45
+w 0 14c6
+w 0 efca
+w 0 6ce8
+w 0 a1cb
+w 0 1605
+w 0 2495
+w 0 4f4f
+w 0 9e0d
+w 0 173
+w 0 618d
+w 0 5467
+w 0 22c4
+w 0 85fd
+w 0 67c3
+w 0 3367
+w 0 e664
+w 0 c986
+w 0 f94c
+w 0 e2e
+w 0 a3f3
+w 0 3620
+w 0 7166
+w 0 41f0
+w 0 8ba3
+w 0 6770
+w 0 d33b
+w 0 c388
+w 0 2058
+w 0 5a93
+w 0 f0fc
+w 0 b1eb
+w 0 79e4
+w 0 ec15
+w 0 e4a
+w 0 2184
+w 0 bd11
+w 0 dd2a
+w 0 b7e6
+w 0 9983
+w 0 c768
+w 0 bf49
+w 0 2683
+w 0 9ba8
+w 0 f0f4
+w 0 6886
+w 0 1fd6
+w 0 18b3
+w 0 1e64
+w 0 24c7
+w 0 4bc4
+w 0 2c94
+w 0 fdba
+w 0 2d7a
+w 0 68ed
+w 0 2540
+w 0 ec94
+w 0 3523
+w 0 e163
+w 0 8f9b
+w 0 51b0
+w 0 c543
+w 0 7fc7
+w 0 cc47
+w 0 3be1
+w 0 d89b
+w 0 41f1
+w 0 1e01
+w 0 db9d
+w 0 d285
+w 0 5c98
+w 0 2f9a
+w 0 ada6
+w 0 1288
+w 0 8050
+w 0 49a7
+w 0 2da
+w 0 95ef
+w 0 d522
+w 0 c34
+w 0 5662
+w 0 3760
+w 0 6081
+w 0 662b
+w 0 5635
+w 0 d286
+w 0 cff7
+w 0 663f
+w 0 62cc
+w 0 6a00
+w 0 d04d
+w 0 5ef8
+w 0 88cc
+w 0 17b8
+w 0 2e64
+w 0 e12b
+w 0 99f
+w 0 ec4c
+w 0 5f7c
+w 0 b8be
+w 0 db6d
+w 0 6609
+w 0 c554
+w 0 71a8
+w 0 3aef
+w 0 4fb9
+w 0 da84
+w 0 a782
+w 0 39de
+w 0 a742
+w 0 b84f
+w 0 4f87
+w 0 1b12
+w 0 dfcd
+w 0 b019
+w 0 b881
+w 0 505d
+w 0 37f6
+w 0 c395
+w 0 cf2c
+w 0 b627
+w 0 ac9e
+w 0 b62c
+w 0 3fed
+w 0 6230
+w 0 4bdf
+w 0 7028
+w 0 c062
+w 0 f587
+w 0 1483
+w 0 e1ec
+w 0 7014
+w 0 6bcd
+w 0 f6bc
+w 0 e85c
+w 0 4197
+w 0 11d6
+w 0 80ce
+w 0 4b04
+w 0 e83e
+w 0 af4f
+w 0 dfe5
+w 0 5212
+w 0 c9c7
+w 0 7a23
+w 0 8882
+w 0 2095
+w 0 ee09
+w 0 e561
+w 0 41bf
+w 0 6e50
+w 0 e1af
+w 0 4a77
+w 0 68ca
+w 0 f7d6
+w 0 a880
+w 0 d389
+w 0 9c6a
+w 0 28cf
+w 0 4844
+w 0 6103
+w 0 ada1
+w 0 ada8
+w 0 9ab1
+w 0 dcda
+w 0 fcbf
+w 0 9e60
+w 0 aab2
+w 0 b6fe
+w 0 70a7
+w 0 31c8
+w 0 613c
+w 0 563b
+w 0 e331
+w 0 3299
+w 0 586a
+w 0 11a
+w 0 aac4
+w 0 5af4
+w 0 b1c0
+w 0 4b9f
+w 0 f6f3
+w 0 d9b7
+w 0 317a
+w 0 e42e
+w 0 aa3e
+w 0 aaf6
+w 0 2bf1
+w 0 ca1c
+w 0 a3db
+w 0 42cf
+w 0 a83c
+w 0 6aad
+w 0 be36
+w 0 c0ad
+w 0 ddc4
+w 0 b4cd
+w 0 3b32
+w 0 6882
+w 0 dc4a
+w 0 dc9b
+w 0 5875
+w 0 a814
+w 2 c
+w 3 1
+w 2 e
+w 3 1
+w 2 d
+w 3 f0
+w 0 5710
+w 0 c5ee
+w 0 d85
+w 0 e4a1
+w 0 57a7
+w 0 cf36
+w 0 a004
+w 0 6fa6
+w 0 3020
+w 0 4eb6
+w 0 2df8
+w 0 bd25
+w 0 1c73
+w 0 2585
+w 0 7f1e
+w 0 a495
+w 0 f775
+w 0 8570
+w 0 bb0e
+w 0 ee07
+w 0 335
+w 0 3b28
+w 0 6078
+w 0 eab4
+w 0 ae9f
+w 0 cb14
+w 0 18d2
+w 0 c863
+w 0 cb7b
+w 0 fd68
+w 0 3c40
+w 0 9116
+w 0 71a0
+w 0 bba6
+w 0 cafd
+w 0 9a3a
+w 0 dfcb
+w 0 e3eb
+w 0 1486
+w 0 e05e
+w 2 c
+w 3 2
+w 2 e
+w 3 1
+w 2 d
+w 3 3c
+w 0 d138
+w 0 2953
+w 0 e01c
+w 0 e3ea
+w 0 d6ac
+w 0 2a9d
+w 0 c627
+w 0 71a5
+w 2 c
+w 3 3
+w 2 e
+w 3 1
+w 2 d
+w 3 1f4
+w 0 5f84
+w 0 40c4
+w 0 503a
+w 0 96dc
+w 0 bac
+w 0 9597
+w 0 6582
+w 0 537
+w 0 4cf6
+w 0 f2d6
+w 0 28a8
+w 0 21fb
+w 0 f192
+w 0 2e3
+w 0 e186
+w 0 491f
+w 0 cf47
+w 0 8e56
+w 0 4bb5
+w 0 4a44
+wait 12000
+w 2 c
+w 3 0
+w 2 e
+w 3 1
+w 2 d
+w 3 1234
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+w 2 c
+w 3 0
+w 2 e
+w 3 3
+w 2 d
+w 3 7f00
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+w 2 c
+w 3 1
+w 2 e
+w 3 1
+w 2 d
+w 3 f0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+w 2 c
+w 3 0
+w 2 e
+w 3 101
+w 2 d
+w 3 1234
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+w 2 c
+w 3 2
+w 2 e
+w 3 1
+w 2 d
+w 3 3c
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+w 2 c
+w 3 3
+w 2 e
+w 3 1
+w 2 d
+w 3 1f4
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+r 0
+w 2 0
+w 3 0
+w 2 0
+r 3
+r 2
+w 2 1
+w 3 2222
+w 2 1
+r 3
+r 2
+w 2 2
+w 3 3333
+w 2 2
+r 3
+r 2
+w 2 3
+w 3 4444
+w 2 3
+r 3
+r 2
+w 2 4
+w 3 5555
+w 2 4
+r 3
+r 2
+w 2 5
+w 3 6666
+w 2 5
+r 3
+r 2
+w 2 6
+w 3 7777
+w 2 6
+r 3
+r 2
+w 2 7
+w 3 8888
+w 2 7
+r 3
+r 2
+w 2 8
+w 3 9999
+w 2 8
+r 3
+r 2
+w 2 9
+w 3 aaaa
+w 2 9
+r 3
+r 2
+w 2 a
+w 3 0
+w 2 a
+r 3
+r 2
+w 2 b
+w 3 cccc
+w 2 b
+r 3
+r 2
+w 2 c
+w 3 0
+w 2 c
+r 3
+r 2
+w 2 d
+w 3 0
+w 2 d
+r 3
+r 2
+w 2 e
+w 3 0
+w 2 e
+r 3
+r 2
+w 2 f
+w 3 1110
+w 2 f
+r 3
+r 2

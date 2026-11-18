@@ -1,0 +1,11 @@
+Info: Device utilisation:
+Info: 	                 IOB:      48/    384    12%
+Info: 	                LUT4:    6719/  20736    32%
+Info: 	                 ALU:    1354/  15552     8%
+Info: 	                 DFF:    3541/  15552    22%
+Info: 	           RAM16SDP4:     241/    648    37%
+Info: 	               BSRAM:      43/     46    93%
+Info: Max frequency for clock 'clk_pix': 75.23 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_sys': 64.09 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_pix': 68.69 MHz (PASS at 50.40 MHz)
+Info: Max frequency for clock 'clk_sys': 58.18 MHz (PASS at 50.40 MHz)

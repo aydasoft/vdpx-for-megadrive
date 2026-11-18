@@ -1,0 +1,557 @@
+{
+ "device": "LFE5U-45F-6BG381C",
+ "seeds": {
+  "1": {
+   "exit": 0,
+   "fmax": {
+    "clk_pix": {
+     "achieved_mhz": 76.32,
+     "constraint_mhz": 25,
+     "slack_ns": 26.898,
+     "margin_pct": 205.3
+    },
+    "clk_sys": {
+     "achieved_mhz": 69.3,
+     "constraint_mhz": 50,
+     "slack_ns": 5.569,
+     "margin_pct": 38.6
+    },
+    "clk_x5": {
+     "achieved_mhz": 283.53,
+     "constraint_mhz": 125,
+     "slack_ns": 4.473,
+     "margin_pct": 126.8
+    }
+   },
+   "utilization": {
+    "DCCA": {
+     "used": 4,
+     "available": 56
+    },
+    "DP16KD": {
+     "used": 44,
+     "available": 108
+    },
+    "EHXPLLL": {
+     "used": 1,
+     "available": 4
+    },
+    "IOLOGIC": {
+     "used": 4,
+     "available": 160
+    },
+    "MULT18X18D": {
+     "used": 2,
+     "available": 72
+    },
+    "SIOLOGIC": {
+     "used": 1,
+     "available": 85
+    },
+    "TRELLIS_COMB": {
+     "used": 7655,
+     "available": 43848
+    },
+    "TRELLIS_FF": {
+     "used": 3055,
+     "available": 43848
+    },
+    "TRELLIS_IO": {
+     "used": 83,
+     "available": 245
+    },
+    "TRELLIS_RAMW": {
+     "used": 161,
+     "available": 5481
+    }
+   },
+   "warnings": 0,
+   "errors": 0,
+   "cross_domain_max_delay_ns": [
+    {
+     "from": "<async>",
+     "to": "posedge $glbnet$clk_sys",
+     "ns": 6.27
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "<async>",
+     "ns": 8.78
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "posedge $glbnet$clk_sys",
+     "ns": 1.25
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "posedge $glbnet$clk_x5",
+     "ns": 1.68
+    },
+    {
+     "from": "posedge $glbnet$clk_sys",
+     "to": "<async>",
+     "ns": 9.61
+    },
+    {
+     "from": "posedge $glbnet$clk_sys",
+     "to": "posedge $glbnet$clk_pix",
+     "ns": 1.52
+    }
+   ],
+   "sdram_io_routing": {
+    "cmd_out": {
+     "n": 16,
+     "max_ns": 2.831,
+     "worst": "sdram_ba[1]"
+    },
+    "dq_out": {
+     "n": 32,
+     "max_ns": 3.356,
+     "worst": "sdram_dq[20]"
+    },
+    "dq_oe": {
+     "n": 32,
+     "max_ns": 4.989,
+     "worst": "sdram_dq[13]"
+    },
+    "dq_in": {
+     "n": 32,
+     "max_ns": 4.989,
+     "worst": "sdram_dq[13]"
+    },
+    "clk_out": {
+     "n": 0,
+     "max_ns": null,
+     "worst": null
+    }
+   },
+   "critical_paths": {
+    "clk_sys": [
+     "clk-to-q  0.52   0.52 u_core.u_board.u_vdpx.u_apu.restart_w.Q",
+     "logic     0.24   1.72 u_core.u_board.u_vdpx.u_apu.lfsr.0.3_DO.F",
+     "logic     0.26   2.44 u_core.u_board.u_vdpx.u_apu.lfsr.0.3_DO.OFX",
+     "logic     0.24   3.60 u_core.u_board.u_vdpx.u_apu.lfsr.0.3_DO.F",
+     "logic     0.24   5.74 u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_1.F",
+     "logic     0.24   7.49 u_core.u_board.u_vdpx.u_apu.areg.0.53.F",
+     "logic     0.24   8.66 u_core.u_board.u_vdpx.u_apu.areg.0.57_DO_2.F",
+     "logic     0.24   9.51 u_core.u_board.u_vdpx.u_apu.areg.0.57_DO_2.F",
+     "logic     0.24  10.68 u_core.u_board.u_vdpx.u_apu.areg.0.57_DO_2.F",
+     "logic     0.24  12.19 u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3.F",
+     "logic     0.26  13.43 u_core.u_board.u_vdpx.u_apu.t_wave.OFX",
+     "logic     0.26  14.06 u_core.u_board.u_vdpx.u_apu.s.OFX",
+     "setup     0.00  14.43 u_core.u_board.u_vdpx.u_apu.s.M"
+    ],
+    "clk_pix": [
+     "clk-to-q  0.52   0.52 u_core.u_board.u_vfifo.rbin.Q",
+     "logic     0.24   1.96 u_core.u_board.u_vfifo.mem.0.3.F",
+     "logic     0.24   2.93 u_core.u_board.u_vfifo.mem.0.3_DO_2.F",
+     "logic     0.24   3.60 u_core.u_board.u_vfifo.mem.0.3_DO_1.F",
+     "logic     0.24   3.87 u_core.u_board.u_vfifo.mem.0.3_DO_2.F",
+     "logic     0.17   4.04 u_core.u_board.u_vfifo.mem.0.3_DO_2.OFX",
+     "logic     0.24   4.28 u_core.u_board.u_vfifo.mem.0.3_DO_2.OFX",
+     "logic     0.24   5.60 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.24   6.56 u_core.u_board.u_hdmi.u_e1.q.F",
+     "logic     0.24   7.92 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.24   8.80 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.45  10.35 u_core.u_board.u_hdmi.u_e1.cnt.FCO",
+     "logic     0.40  10.75 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.24  11.71 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.26  12.64 u_core.u_board.u_hdmi.u_e1.cnt.OFX",
+     "setup     0.00  13.10 u_core.u_board.u_hdmi.u_e1.cnt.M"
+    ],
+    "clk_x5": [
+     "clk-to-q  0.52   0.52 u_core.u_ser.ts.Q",
+     "logic     0.24   1.64 u_core.u_ser.ts.F",
+     "logic     0.24   3.40 u_core.u_ser.s2.F",
+     "setup     0.00   3.53 u_core.u_ser.s2.DI"
+    ]
+   },
+   "timing_ok": true
+  },
+  "2": {
+   "exit": 0,
+   "fmax": {
+    "clk_pix": {
+     "achieved_mhz": 74.26,
+     "constraint_mhz": 25,
+     "slack_ns": 26.533,
+     "margin_pct": 197.0
+    },
+    "clk_sys": {
+     "achieved_mhz": 71.19,
+     "constraint_mhz": 50,
+     "slack_ns": 5.953,
+     "margin_pct": 42.4
+    },
+    "clk_x5": {
+     "achieved_mhz": 251.45,
+     "constraint_mhz": 125,
+     "slack_ns": 4.023,
+     "margin_pct": 101.2
+    }
+   },
+   "utilization": {
+    "DCCA": {
+     "used": 4,
+     "available": 56
+    },
+    "DP16KD": {
+     "used": 44,
+     "available": 108
+    },
+    "EHXPLLL": {
+     "used": 1,
+     "available": 4
+    },
+    "IOLOGIC": {
+     "used": 4,
+     "available": 160
+    },
+    "MULT18X18D": {
+     "used": 2,
+     "available": 72
+    },
+    "SIOLOGIC": {
+     "used": 1,
+     "available": 85
+    },
+    "TRELLIS_COMB": {
+     "used": 7655,
+     "available": 43848
+    },
+    "TRELLIS_FF": {
+     "used": 3055,
+     "available": 43848
+    },
+    "TRELLIS_IO": {
+     "used": 83,
+     "available": 245
+    },
+    "TRELLIS_RAMW": {
+     "used": 161,
+     "available": 5481
+    }
+   },
+   "warnings": 0,
+   "errors": 0,
+   "cross_domain_max_delay_ns": [
+    {
+     "from": "<async>",
+     "to": "posedge $glbnet$clk_sys",
+     "ns": 6.49
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "<async>",
+     "ns": 8.47
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "posedge $glbnet$clk_sys",
+     "ns": 1.6
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "posedge $glbnet$clk_x5",
+     "ns": 1.8
+    },
+    {
+     "from": "posedge $glbnet$clk_sys",
+     "to": "<async>",
+     "ns": 8.65
+    },
+    {
+     "from": "posedge $glbnet$clk_sys",
+     "to": "posedge $glbnet$clk_pix",
+     "ns": 1.47
+    }
+   ],
+   "sdram_io_routing": {
+    "cmd_out": {
+     "n": 16,
+     "max_ns": 3.194,
+     "worst": "sdram_a[3]"
+    },
+    "dq_out": {
+     "n": 32,
+     "max_ns": 2.881,
+     "worst": "sdram_dq[20]"
+    },
+    "dq_oe": {
+     "n": 32,
+     "max_ns": 5.558,
+     "worst": "sdram_dq[6]"
+    },
+    "dq_in": {
+     "n": 32,
+     "max_ns": 5.558,
+     "worst": "sdram_dq[6]"
+    },
+    "clk_out": {
+     "n": 0,
+     "max_ns": null,
+     "worst": null
+    }
+   },
+   "critical_paths": {
+    "clk_sys": [
+     "clk-to-q  0.52   0.52 u_core.u_board.u_vdpx.u_apu.st.Q",
+     "logic     0.24   1.88 u_core.u_board.u_vdpx.u_apu.areg.0.48_DO.F",
+     "logic     0.24   2.54 u_core.u_board.u_vdpx.u_apu.areg.0.48_DO.F",
+     "logic     0.24   3.41 u_core.u_board.u_vdpx.u_apu.areg.0.48_DO.F",
+     "logic     0.24   5.28 u_core.u_board.u_vdpx.u_apu.areg.0.48_DO.F",
+     "logic     0.24   7.06 u_core.u_board.u_vdpx.u_apu.areg.0.22.F",
+     "logic     0.24   8.24 u_core.u_board.u_vdpx.u_apu.areg.0.26_DO_2.F",
+     "logic     0.24   9.26 u_core.u_board.u_vdpx.u_apu.areg.0.2_DO_2.F",
+     "logic     0.24   9.92 u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3.F",
+     "logic     0.24  11.25 u_core.u_board.u_vdpx.u_apu.phase.0.4_DO_3.F",
+     "logic     0.40  12.72 u_core.u_board.u_vdpx.u_apu.t_wave.OFX",
+     "logic     0.26  13.59 u_core.u_board.u_vdpx.u_apu.s.OFX",
+     "setup     0.00  14.05 u_core.u_board.u_vdpx.u_apu.s.M"
+    ],
+    "clk_pix": [
+     "clk-to-q  0.52   0.52 u_core.u_board.u_vfifo.rbin.Q",
+     "logic     0.24   1.94 u_core.u_board.u_vfifo.mem.0.1.F",
+     "logic     0.24   3.04 u_core.u_board.u_hdmi.u_e0.q.F",
+     "logic     0.26   3.96 u_core.u_board.u_hdmi.u_e0.q.OFX",
+     "logic     0.24   5.33 u_core.u_board.u_hdmi.u_e0.q.F",
+     "logic     0.17   5.49 u_core.u_board.u_hdmi.u_e0.q.OFX",
+     "logic     0.24   5.74 u_core.u_board.u_hdmi.u_e0.q.OFX",
+     "logic     0.24   6.65 u_core.u_board.u_hdmi.u_e0.q.F",
+     "logic     0.24   7.80 u_core.u_board.u_hdmi.u_e0.cnt.F",
+     "logic     0.24   8.68 u_core.u_board.u_hdmi.u_e0.cnt.F",
+     "logic     0.45  10.26 u_core.u_board.u_hdmi.u_e0.cnt.FCO",
+     "logic     0.44  10.70 u_core.u_board.u_hdmi.u_e0.cnt.F",
+     "logic     0.24  11.60 u_core.u_board.u_hdmi.u_e0.cnt.F",
+     "logic     0.26  12.57 u_core.u_board.u_hdmi.u_e0.cnt.OFX",
+     "setup     0.00  13.47 u_core.u_board.u_hdmi.u_e0.cnt.M"
+    ],
+    "clk_x5": [
+     "clk-to-q  0.52   0.52 u_core.u_ser.ts.Q",
+     "logic     0.24   1.64 u_core.u_ser.ts.F",
+     "logic     0.24   2.90 u_core.u_ser.s1.F",
+     "setup     0.42   3.98 u_core.u_ser.s2.LSR"
+    ]
+   },
+   "timing_ok": true
+  },
+  "3": {
+   "exit": 0,
+   "fmax": {
+    "clk_pix": {
+     "achieved_mhz": 72.01,
+     "constraint_mhz": 25,
+     "slack_ns": 26.114,
+     "margin_pct": 188.1
+    },
+    "clk_sys": {
+     "achieved_mhz": 70.25,
+     "constraint_mhz": 50,
+     "slack_ns": 5.765,
+     "margin_pct": 40.5
+    },
+    "clk_x5": {
+     "achieved_mhz": 279.49,
+     "constraint_mhz": 125,
+     "slack_ns": 4.422,
+     "margin_pct": 123.6
+    }
+   },
+   "utilization": {
+    "DCCA": {
+     "used": 4,
+     "available": 56
+    },
+    "DP16KD": {
+     "used": 44,
+     "available": 108
+    },
+    "EHXPLLL": {
+     "used": 1,
+     "available": 4
+    },
+    "IOLOGIC": {
+     "used": 4,
+     "available": 160
+    },
+    "MULT18X18D": {
+     "used": 2,
+     "available": 72
+    },
+    "SIOLOGIC": {
+     "used": 1,
+     "available": 85
+    },
+    "TRELLIS_COMB": {
+     "used": 7655,
+     "available": 43848
+    },
+    "TRELLIS_FF": {
+     "used": 3055,
+     "available": 43848
+    },
+    "TRELLIS_IO": {
+     "used": 83,
+     "available": 245
+    },
+    "TRELLIS_RAMW": {
+     "used": 161,
+     "available": 5481
+    }
+   },
+   "warnings": 0,
+   "errors": 0,
+   "cross_domain_max_delay_ns": [
+    {
+     "from": "<async>",
+     "to": "posedge $glbnet$clk_sys",
+     "ns": 5.98
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "<async>",
+     "ns": 9.04
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "posedge $glbnet$clk_sys",
+     "ns": 1.24
+    },
+    {
+     "from": "posedge $glbnet$clk_pix",
+     "to": "posedge $glbnet$clk_x5",
+     "ns": 1.8
+    },
+    {
+     "from": "posedge $glbnet$clk_sys",
+     "to": "<async>",
+     "ns": 10.25
+    },
+    {
+     "from": "posedge $glbnet$clk_sys",
+     "to": "posedge $glbnet$clk_pix",
+     "ns": 1.48
+    }
+   ],
+   "sdram_io_routing": {
+    "cmd_out": {
+     "n": 16,
+     "max_ns": 3.056,
+     "worst": "sdram_a[3]"
+    },
+    "dq_out": {
+     "n": 32,
+     "max_ns": 2.905,
+     "worst": "sdram_dq[20]"
+    },
+    "dq_oe": {
+     "n": 32,
+     "max_ns": 5.861,
+     "worst": "sdram_dq[29]"
+    },
+    "dq_in": {
+     "n": 32,
+     "max_ns": 5.861,
+     "worst": "sdram_dq[29]"
+    },
+    "clk_out": {
+     "n": 0,
+     "max_ns": null,
+     "worst": null
+    }
+   },
+   "critical_paths": {
+    "clk_sys": [
+     "clk-to-q  0.52   0.52 u_core.u_board.u_vdpx.u_apu.ch.Q",
+     "logic     0.24   1.76 u_core.u_board.u_vdpx.u_apu.restart_p.F",
+     "logic     0.26   2.78 u_core.u_board.u_vdpx.u_apu.restart_p.OFX",
+     "logic     0.24   3.90 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_3.F",
+     "logic     0.45   5.47 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   5.47 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.07   5.55 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   5.55 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.07   5.62 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   5.62 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.44   6.06 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.F",
+     "logic     0.45   7.86 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   7.86 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.07   7.93 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   7.93 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.07   8.00 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   8.00 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.07   8.07 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   8.07 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.07   8.14 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.00   8.14 u_core.u_board.u_vdpx.u_apu.pos.0.3_DO_2.FCO",
+     "logic     0.44   8.59 .F",
+     "logic     0.26   9.86 u_core.u_board.u_vdpx.u_apu.pos.0.2_DO.OFX",
+     "logic     0.45  11.45 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.52 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.52 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.59 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.59 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.66 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.66 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.73 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.73 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.80 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.80 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.87 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.87 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  11.94 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  11.94 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.07  12.01 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.00  12.01 u_core.u_board.u_sdram.addr.FCO",
+     "logic     0.44  12.46 u_core.u_board.u_sdram.addr.F"
+    ],
+    "clk_pix": [
+     "clk-to-q  0.52   0.52 u_core.u_board.u_vfifo.rbin.Q",
+     "logic     0.24   1.73 u_core.u_board.u_vfifo.mem.0.2.F",
+     "logic     0.24   3.22 u_core.u_board.u_vfifo.mem.0.3_DO_2.F",
+     "logic     0.24   3.97 u_core.u_board.u_vfifo.mem.0.3_DO_1.F",
+     "logic     0.24   4.89 u_core.u_board.u_vfifo.mem.0.3_DO_2.F",
+     "logic     0.17   5.05 u_core.u_board.u_vfifo.mem.0.3_DO_2.OFX",
+     "logic     0.24   5.29 u_core.u_board.u_vfifo.mem.0.3_DO_2.OFX",
+     "logic     0.24   6.40 u_core.u_board.u_hdmi.u_e1.q.F",
+     "logic     0.17   6.57 u_core.u_board.u_hdmi.u_e1.q.OFX",
+     "logic     0.24   6.81 u_core.u_board.u_hdmi.u_e1.q.OFX",
+     "logic     0.26   7.89 u_core.u_board.u_hdmi.u_e1.q.OFX",
+     "logic     0.24   8.13 u_core.u_board.u_hdmi.u_e1.q.OFX",
+     "logic     0.40   9.41 u_core.u_board.u_hdmi.u_e1.cnt.OFX",
+     "logic     0.24  10.28 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.45  11.86 u_core.u_board.u_hdmi.u_e1.cnt.FCO",
+     "logic     0.40  12.26 u_core.u_board.u_hdmi.u_e1.cnt.F",
+     "logic     0.26  13.52 u_core.u_board.u_hdmi.u_e1.cnt.OFX",
+     "setup     0.00  13.89 u_core.u_board.u_hdmi.u_e1.cnt.M"
+    ],
+    "clk_x5": [
+     "clk-to-q  0.52   0.52 u_core.u_ser.ts.Q",
+     "logic     0.24   1.64 u_core.u_ser.ts.F",
+     "logic     0.24   2.80 u_core.u_ser.s1.F",
+     "setup     0.42   3.58 u_core.u_ser.s2.LSR"
+    ]
+   },
+   "timing_ok": true
+  }
+ },
+ "ok": true,
+ "synth_cells": {
+  "LUT4": 3927,
+  "CCU2C": 932,
+  "TRELLIS_FF": 3055,
+  "TRELLIS_DPR16X4": 161,
+  "DP16KD": 44,
+  "MULT18X18D": 2,
+  "EHXPLLL": 1,
+  "ODDRX1F": 5
+ },
+ "bitstream": {
+  "path": "artifacts/vdpx_ecp5_p1.bit",
+  "seed": "1",
+  "sha256": "f1a25883dd82930a2bdbd602388910eb2c78264d6c21dc9a2a2ff7a7616449f3",
+  "config_sha256": "52b9f4a3a9e4b804a6f71b92f0b19dab62fca10ba66174074ea8c9c4ba3d79c2",
+  "netlist_sha256": "6211c92d1e37271b87cc665d1a6641c101687f54e19895dc0aff48cbc8d9bed4",
+  "size": 1134317
+ }
+}

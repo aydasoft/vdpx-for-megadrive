@@ -1,0 +1,54 @@
+$ make test50
+scenes/audio_md.scn: 50 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 30000 amostras de áudio (0 erradas), 31249193 ciclos -> OK
+RENDER_BUDGET: 8334 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_musica.scn: 13403 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 198734 amostras de áudio (0 erradas), 207013782 ciclos -> OK
+RENDER_BUDGET: 55214 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 10532 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand0.scn: 6722 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9069 amostras de áudio (0 erradas), 9446086 ciclos -> OK
+RENDER_BUDGET: 2521 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand1.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9882 amostras de áudio (0 erradas), 10292955 ciclos -> OK
+RENDER_BUDGET: 2748 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand2.scn: 6855 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 13639 amostras de áudio (0 erradas), 14206496 ciclos -> OK
+RENDER_BUDGET: 3808 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_rand3.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 12240 amostras de áudio (0 erradas), 12749211 ciclos -> OK
+RENDER_BUDGET: 3400 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 5120 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/audio_smem.scn: 317 escritas, 301 leituras verificadas, 0 frames (0 com limite de sprites), 59 amostras de áudio (0 erradas), 60651 ciclos -> OK
+RENDER_BUDGET: 12 linhas, maior tempo de renderizacao 1535 ciclos de 3200
+SDRAM_RMW: 300 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/demo.scn: 11712 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3172 amostras de áudio (0 erradas), 3304016 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1856 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/fx.scn: 9080 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3172 amostras de áudio (0 erradas), 3304016 ciclos -> OK
+RENDER_BUDGET: 896 linhas, maior tempo de renderizacao 1539 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/limites.scn: 586 escritas, 0 leituras verificadas, 1 frames (1 com limite de sprites), 1559 amostras de áudio (0 erradas), 1624016 ciclos -> OK
+RENDER_BUDGET: 448 linhas, maior tempo de renderizacao 2138 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand0.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 1924 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand1.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2343 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand2.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2344 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand3.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 1960 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand4.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2190 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/rand5.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6398 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+RENDER_BUDGET: 1792 linhas, maior tempo de renderizacao 2349 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+scenes/readback.scn: 994 escritas, 963 leituras verificadas, 0 frames (0 com limite de sprites), 21 amostras de áudio (0 erradas), 21436 ciclos -> OK
+RENDER_BUDGET: 0 linhas, maior tempo de renderizacao 0 ciclos de 3200
+SDRAM_RMW: 0 escritas de 32 bits no modelo, 0 erros de protocolo/timing
+== TODOS OS TESTES OK (50 MHz) ==
+exit 0 (55 s)

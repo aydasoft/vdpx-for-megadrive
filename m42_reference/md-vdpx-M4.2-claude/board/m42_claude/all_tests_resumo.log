@@ -1,0 +1,32 @@
+PASS M42 adapter: delivered=491 rejected=20 phase_width_bins=441 pointer_wraps>=14 read_after_write=8 reset_active=1 empty_ack=1 simultaneous_full_pop_push=1 walking_data_patterns=32
+PASS LVC245: directions=2 OE=1 powered_off=1 intentional_contentions_detected=1; physical_reads=DISABLED
+PASS static pins/input-only; MCLK 5120 transitions/10500 cycles, half-periods 2/3 clocks; ADC physical BLOCKED
+scenes/audio_md.scn: 50 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 30001 amostras de áudio (0 erradas), 31500162 ciclos -> OK
+scenes/audio_musica.scn: 13403 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 198771 amostras de áudio (0 erradas), 208708671 ciclos -> OK
+scenes/audio_rand0.scn: 6722 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9087 amostras de áudio (0 erradas), 9540489 ciclos -> OK
+scenes/audio_rand1.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 9900 amostras de áudio (0 erradas), 10394130 ciclos -> OK
+scenes/audio_rand2.scn: 6855 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 13657 amostras de áudio (0 erradas), 14338980 ciclos -> OK
+scenes/audio_rand3.scn: 6652 escritas, 0 leituras verificadas, 0 frames (0 com limite de sprites), 12258 amostras de áudio (0 erradas), 12870039 ciclos -> OK
+scenes/audio_smem.scn: 317 escritas, 301 leituras verificadas, 0 frames (0 com limite de sprites), 61 amostras de áudio (0 erradas), 63162 ciclos -> OK
+scenes/demo.scn: 11712 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3147 amostras de áudio (0 erradas), 3304016 ciclos -> OK
+scenes/fx.scn: 9080 escritas, 0 leituras verificadas, 2 frames (0 com limite de sprites), 3147 amostras de áudio (0 erradas), 3304016 ciclos -> OK
+scenes/limites.scn: 586 escritas, 0 leituras verificadas, 1 frames (1 com limite de sprites), 1547 amostras de áudio (0 erradas), 1624016 ciclos -> OK
+scenes/rand0.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+scenes/rand1.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+scenes/rand2.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+scenes/rand3.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+scenes/rand4.scn: 33698 escritas, 0 leituras verificadas, 4 frames (0 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+scenes/rand5.scn: 33698 escritas, 0 leituras verificadas, 4 frames (4 com limite de sprites), 6347 amostras de áudio (0 erradas), 6664016 ciclos -> OK
+scenes/readback.scn: 994 escritas, 963 leituras verificadas, 0 frames (0 com limite de sprites), 21 amostras de áudio (0 erradas), 21436 ciclos -> OK
+    áudio: 37547 amostras conferidas com o modelo, 0 erradas (gravado em m2_audio.wav)
+    3/3 frames iguais ao modelo
+    39424204 ciclos simulados (46.93 frames) -> OK
+    áudio: 30877 amostras conferidas com o modelo, 0 erradas (gravado em m2wo_audio.wav)
+M2WO (PREFETCH=0): 19707 escritas e 64 leituras na VDPX pelos pinos do 68000, 19707 escritas no núcleo
+    FIFO: nível máximo 1 de 16, 0 perdidas; menor intervalo entre escritas 26 ciclos (516 ns)
+    2/2 frames iguais ao modelo
+    32420600 ciclos simulados (38.60 frames) -> OK
+    HDMI| FIFO MAX 01   ULTIMA A12006=0007        
+    overlay: 24/24 campos lidos do HDMI conferem com os sinais aplicados no CN2
+M4: 6/6 frames do HDMI iguais ao modelo; 33600 amostras de áudio no HDMI iguais ao mixer (33600 conferidas com o modelo da APU, 0 erradas)
+    LEDs: autoteste=0 MD=1 SDRAM=1 FIFO_erro=0 HDMI_travado=1 áudio_ovf=0; 35280000 ciclos -> OK

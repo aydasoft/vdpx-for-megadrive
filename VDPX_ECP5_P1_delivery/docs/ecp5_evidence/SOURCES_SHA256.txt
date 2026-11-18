@@ -1,0 +1,7 @@
+76633d7987913cabdd11436cc672dfacaa65f61780c9b2ed5416f848238e485d  wuxx/Colorlight-FPGA-Projects/schematic/i5-i9-extboard.pdf
+dcb0419ec3fa85a8112f22fe746c1d85077458014047160e7ddc7cdc44adc0c9  wuxx/Colorlight-FPGA-Projects/colorlight_i9_v7.x.md
+568aceb492d6bbe2b44be03f886662d1b80697b413bf42c35d5ebdd67070939b  litex-hub/litex-boards litex_boards/platforms/colorlight_i5.py (master)
+1035ba65087d49d84351898398a4c621a1b098e38486229cd698db6c4ccd0977  YosysHQ/prjtrellis-db ECP5/LFE5U-45F/iodb.json (master)
+d54a1981d960d06a1c6f43c9a51dbb176ec70147af2576cc2e608fa2eda0c5e0  wuxx/Colorlight-FPGA-Projects/doc/M12L64322A(2S).pdf
+78338ca5e05f90c8c9607978eeca473290f20f154cedeedd8650e89e1bddba14  YosysHQ/prjtrellis libtrellis/tools/ecppll.cpp (master)
+wuxx/Colorlight-FPGA-Projects commit 5042201f6ae848d4269680cc289c7bde3ab8cf71 (Tue Sep 15 09:53:41 2026 +0800)

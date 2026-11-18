@@ -1,0 +1,6 @@
+build*/
+out/
+ext/
+*.o
+__pycache__/
+m68k/**/*.elf
